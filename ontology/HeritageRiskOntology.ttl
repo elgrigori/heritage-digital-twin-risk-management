@@ -1,0 +1,2960 @@
+@prefix : <https://w3id.org/heritage-risk-management#> .
+@prefix hr: <http://www.semanticweb.org/egrigori/ontologies/2026/8/untitled-ontology-8/> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix inst: <https://w3id.org/heritage-risk-management/instance/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rhdto: <http://vast-lab.org/rhdto/> .
+@prefix crmdig: <http://www.cidoc-crm.org/extensions/crmdig/> .
+@base <https://w3id.org/heritage-risk-management> .
+
+<https://w3id.org/heritage-risk-management> rdf:type owl:Ontology ;
+                                             owl:imports <file:/C:/Users/egrigori/OneDrive%20-%20Netcompany/Desktop/Διπλωματικη/RHDTO_v1.2.rdfs> ,
+                                                         <http://www.cidoc-crm.org/cidoc-crm/7.1.3/> ,
+                                                         <http://www.cidoc-crm.org/extensions/crmdig/5.0/> .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://vast-lab.org/rhdto/HP10_tells_about
+rhdto:HP10_tells_about owl:inverseOf rhdto:HP10i_is_told_by ;
+                       rdfs:domain <https://dlnarratives.eu/ontology#Narrative> ;
+                       rdfs:range crm:E5_Event ;
+                       rdfs:comment "This property is intended to identify the specific events (crm:E5) to which a nont:Narrative relates."@en ;
+                       rdfs:label "HP10 tells about"@en .
+
+
+###  http://vast-lab.org/rhdto/HP10i_is_told_by
+rhdto:HP10i_is_told_by rdfs:domain crm:E5_Event ;
+                       rdfs:range <https://dlnarratives.eu/ontology#Narrative> ;
+                       rdfs:comment "This is the inverse of HP10, indicating that an event (crm:E5) is told by a particular narrative (nont:Narrative)."@en ;
+                       rdfs:label "HP10i is told by"@en .
+
+
+###  http://vast-lab.org/rhdto/HP11_was_made_by
+rhdto:HP11_was_made_by owl:inverseOf rhdto:HP11i_made ;
+                       rdfs:domain rhdto:HC3_Tangible_Entity ;
+                       rdfs:range crm:E39_Actor ;
+                       rdfs:comment "This property associates instances of HC3 Tangible Entities with instances of E39 Actor representing their author(s) or maker(s). This property is a shortcut of the CIDOC CRM fully developed path: E18 Physical Thing → P92 was brought into existence by → E63 Beginning of Existence → P11 had participant → E39 Actor."@en ;
+                       rdfs:label "HP11 was made by"@en .
+
+
+###  http://vast-lab.org/rhdto/HP11i_made
+rhdto:HP11i_made rdfs:domain crm:E39_Actor ;
+                 rdfs:range rhdto:HC3_Tangible_Entity ;
+                 rdfs:comment "This is the inverse of HP11, associating author(s) and maker(s) with the instances of HC3 Tangible Entities they made."@en ;
+                 rdfs:label "HP11i made"@en .
+
+
+###  http://vast-lab.org/rhdto/HP12_was_made_within
+rhdto:HP12_was_made_within owl:inverseOf rhdto:HP12i_is_making_time-span_of ;
+                           rdfs:domain rhdto:HC3_Tangible_Entity ;
+                           rdfs:range crm:E52_Time-Span ;
+                           rdfs:comment "This property associates instances of HC3 Tangible Entities with instances of E52 Time-Span during which they were brought into existence. This property is a shortcut of the CIDOC CRM fully developed path: E18 Physical Thing → P92 was brought into existence by → E63 Beginning of Existence → P4 has time-span → E52 Time-Span."@en ;
+                           rdfs:label "HP12 was made within"@en .
+
+
+###  http://vast-lab.org/rhdto/HP12i_is_making_time-span_of
+rhdto:HP12i_is_making_time-span_of rdfs:domain crm:E52_Time-Span ;
+                                   rdfs:range rhdto:HC3_Tangible_Entity ;
+                                   rdfs:comment "This is the inverse of HP12."@en ;
+                                   rdfs:label "HP12i is making time-span of"@en .
+
+
+###  http://vast-lab.org/rhdto/HP13_was_operated_by
+rhdto:HP13_was_operated_by owl:inverseOf rhdto:HP13i_operated ;
+                           rdfs:domain rhdto:HC9_Sensor ;
+                           rdfs:range crmdig:D14_Software ;
+                           rdfs:comment "This property links an instance of HC9 Sensor to the instances of D14 Software that operate it. The software is usually a piece of code running on the sensor and responsible for controlling and managing it, for instance by configuring its settings, collecting and processing its data, and generating signals based on its measurements."@en ;
+                           rdfs:label "HP13 was operated by"@en .
+
+
+###  http://vast-lab.org/rhdto/HP13i_operated
+rhdto:HP13i_operated rdfs:domain crmdig:D14_Software ;
+                     rdfs:range rhdto:HC9_Sensor ;
+                     rdfs:comment "This is the inverse of HP13."@en ;
+                     rdfs:label "HP13i operated"@en .
+
+
+###  http://vast-lab.org/rhdto/HP14_was_transmitted_to
+rhdto:HP14_was_transmitted_to owl:inverseOf rhdto:HP14i_received ;
+                              rdfs:domain rhdto:HC12_Signal ;
+                              rdfs:range rhdto:HC10_Decider ;
+                              rdfs:comment "This property associates the instances of HC12 Signal with the instances of HC10 Decider, indicating that a certain signal has been transmitted to the digital twin decider for processing. The property can be used to model the flow of data from sensors to the deciders and can be useful for tracking the status of signals and ensuring that they are properly processed by the decider. The property can also be used to model the relationship between signals and the specific decider services that process them, allowing for more fine-grained analysis and optimisation of the digital twin system."@en ;
+                              rdfs:label "HP14 was transmitted to"@en .
+
+
+###  http://vast-lab.org/rhdto/HP14i_received
+rhdto:HP14i_received rdfs:domain rhdto:HC10_Decider ;
+                     rdfs:range rhdto:HC12_Signal ;
+                     rdfs:comment "This is the inverse of HP14."@en ;
+                     rdfs:label "HP14i received"@en .
+
+
+###  http://vast-lab.org/rhdto/HP15_activated
+rhdto:HP15_activated owl:inverseOf rhdto:HP15i_was_activated_by ;
+                     rdfs:domain rhdto:HC14_Activation_Event ;
+                     rdfs:range rhdto:HC11_Actuator ;
+                     rdfs:comment "This property associates the instances of HC14 Activation Event with the instances of HC11 Actuator, indicating the specific digital device activated by the digital twin system based on the decision made by the decider component regarding the actions to be taken according to the detected risk."@en ;
+                     rdfs:label "HP15 activated"@en .
+
+
+###  http://vast-lab.org/rhdto/HP15i_was_activated_by
+rhdto:HP15i_was_activated_by rdfs:domain rhdto:HC11_Actuator ;
+                             rdfs:range rhdto:HC14_Activation_Event ;
+                             rdfs:comment "This is the inverse of HP15, indicating that an actuator (HC11) was activated by an activation event (HC14)."@en ;
+                             rdfs:label "HP15i was activated by"@en .
+
+
+###  http://vast-lab.org/rhdto/HP16_alerted
+rhdto:HP16_alerted owl:inverseOf rhdto:HP16i_was_alerted_by ;
+                   rdfs:domain rhdto:HC14_Activation_Event ;
+                   rdfs:range crm:E39_Actor ;
+                   rdfs:comment "This property associates the instances of HC14 Activation Event with the instances of E39 Actor, indicating the action of alerting human personnel. The property can be used to model the communication between the digital twin and human operators, following the decision taken by the decider component, and to describe the modalities of collaboration and decision-making between the digital system and the real world."@en ;
+                   rdfs:label "HP16 alerted"@en .
+
+
+###  http://vast-lab.org/rhdto/HP16i_was_alerted_by
+rhdto:HP16i_was_alerted_by rdfs:domain crm:E39_Actor ;
+                           rdfs:range rhdto:HC14_Activation_Event ;
+                           rdfs:comment "This is the inverse of HP16, indicating that an actor (E39) was alerted by an activation event (HC14)."@en ;
+                           rdfs:label "HP16i was alerted by"@en .
+
+
+###  http://vast-lab.org/rhdto/HP17_was_positioned_on
+rhdto:HP17_was_positioned_on owl:inverseOf rhdto:HP17i_hosted ;
+                             rdfs:domain rhdto:HC9_Sensor ;
+                             rdfs:range rhdto:HC3_Tangible_Entity ;
+                             rdfs:comment "This property is used to model the spatial relationship between instances of HC9 Sensor and the physical object on which the sensors are located. The property is fundamental to document the specific case in which a sensor is physically placed on or attached to a cultural heritage physical object rather than being simply placed nearby or in the same environment as the monitored object"@en ;
+                             rdfs:label "HP17 was positioned on"@en .
+
+
+###  http://vast-lab.org/rhdto/HP17i_hosted
+rhdto:HP17i_hosted rdfs:domain rhdto:HC3_Tangible_Entity ;
+                   rdfs:range rhdto:HC9_Sensor ;
+                   rdfs:comment "This is the inverse of HP17, indicating that a tangible aspect (HC3) hosted a sensor (HC9)."@en ;
+                   rdfs:label "HP17i hosted"@en .
+
+
+###  http://vast-lab.org/rhdto/HP18_uses_algorithm
+rhdto:HP18_uses_algorithm owl:inverseOf rhdto:HP18i_algorithm_is_used_by ;
+                          rdfs:domain rhdto:HC15_AI_Component ;
+                          rdfs:range crmdig:D14_Software ;
+                          rdfs:comment "This property describes the specific algorithm or model employed by the AI Component within the digital twin system to process documentation efficiently, implementing its capability to draw meaningful conclusions from the analysed data. By recording this information, the property emphasises the methodological foundation of the AI component’s functionality, underscoring its reliance on algorithmic approaches to achieve its objectives."@en ;
+                          rdfs:label "HP18 uses algorithm"@en .
+
+
+###  http://vast-lab.org/rhdto/HP18i_algorithm_is_used_by
+rhdto:HP18i_algorithm_is_used_by rdfs:domain crmdig:D14_Software ;
+                                 rdfs:range rhdto:HC15_AI_Component ;
+                                 rdfs:comment "This is the inverse of HP18, indicating the algorithm used by the AI component to perform its operations."@en ;
+                                 rdfs:label "HP18i algorithm is used by"@en .
+
+
+###  http://vast-lab.org/rhdto/HP19_was_trained_using
+rhdto:HP19_was_trained_using owl:inverseOf rhdto:HP19i_was_used_for_training ;
+                             rdfs:domain rhdto:HC15_AI_Component ;
+                             rdfs:range crm:E31_Document ;
+                             rdfs:comment "This property specifies the training documentation, protocols or datasets that were utilised to train the AI component, indicating that the AI has undergone a training process fundamental for enabling it to learn patterns, make predictions, and improve its performance in tasks related to cultural heritage documentation. This property is also essential for identifying the source and nature of the training data, which is critical for understanding the capabilities and limitations of the AI."@en ;
+                             rdfs:label "HP19 was trained using"@en .
+
+
+###  http://vast-lab.org/rhdto/HP19i_was_used_for_training
+rhdto:HP19i_was_used_for_training rdfs:domain crm:E31_Document ;
+                                  rdfs:range rhdto:HC15_AI_Component ;
+                                  rdfs:comment "This is the inverse of HP19, indicating the documentation used for training an AI Component (HC15)"@en ;
+                                  rdfs:label "HP19i was used for training"@en .
+
+
+###  http://vast-lab.org/rhdto/HP1_has_digital_twin
+rhdto:HP1_has_digital_twin owl:inverseOf rhdto:HP1i_is_digital_twin_of ;
+                           rdfs:domain rhdto:HC1_Heritage_Entity ;
+                           rdfs:range rhdto:HC2_Heritage_Digital_Twin ;
+                           rdfs:comment "This property links an instance of HC1 Heritage Entity with an instance of its related HC2 Heritage Digital Twin in a given system."@en ;
+                           rdfs:label "HP1 has digital twin"@en .
+
+
+###  http://vast-lab.org/rhdto/HP1i_is_digital_twin_of
+rhdto:HP1i_is_digital_twin_of rdfs:domain rhdto:HC2_Heritage_Digital_Twin ;
+                              rdfs:range rhdto:HC1_Heritage_Entity ;
+                              rdfs:comment "This property indicates that an instance of HC2 Heritage Digital Twin corresponds to an HC1 Heritage Entity."@en ;
+                              rdfs:label "HP1i is digital twin of"@en .
+
+
+###  http://vast-lab.org/rhdto/HP20_is_spatiotemporally_defined_by
+rhdto:HP20_is_spatiotemporally_defined_by owl:inverseOf rhdto:HP20i_spatiotemporally_defines ;
+                                          rdfs:domain rhdto:HC16_Conceptual_Space ;
+                                          rdfs:range crm:E92_Spacetime_Volume ;
+                                          rdfs:comment "This property establishes a relationship between a conceptual space (HC16) and the real-world spatiotemporal volume (E92 Spacetime Volume) to which it is directly related. In particular, it specifies that a conceptual space, while existing in an intangible, conceptual dimension within the realm of discourse and memory, could have a corresponding manifestation as physical place and timeframe that can be defined in terms of a spacetime volume. This property emphasises the dual nature of spaces, which can exist both as non-material products of the mind and as physical places that can be geographically and historically contextualised."@en ;
+                                          rdfs:label "HP20 is spatiotemporally defined by"@en .
+
+
+###  http://vast-lab.org/rhdto/HP20i_spatiotemporally_defines
+rhdto:HP20i_spatiotemporally_defines rdfs:domain crm:E92_Spacetime_Volume ;
+                                     rdfs:range rhdto:HC16_Conceptual_Space ;
+                                     rdfs:comment "This is the inverse of HP20, indicating the spacetime volume that defines a conceptual space."@en ;
+                                     rdfs:label "HP20i spatiotemporally defines"@en .
+
+
+###  http://vast-lab.org/rhdto/HP21_has_manifestation
+rhdto:HP21_has_manifestation owl:inverseOf rhdto:HP21i_is_manifestation_of ;
+                             rdfs:domain rhdto:HC17_Conceptual_Thing ;
+                             rdfs:range crm:E18_Physical_Thing ;
+                             rdfs:comment "This property establishes a relationship between a conceptual thing (HC17) and the physical thing (E18) that serves as its tangible manifestation. It can be used to associate conceptual entities, such as legendary artefacts, symbolic objects, or documented representations of physical things, with their corresponding material instances. This linkage enables a structured understanding of how conceptual entities interact with the physical world, indicating that while conceptual things exist primarily in discourse and documentation, it may have one or more physical embodiments that materialise its symbolic, cultural, or intellectual significance."@en ;
+                             rdfs:label "HP21 has manifestation"@en .
+
+
+###  http://vast-lab.org/rhdto/HP21i_is_manifestation_of
+rhdto:HP21i_is_manifestation_of rdfs:domain crm:E18_Physical_Thing ;
+                                rdfs:range rhdto:HC17_Conceptual_Thing ;
+                                rdfs:comment "This is the inverse of HP21, indicating the physical manifestation of a conceptual thing."@en ;
+                                rdfs:label "HP21i is manifestation of"@en .
+
+
+###  http://vast-lab.org/rhdto/HP22_is_embodied_as
+rhdto:HP22_is_embodied_as owl:inverseOf rhdto:HP22i_embodies ;
+                          rdfs:domain rhdto:HC18_Conceptual_Agent ;
+                          rdfs:range crm:E39_Actor ;
+                          rdfs:comment "This property establishes a relationship between a conceptual agent (HC18) and an Actor (E39) who is recognised as its real-world counterpart. The property enables the documentation of relationships between conceptual agents and historical figures, such as cases where legendary characters are linked to real individuals or where cultural traditions associate a symbolic identity with a known person, thus facilitating the study of historical reinterpretations, attributions, and the evolution of conceptual agents in collective memory."@en ;
+                          rdfs:label "HP22 is embodied as"@en .
+
+
+###  http://vast-lab.org/rhdto/HP22i_embodies
+rhdto:HP22i_embodies rdfs:domain crm:E39_Actor ;
+                     rdfs:range rhdto:HC18_Conceptual_Agent ;
+                     rdfs:comment "This is the inverse of HP22, indicating the real-world counterpart of a conceptual agent."@en ;
+                     rdfs:label "HP22i embodies"@en .
+
+
+###  http://vast-lab.org/rhdto/HP23_incorporates
+rhdto:HP23_incorporates owl:inverseOf rhdto:HP23i_is_incorporated_within ;
+                        rdfs:domain rhdto:HC4_Intangible_Entity ;
+                        rdfs:range crm:E89_Propositional_Object ;
+                        rdfs:comment "This property establishes a relationship between an Intangible Entity (HC4) and one or more propositional objects (E89) that contribute to its conceptual structure. In particular, it provides a semantic way to describe how cultural narratives, symbolic representations, and conceptualised historical entities contribute to the formation of intangible aspects of cultural heritage. This property indicates that an intangible dimension, as represented in documentation and cultural memory, can subsume or encompass specific conceptual entities such as conceptual spaces, conceptual things, and conceptual agents, effectively linking them to broader intangible heritage dimensions."@en ;
+                        rdfs:label "HP23 incorporates"@en .
+
+
+###  http://vast-lab.org/rhdto/HP23i_is_incorporated_within
+rhdto:HP23i_is_incorporated_within rdfs:domain crm:E89_Propositional_Object ;
+                                   rdfs:range rhdto:HC4_Intangible_Entity ;
+                                   rdfs:comment "This is the inverse of HP23, indicating the propositional object that contributes to the conceptual structure of an Intangible Entity (HC4)"@en ;
+                                   rdfs:label "HP23i is incorporated within"@en .
+
+
+###  http://vast-lab.org/rhdto/HP24_has_access_point
+rhdto:HP24_has_access_point owl:inverseOf rhdto:HP24i_is_access_point_of ;
+                            rdfs:domain rhdto:HC24_Digital_Object ;
+                            rdfs:range crm:E62_String ;
+                            rdfs:comment "This property associates an instance of HC24 Digital Object with a string representing the access point through which the digital object can be retrieved, accessed, or interacted with within a digital infrastructure. Access points may include URLs, API endpoints, repository identifiers, persistent identifiers, or other network-based locations that enable the operational use of digital objects. The property is particularly relevant in distributed Heritage Digital Twin environments, where digital objects may be stored across multiple repositories or services. By explicitly documenting access points this property supports interoperability and integration of digital resources within computational workflows and digital services. It further complements the role of HC24 Digital Object as an operational abstraction for digital resources, enabling them to be directly linked to their accessible digital locations."@en ;
+                            rdfs:label "HP24 has access point"@en .
+
+
+###  http://vast-lab.org/rhdto/HP24i_is_access_point_of
+rhdto:HP24i_is_access_point_of rdfs:domain crm:E62_String ;
+                               rdfs:range rhdto:HC24_Digital_Object ;
+                               rdfs:comment "This is the inverse of HP24, indicating the access point of an HC24 Digital Object."@en ;
+                               rdfs:label "HP24i is access point of"@en .
+
+
+###  http://vast-lab.org/rhdto/HP25_was_transformed_into
+rhdto:HP25_was_transformed_into owl:inverseOf rhdto:HP25i_is_transformed_model_of ;
+                                rdfs:domain rhdto:HC8_3D_Model ;
+                                rdfs:range rhdto:HC8_3D_Model ;
+                                rdfs:comment "This property associates an instance of HC8 3D Model with another 3D model derived from it through transformation processes such as alignment, simplification, resampling, format conversion, or other modelling operations. It supports the documentation of derivation chains between 3D models, enabling traceability of transformations and computational provenance within Heritage Digital Twin environments."@en ;
+                                rdfs:label "HP25 was transformed into"@en .
+
+
+###  http://vast-lab.org/rhdto/HP25i_is_transformed_model_of
+rhdto:HP25i_is_transformed_model_of rdfs:domain rhdto:HC8_3D_Model ;
+                                    rdfs:range rhdto:HC8_3D_Model ;
+                                    rdfs:comment "This is the inverse of HP25, indicating the 3D model derived from another one through transformation processes such as alignment, simplification, resampling, format conversion, or other modelling operations."@en ;
+                                    rdfs:label "HP25i is transformed model of"@en .
+
+
+###  http://vast-lab.org/rhdto/HP26_has_immaterial_condition_state
+rhdto:HP26_has_immaterial_condition_state owl:inverseOf rhdto:HP26i_is_immaterial_condition_of ;
+                                          rdfs:domain rhdto:HC5_Digital_Representation ;
+                                          rdfs:range rhdto:HC20_Immaterial_Condition_State ;
+                                          rdfs:comment "This property captures the non-physical (immaterial) conditions that affect the visualization, behavior or interpretation of a digital representation within a virtual environment."@en ;
+                                          rdfs:label "HP26 has immaterial condition state"@en .
+
+
+###  http://vast-lab.org/rhdto/HP26i_is_immaterial_condition_of
+rhdto:HP26i_is_immaterial_condition_of rdfs:domain rhdto:HC20_Immaterial_Condition_State ;
+                                       rdfs:range rhdto:HC5_Digital_Representation ;
+                                       rdfs:comment "This is the inverse of HP26, relating the immaterial conditions to the digital representation whose visualization or behavior they affect within a virtual environment."@en ;
+                                       rdfs:label "HP26i is immaterial condition of"@en .
+
+
+###  http://vast-lab.org/rhdto/HP27_concerns_heritage_entity
+rhdto:HP27_concerns_heritage_entity owl:inverseOf rhdto:HP27i_is_heritage_entity_subject_to ;
+                                    rdfs:domain rhdto:HC22_Digital_Operation ;
+                                    rdfs:range rhdto:HC1_Heritage_Entity ;
+                                    rdfs:comment "This property associates an instance of HC22 Digital Operation with the HC1 Heritage Entity that is the primary subject of the computational process. While a digital operation technically processes digital objects (inputs and outputs), this property establishes the semantic link to the real-world asset (tangible or intangible) whose state, history, or characteristics are being analysed, simulated, or documented. It is essential for contextualising computational workflows within the Heritage Digital Twin, ensuring that the results of a digital execution are explicitly attributed to the correct cultural heritage entity."@en ;
+                                    rdfs:label "HP27 concerns heritage entity"@en .
+
+
+###  http://vast-lab.org/rhdto/HP27i_is_heritage_entity_subject_to
+rhdto:HP27i_is_heritage_entity_subject_to rdfs:domain rhdto:HC1_Heritage_Entity ;
+                                          rdfs:range rhdto:HC22_Digital_Operation ;
+                                          rdfs:comment "This is the inverse of HP27, indicating the heritage entity that is subject to a digital operation."@en ;
+                                          rdfs:label "HP27i is heritage entity subject to"@en .
+
+
+###  http://vast-lab.org/rhdto/HP28_implemented_using
+rhdto:HP28_implemented_using owl:inverseOf rhdto:HP28i_was_used_to_implement ;
+                             rdfs:domain rhdto:HC22_Digital_Operation ;
+                             rdfs:range rhdto:HC21_Digital_Service ;
+                             rdfs:comment "This property associates an instance of HC22 Digital Operation with the HC21 Digital Service employed to execute it. It specifies the functional relationship between a given computational execution and the standardized software service (e.g., an API, a simulation engine, or a visualization tool) that provides the necessary logic and infrastructure for the operation."@en ;
+                             rdfs:label "HP28 implemented using"@en .
+
+
+###  http://vast-lab.org/rhdto/HP28i_was_used_to_implement
+rhdto:HP28i_was_used_to_implement rdfs:domain rhdto:HC21_Digital_Service ;
+                                  rdfs:range rhdto:HC22_Digital_Operation ;
+                                  rdfs:comment "This is the inverse of HP28, indicating the HC21 Digital Service employed to execute an HC22 Digital Operation."@en ;
+                                  rdfs:label "HP28i was used to implement"@en .
+
+
+###  http://vast-lab.org/rhdto/HP29_has_version
+rhdto:HP29_has_version owl:inverseOf rhdto:HP29i_is_version_of ;
+                       rdfs:domain rhdto:HC21_Digital_Service ;
+                       rdfs:range crm:E62_String ;
+                       rdfs:comment "This property specifies the version identifier of an HC21 Digital Service, and can be used to document the specific release or technical iteration of the software service, fundamental to ensuring complete traceability of computational logic within the Heritage Digital Twin infrastructure and full reproducibility of results."@en ;
+                       rdfs:label "HP29 has version"@en .
+
+
+###  http://vast-lab.org/rhdto/HP29i_is_version_of
+rhdto:HP29i_is_version_of rdfs:domain crm:E62_String ;
+                          rdfs:range rhdto:HC21_Digital_Service ;
+                          rdfs:comment "This is the inverse of HP29, specifying the version of a HC21 Digital Service."@en ;
+                          rdfs:label "HP29i is version of"@en .
+
+
+###  http://vast-lab.org/rhdto/HP2_has_story
+rhdto:HP2_has_story owl:inverseOf rhdto:HP2i_is_story_about ;
+                    rdfs:domain rhdto:HC1_Heritage_Entity ;
+                    rdfs:range <https://dlnarratives.eu/ontology#Narrative> ;
+                    rdfs:comment "This property links an instance of HC1 Heritage Entity with an instance of a nont:Narrative that refers to it."@en ;
+                    rdfs:label "HP2 has story"@en .
+
+
+###  http://vast-lab.org/rhdto/HP2i_is_story_about
+rhdto:HP2i_is_story_about rdfs:domain <https://dlnarratives.eu/ontology#Narrative> ;
+                          rdfs:range rhdto:HC1_Heritage_Entity ;
+                          rdfs:comment "This property links a narrative to the HC1 Heritage Entity it describes."@en ;
+                          rdfs:label "HP2i is story about"@en .
+
+
+###  http://vast-lab.org/rhdto/HP30_provided_by
+rhdto:HP30_provided_by owl:inverseOf rhdto:HP30i_provided ;
+                       rdfs:domain rhdto:HC21_Digital_Service ;
+                       rdfs:range crm:E39_Actor ;
+                       rdfs:comment "This property associates an instance of HC21 Digital Service with the crm:E39 Actor responsible for its development, provision, or operational maintenance. It identifies the entity (e.g., a research laboratory, a software vendor, or a heritage institution) that offers the service's capabilities to the digital twin ecosystem and ensures its technical availability."@en ;
+                       rdfs:label "HP30 provided by"@en .
+
+
+###  http://vast-lab.org/rhdto/HP30i_provided
+rhdto:HP30i_provided rdfs:domain crm:E39_Actor ;
+                     rdfs:range rhdto:HC21_Digital_Service ;
+                     rdfs:comment "This is the inverse of HP30, relating an instance of crm:E39 Actor to the HC21 Digital Service they are responsible for developing, providing, or maintaining within the digital twin ecosystem."@en ;
+                     rdfs:label "HP30i provided"@en .
+
+
+###  http://vast-lab.org/rhdto/HP3_is_digital_twin_component_of
+rhdto:HP3_is_digital_twin_component_of owl:inverseOf rhdto:HP3i_has_digital_twin_component ;
+                                       rdfs:domain rhdto:HC2_Heritage_Digital_Twin ;
+                                       rdfs:range rhdto:HC2_Heritage_Digital_Twin ;
+                                       rdfs:comment "This property associates an instance of HC2 Heritage Digital Twin with another HC2 of which is component. The term ‘component’ here is not limited to physical or geographical relationships (see examples), but encompasses any kind of main-associated relationship."@en ;
+                                       rdfs:label "HP3 is digital twin component of"@en .
+
+
+###  http://vast-lab.org/rhdto/HP3i_has_digital_twin_component
+rhdto:HP3i_has_digital_twin_component rdfs:domain rhdto:HC2_Heritage_Digital_Twin ;
+                                      rdfs:range rhdto:HC2_Heritage_Digital_Twin ;
+                                      rdfs:comment "This property associates an instance of HC2 Heritage Digital Twin with its component parts (also HC2 Heritage Digital Twins)."@en ;
+                                      rdfs:label "HP3i has digital twin component"@en .
+
+
+###  http://vast-lab.org/rhdto/HP4_narrates
+rhdto:HP4_narrates owl:inverseOf rhdto:HP4i_is_narrated_by ;
+                   rdfs:domain <https://dlnarratives.eu/ontology#Narration> ;
+                   rdfs:range <https://dlnarratives.eu/ontology#Narrative> ;
+                   rdfs:comment "This property links an instance of nont:Narration with an instance of a nont:Narrative which has this narration. It is similar to the nont:hasNarration property, but is not a subproperty of crm:P148 has component."@en ;
+                   rdfs:label "HP4 narrates"@en .
+
+
+###  http://vast-lab.org/rhdto/HP4i_is_narrated_by
+rhdto:HP4i_is_narrated_by rdfs:domain <https://dlnarratives.eu/ontology#Narrative> ;
+                          rdfs:range <https://dlnarratives.eu/ontology#Narration> ;
+                          rdfs:comment "This property identifies the narration (nont:Narration) that contains a given narrative (nont:Narrative)."@en ;
+                          rdfs:label "HP4i is narrated by"@en .
+
+
+###  http://vast-lab.org/rhdto/HP5_has_intangible_dimension
+rhdto:HP5_has_intangible_dimension owl:inverseOf rhdto:HP5i_is_intangible_dimension_of ;
+                                   rdfs:domain rhdto:HC3_Tangible_Entity ;
+                                   rdfs:range rhdto:HC4_Intangible_Entity ;
+                                   rdfs:comment "This property associates an instance of HC3 Tangible Entity with its intangible entities (HC4), i.e. the cultural, social and historical value it incorporates."@en ;
+                                   rdfs:label "HP5 has intangible dimension"@en .
+
+
+###  http://vast-lab.org/rhdto/HP5i_is_intangible_dimension_of
+rhdto:HP5i_is_intangible_dimension_of rdfs:domain rhdto:HC4_Intangible_Entity ;
+                                      rdfs:range rhdto:HC3_Tangible_Entity ;
+                                      rdfs:comment "This property links an intangible entity (HC4) to the tangible aspect (HC3) it is associated with."@en ;
+                                      rdfs:label "HP5i is intangible dimension of"@en .
+
+
+###  http://vast-lab.org/rhdto/HP6_has_manifestation_event
+rhdto:HP6_has_manifestation_event owl:inverseOf rhdto:HP6i_event_is_manifestation_of ;
+                                  rdfs:domain rhdto:HC4_Intangible_Entity ;
+                                  rdfs:range crm:E5_Event ;
+                                  rdfs:comment "This property associates an instance of HC4 Intangible Entity with the instances of the crm:E5 Event through which the intangible entity manifests itself in the physical world."@en ;
+                                  rdfs:label "HP6 has manifestation event"@en .
+
+
+###  http://vast-lab.org/rhdto/HP6i_event_is_manifestation_of
+rhdto:HP6i_event_is_manifestation_of rdfs:domain crm:E5_Event ;
+                                     rdfs:range rhdto:HC4_Intangible_Entity ;
+                                     rdfs:comment "This property is the inverse of HP6, indicating that an event (E5) is the manifestation of an intangible entity (HC4)."@en ;
+                                     rdfs:label "HP6i event is manifestation of"@en .
+
+
+###  http://vast-lab.org/rhdto/HP7_is_manifestation_of
+rhdto:HP7_is_manifestation_of owl:inverseOf rhdto:HP7i_is_manifested_by ;
+                              rdfs:domain rhdto:HC3_Tangible_Entity ;
+                              rdfs:range rhdto:HC4_Intangible_Entity ;
+                              rdfs:comment "This property associates instances of HC3 Tangible Entity with the HC4 Intangible Entity of which they are the manifestation in the physical world."@en ;
+                              rdfs:label "HP7 is manifestation of"@en .
+
+
+###  http://vast-lab.org/rhdto/HP7i_is_manifested_by
+rhdto:HP7i_is_manifested_by rdfs:domain rhdto:HC4_Intangible_Entity ;
+                            rdfs:range rhdto:HC3_Tangible_Entity ;
+                            rdfs:comment "This property is the inverse of HP7, indicating that an intangible entity (HC4) is manifested by a tangible aspect (HC3)."@en ;
+                            rdfs:label "HP7i is manifested by"@en .
+
+
+###  http://vast-lab.org/rhdto/HP8_is_narrated_in_document
+rhdto:HP8_is_narrated_in_document owl:inverseOf rhdto:HP8i_document_used_for_narration ;
+                                  rdfs:domain <https://dlnarratives.eu/ontology#Narration> ;
+                                  rdfs:range crm:E31_Document ;
+                                  rdfs:comment "This property associates an instance of nont:Narration with instances of E31 Document used to implement it."@en ;
+                                  rdfs:label "HP8 is narrated in document"@en .
+
+
+###  http://vast-lab.org/rhdto/HP8i_document_used_for_narration
+rhdto:HP8i_document_used_for_narration rdfs:domain crm:E31_Document ;
+                                       rdfs:range <https://dlnarratives.eu/ontology#Narration> ;
+                                       rdfs:comment "This property is the inverse of HP8, linking an E31 Document to the narration (nont:Narration) it implements."@en ;
+                                       rdfs:label "HP8i document used for narration"@en .
+
+
+###  http://vast-lab.org/rhdto/HP9_has_visual_representation
+rhdto:HP9_has_visual_representation owl:inverseOf rhdto:HP9i_is_visual_representation_of ;
+                                    rdfs:domain rhdto:HC1_Heritage_Entity ;
+                                    rdfs:range rhdto:HC7_Digital_Visual_Object ;
+                                    rdfs:comment "This property associates an instance of HC1 Heritage Entity with instances of HC7 Digital Visual Object in which it is represented."@en ;
+                                    rdfs:label "HP9 has visual representation"@en .
+
+
+###  http://vast-lab.org/rhdto/HP9i_is_visual_representation_of
+rhdto:HP9i_is_visual_representation_of rdfs:domain rhdto:HC7_Digital_Visual_Object ;
+                                       rdfs:range rhdto:HC1_Heritage_Entity ;
+                                       rdfs:comment "This is the inverse of HP9, linking a digital visual object (HC7) to the heritage entity (HC1) it represents."@en ;
+                                       rdfs:label "HP9i is visual representation of"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://vast-lab.org/rhdto/HC10_Decider
+rhdto:HC10_Decider rdf:type owl:Class ;
+                   rdfs:subClassOf crmdig:D14_Software ;
+                   rdfs:comment "This class comprises software components responsible for receiving signals from sensors and autonomously making decisions aimed at safeguarding cultural objects. Acting as an intelligent service within the conservation systems of the digital twin, deciders process incoming data from sensors and information stored in the digital twin knowledge base to detect factors such as environmental conditions, artifact vulnerability, and conservation protocols. Based on this analysis, it executes predefined algorithms or decision-making rules to determine appropriate actions for preserving cultural heritage. These actions could include adjusting environmental controls, activating protective measures, or triggering alerts to conservators or relevant personnel when necessary."@en ;
+                   rdfs:label "HC10 Decider"@en .
+
+
+###  http://vast-lab.org/rhdto/HC11_Actuator
+rhdto:HC11_Actuator rdf:type owl:Class ;
+                    rdfs:subClassOf crmdig:D8_Digital_Device ;
+                    rdfs:comment "This class comprises digital devices responsible for executing actions determined by the decider of the digital twin system to safeguard cultural objects. Serving as a crucial link between decision-making and practical implementation, the actuator translates directives from the decider into tangible interventions aimed at mitigating risks or optimising conservation conditions. Interventions may encompass a variety of mechanisms, including the activation of mechanical, electronic, pneumatic, or hydraulic systems, among others. Actuators ensure the timely and effective execution of proactive conservation strategies, contributing to the long-term preservation of cultural heritage assets."@en ;
+                    rdfs:label "HC11 Actuator"@en .
+
+
+###  http://vast-lab.org/rhdto/HC12_Signal
+rhdto:HC12_Signal rdf:type owl:Class ;
+                  rdfs:subClassOf crmdig:D9_Data_Object ;
+                  rdfs:comment "This class is used to model particular data objects generated by sensors and to document specific detected conditions. Signals are typically transmitted to the digital twin, where they are processed and analysed by the system’s algorithms to generate insights into the condition and conservation needs of cultural heritage. Signals may be encoded in a specific data formatting language, facilitating efficient transmission, storage, and analysis. Utilising standardised formats ensures interoperability and compatibility among different sensor systems and conservation platforms, including the digital twin knowledge base, enabling the seamless integration of data from diverse sources for comprehensive conservation management. The incorporation and analysis of encoded signals enables the digital twin to support informed decision-making and proactive preservation strategies for cultural heritage assets."@en ;
+                  rdfs:label "HC12 Signal"@en .
+
+
+###  http://vast-lab.org/rhdto/HC13_Sensor_Measurement
+rhdto:HC13_Sensor_Measurement rdf:type owl:Class ;
+                              rdfs:subClassOf <http://www.cidoc-crm.org/extensions/crmsci/S21_Measurement> ;
+                              rdfs:comment "This class comprises specific measurement events in which a sensor detects and quantifies a specific parameter or condition relevant to the monitoring and conservation of cultural assets. Events of this kind occur when a sensor registers changes in parameters such as temperature, humidity, light exposure, or vibration, capturing information that reflects the environmental conditions surrounding cultural objects or structures. Sensor measurement is thus an essential feature for continuously assessing the time and circumstances in which conditions of risk may affect cultural heritage, providing valuable insights into factors that may impact the preservation of artifacts or sites over time."@en ;
+                              rdfs:label "HC13 Sensor Measurement"@en .
+
+
+###  http://vast-lab.org/rhdto/HC14_Activation_Event
+rhdto:HC14_Activation_Event rdf:type owl:Class ;
+                            rdfs:subClassOf crm:E5_Event ;
+                            rdfs:comment "This class serves to model actions performed by an actuator to initiate specific interventions or alerts aimed at safeguarding cultural assets. Activation events occur when an actuator executes directives received from the digital twin’s decider, triggering actions such as activating climate control systems, deploying protective enclosures, or alerting personnel through various communication channels, including email notifications, SMS, and other similar ones."@en ;
+                            rdfs:label "HC14 Activation Event"@en .
+
+
+###  http://vast-lab.org/rhdto/HC15_AI_Component
+rhdto:HC15_AI_Component rdf:type owl:Class ;
+                        rdfs:subClassOf crmdig:D14_Software ;
+                        rdfs:comment "This class is intended to model artificial intelligence systems integrated into the Heritage Digital Twin. AI components provide advanced capabilities for extracting and semantically encoding information from heritage documentation, continuously updating and enriching the digital twin’s knowledge base. Additionally, instances of this class perform tasks such as data analysis, decision-making, and pattern recognition driven by algorithms or machine learning models, enhancing the analytical and predictive capabilities of digital twins to provide deeper insights into cultural entities and their historical and cultural context. Unlike conventional software, instances of HC15 simulate intelligent behaviour, learning from data and adapting to new conditions while making informed decisions. AI components are continuously trained using data stored in the knowledge graph, real-time data coming from sensors, and scientific documentation and protocols produced by experts, thus refining their responses through iterative feedback to prioritise key preservation factors. They also leverage physics-based models to infer conditions that cannot be directly observed, such as material degradation of cultural objects."@en ;
+                        rdfs:label "HC15 AI Component"@en .
+
+
+###  http://vast-lab.org/rhdto/HC16_Conceptual_Space
+rhdto:HC16_Conceptual_Space rdf:type owl:Class ;
+                            rdfs:subClassOf crm:E89_Propositional_Object ;
+                            rdfs:comment "This class comprises non-material, intangible entities that represent places or locations as they exist within the realm of discourse, memory, and cultural practices. They are created by individuals or communities and become objects of discourse about their identity, function, and historical implications. Unlike physical spaces, which have a tangible and geographically defined presence, conceptual spaces have their roots in the HDT documentation, which may include written documents, oral traditions, artistic representations, and collective memories. They typically hold significant cultural and symbolic value, contributing to the collective identity and heritage of a community."@en ;
+                            rdfs:label "HC16 Conceptual Space"@en .
+
+
+###  http://vast-lab.org/rhdto/HC17_Conceptual_Thing
+rhdto:HC17_Conceptual_Thing rdf:type owl:Class ;
+                            rdfs:subClassOf crm:E89_Propositional_Object ;
+                            rdfs:comment "This class encompasses entities that acquire cultural, symbolic, or intellectual significance independently of their material form. These include conceptual representations of real-world objects or legendary artefacts expressed through documentation. Unlike physical objects, their identity is shaped by discourse, representation, and transmission across different media and traditions, and are instantiated through written accounts, oral traditions, iconographic depictions, or digital representations, ensuring their persistence within cultural memory. Their identity remains intact even if their material manifestations are lost or altered, provided they continue to be referenced, interpreted, or reconstructed within the cultural discourse."@en ;
+                            rdfs:label "HC17 Conceptual Thing"@en .
+
+
+###  http://vast-lab.org/rhdto/HC18_Conceptual_Agent
+rhdto:HC18_Conceptual_Agent rdf:type owl:Class ;
+                            rdfs:subClassOf crm:E89_Propositional_Object ;
+                            rdfs:comment "This class refers to historical, legendary, or fictional individuals whose identity and significance transcend their physical existence. These figures are constituted through collective memory, literary narratives, artistic representation, and ideological constructs rather than direct biological lineage or material evidence. Conceptual persons may include deified heroes, mythical founders, or fictional protagonists, as well as documented representations of historical individuals when expressed within specific narratives or symbolic frameworks. Their continuity relies on being referenced within traditions, texts, or artistic expressions, allowing their legacy to persist even in the absence of tangible proof of their existence."@en ;
+                            rdfs:label "HC18 Conceptual Agent"@en .
+
+
+###  http://vast-lab.org/rhdto/HC19_3D_Transformation
+rhdto:HC19_3D_Transformation rdf:type owl:Class ;
+                             rdfs:subClassOf rhdto:HC24_Digital_Object ;
+                             rdfs:comment "This class captures the  mathematical mapping, specified as an appropriate tuple of numbers (usually 16 floating-point values), which drives the transformation operation. Such a mapping typically corresponds to a transformation matrix used in three-dimensional modelling and spatial registration to define the relationship between two coordinate systems. It enables operations such as translation, rotation, scaling, or combinations thereof, allowing a digital object, dataset, or spatial representation to be repositioned, aligned, or otherwise transformed within a three-dimensional space. This class therefore represents the parametric description of a transformation independently of any specific execution, and may be used to document alignment procedures, spatial registration processes, or the positioning of digital or physical entities in a shared spatial reference framework."@en ;
+                             rdfs:label "HC19 3D Transformation"@en .
+
+
+###  http://vast-lab.org/rhdto/HC1_Heritage_Entity
+rhdto:HC1_Heritage_Entity rdf:type owl:Class ;
+                          rdfs:subClassOf crm:E1_CRM_Entity ;
+                          rdfs:comment "This class comprises tangible and intangible entities of the real-world regarded as valuable because of their contribution to society, knowledge and/or culture. Instances of HC1 Heritage Entity may refer to real assets of any nature: physical, both movable and immovable, immaterial, or born digital. They can also refer to cultural events, traditions and practices, typical of the intangible heritage, and can be used to describe their features and their extent in space and time. In the case of events, we can create instances of event types. An instance of HC1 can be considered as the entry point for inferring the content of its corresponding HC2 instance, even if by using crm:P148 has component property it can also be used for denoting HC2’s components."@en ;
+                          rdfs:label "HC1 Heritage Entity"@en .
+
+
+###  http://vast-lab.org/rhdto/HC20_Immaterial_Condition_State
+rhdto:HC20_Immaterial_Condition_State rdf:type owl:Class ;
+                                      rdfs:subClassOf crm:E2_Temporal_Entity ;
+                                      rdfs:comment "This class comprises non-physical conditions affecting the representation, behaviour or interpretation of a digital representation or digital object within a virtual or computational environment. These conditions may include parameters such as lighting, visibility, simulation settings, rendering configurations, or other contextual variables influencing how a digital representation is experienced or analysed. Unlike physical condition states, these immaterial conditions exist only within the digital domain and may vary depending on visualisation or simulation environments."@en ;
+                                      rdfs:label "HC20 Immaterial Condition State"@en .
+
+
+###  http://vast-lab.org/rhdto/HC21_Digital_Service
+rhdto:HC21_Digital_Service rdf:type owl:Class ;
+                           rdfs:subClassOf crm:E7_Activity ,
+                                           crmdig:D14_Software ,
+                                           <https://www.ariadne-infrastructure.eu/resource/ao/cat/1.1/AO_Service> ;
+                           rdfs:comment "This class comprises software-based services designed to perform specific computational or analytical tasks within a Heritage Digital Twin or digital heritage infrastructure. Instances of this class may include simulation services, visualization services, data processing services, artificial intelligence services, or IoT orchestration services. A digital service is understood as having a dual nature: on the one hand, as a deployable software component capable of receiving structured input, performing computational processing, and producing output; on the other hand, as an intentional service offering made available by an actor to achieve specific operational goals within heritage science workflows. From a technical perspective, instances of this class correspond to identifiable software artefacts that may be deployed within distributed infrastructures, exposed through APIs, versioned, composed, and documented. From a functional perspective, they represent coherent sets of capabilities intended to support activities such as simulation, monitoring, analysis, visualisation, or decision-making in digital twin environments. Digital services may be provided by actors, composed of sub-services, associated with specific competencies, and designed for particular user communities or use cases. Their deployment within specific workflows is documented through instances of HC22 Digital Operation, allowing the distinction between the intended purpose of a service and its actual use in operational contexts. Services may also rely on specific computational infrastructures and may be versioned and maintained over time."@en ;
+                           rdfs:label "HC21 Digital Service"@en .
+
+
+###  http://vast-lab.org/rhdto/HC22_Digital_Operation
+rhdto:HC22_Digital_Operation rdf:type owl:Class ;
+                             rdfs:subClassOf crmdig:D10_Software_Execution ;
+                             rdfs:comment "This class comprises specific executions of computational processes performed within a Heritage Digital Twin environment. As a specialized subclass of D10 Software Execution, instances of HC22 Digital Operation represent identifiable and documentable software executions carried out on digital objects, typically producing new digital artefacts, derived datasets or transformed representations. This class also enables the documentation, traceability, reproducibility and interpretability of computational processes that generate and transform knowledge about cultural heritage entities. A Digital Operation may be composed of multiple coordinated sub-operations forming structured computational workflows, each of which may be modeled as an individual instance of HC22 Digital Operation and linked through compositional or sequential relationships such as P134 continued, reflecting the layered nature of digital processing environments and providing structured accounts of computational provenance within the digital twin environment. A Digital Operation may use software components represented as instances of D14 Software, and may also be implemented using one or more HC21 Digital Service instances, thus establishing explicit connections between software execution, service provision, and computational workflows. In addition, Digital Operations typically consume and produce digital objects, represented as instances of HC24 Digital Object, enabling the documentation of data transformations and derivations, and may also be configured through parameter sets represented as instances of HC23 Parameter Set."@en ;
+                             rdfs:label "HC22 Digital Operation"@en .
+
+
+###  http://vast-lab.org/rhdto/HC23_Parameter_Set
+rhdto:HC23_Parameter_Set rdf:type owl:Class ;
+                         rdfs:subClassOf rhdto:HC24_Digital_Object ;
+                         rdfs:comment "This class describes digital objects containing or representing configuration values, thresholds, model parameters, simulation settings or algorithmic constraints that influence the behavior of digital operations or services. These parameter sets may be reused, modified, or versioned across different digital operations."@en ;
+                         rdfs:label "HC23 Parameter Set"@en .
+
+
+###  http://vast-lab.org/rhdto/HC24_Digital_Object
+rhdto:HC24_Digital_Object rdf:type owl:Class ;
+                          rdfs:subClassOf crm:E73_Information_Object ;
+                          rdfs:comment "This class comprises identifiable digital entities used, produced, or processed within the ARTEMIS Heritage Digital Twin environment. HC24 Digital Object is defined as a domain-oriented superclass of D1 Digital Object, introduced to support the modeling requirements of ARTEMIS while maintaining full compatibility with existing CRMdig implementations. By defining HC24 Digital Object as a superclass of D1 Digital Object, the model provides a unifying abstraction layer that allows both standard D1 instances and domain-specific specializations to inherit additional properties and behaviors required in Heritage Digital Twin environments, enabling the consistent propagation of ARTEMIS-specific properties, such as HP24 has access point, while preserving semantic alignment with the broader CIDOC CRM ecosystem. Instances of HC24 Digital Object typically serve as inputs or outputs of HC22 Digital Operation and may be generated, transformed, or consumed within the Heritage Digital Twin ecosystem."@en ;
+                          rdfs:label "HC24 Digital Object"@en .
+
+
+###  http://vast-lab.org/rhdto/HC25_Node
+rhdto:HC25_Node rdf:type owl:Class ;
+                rdfs:subClassOf crmdig:D8_Digital_Device ;
+                rdfs:comment "This class comprises logical or physical groupings of sensors operating within an IoT infrastructure for monitoring cultural heritage assets and environments. An instance of HC25 Node represents a coherent unit that aggregates one or more HC9 Sensor instances, enabling coordinated data acquisition, processing, and communication within a Heritage Digital Twin environment. Nodes may correspond to physically co-located sensors or to logically grouped sensors that are spatially distributed but operate under a common monitoring strategy. Sensors within a node may operate simultaneously or sequentially, and may be dynamically activated or deactivated depending on monitoring requirements, environmental conditions, or system configurations. This flexibility allows nodes to support a wide range of monitoring scenarios, including continuous observation, event-driven acquisition, or scheduled measurement cycles. An HC25 Node may also perform data aggregation, preprocessing, or transmission functions, acting as an intermediate layer between individual sensors and higher-level digital services or computational workflows. Nodes may further be organised hierarchically, allowing complex monitoring infrastructures to be represented as structured networks of nodes operating at different spatial or functional levels. By grouping sensors into coherent operational units, this class supports scalable monitoring strategies, facilitates coordinated data acquisition and enhances the integration of IoT infrastructures within the Heritage Digital Twin ecosystem."@en ;
+                rdfs:label "HC25 Node"@en .
+
+
+###  http://vast-lab.org/rhdto/HC2_Heritage_Digital_Twin
+rhdto:HC2_Heritage_Digital_Twin rdf:type owl:Class ;
+                                rdfs:subClassOf crm:E89_Propositional_Object ;
+                                rdfs:comment "The class consists of the information available in a given system and pertaining to an HC1 Heritage Entity. Every instance of HC1 Heritage Entity is linked to one instance of HC2 Heritage Digital Twin, which provides an archive of the documented history of the corresponding HC1 Heritage Entity. It includes digital representations of that Heritage Entity (e.g. 3D models, images, videos), textual descriptions (e.g. digital documents, narrations or stories), information of the effects on the related HC1 Heritage Entity of events that influenced or/and are related in any way to its state of (e.g. earthquakes, floods etc.) and of activities (e.g. restorations, conservations etc.) carried out on it."@en ;
+                                rdfs:label "HC2 Heritage Digital Twin"@en .
+
+
+###  http://vast-lab.org/rhdto/HC3_Tangible_Entity
+rhdto:HC3_Tangible_Entity rdf:type owl:Class ;
+                          rdfs:subClassOf rhdto:HC1_Heritage_Entity ,
+                                          crm:E18_Physical_Thing ;
+                          rdfs:comment "This class comprises tangible, material entities of the real-world, both movable (e.g. archaeological, artistic and cultural objects) and immovable (e.g., built heritage like monuments, buildings, cities and other complexes), regarded as valuable because of their contribution to society, knowledge and/or culture. The “tangible” term in the name of this class does not exclude that its instances also possess an intangible dimension, which is specified through the HP5 has intangible dimension property."@en ;
+                          rdfs:label "HC3 Tangible Entity"@en .
+
+
+###  http://vast-lab.org/rhdto/HC4_Intangible_Entity
+rhdto:HC4_Intangible_Entity rdf:type owl:Class ;
+                            rdfs:subClassOf rhdto:HC1_Heritage_Entity ,
+                                            crm:E89_Propositional_Object ;
+                            rdfs:comment "This class comprises cultural events, traditions and practices having particular social, historical and cultural significance, including practices and expressions, memories and oral traditions about events, things, people."@en ;
+                            rdfs:label "HC4 Intangible Entity"@en .
+
+
+###  http://vast-lab.org/rhdto/HC5_Digital_Representation
+rhdto:HC5_Digital_Representation rdf:type owl:Class ;
+                                 rdfs:subClassOf crmdig:D1_Digital_Object ;
+                                 rdfs:comment "This class comprises the digital virtual representations of an HC1 Heritage Entity such as e-texts, images, audio or video items, 3D models, etc., that are documented as single units."@en ;
+                                 rdfs:label "HC5 Digital Representation"@en .
+
+
+###  http://vast-lab.org/rhdto/HC6_Digital_Heritage_Document
+rhdto:HC6_Digital_Heritage_Document rdf:type owl:Class ;
+                                    rdfs:subClassOf rhdto:HC5_Digital_Representation ;
+                                    rdfs:comment "This class comprises pieces or collections of digital, non-visual documents, either born-digital or digitised from physical, real-world ones, typically containing textual or numerical information regarding an HC1 Heritage Entity and intended to become part of the related HC2 Heritage Digital Twin. Documentation of this kind may include scientific data, research results and interpretation, as well as historical and cultural information, including textual descriptions related to the nature, conditions, positioning and to the whole set of events in which the cultural entity has been involved and the actors who have participated in them."@en ;
+                                    rdfs:label "HC6 Digital Heritage Document"@en .
+
+
+###  http://vast-lab.org/rhdto/HC7_Digital_Visual_Object
+rhdto:HC7_Digital_Visual_Object rdf:type owl:Class ;
+                                rdfs:subClassOf rhdto:HC5_Digital_Representation ;
+                                rdfs:comment "This class comprises digital visual objects, such as photos and videos, but also special imagery such as X-ray images, spectra of chemical and physical analyses, and so on, intended to become part of the HC2 Heritage Digital Twin of an HC1 Heritage Entity. Digital documentation of this kind can be born digital or digitised from physical objects (such as paper photographs, drawings and so on). Particularly relevant digital visual objects are also Virtual Reality (VR) and Augmented Reality (AR) models, other types of visual digital artefacts pertaining to a HC1 Heritage Entity. Both VR and AR models rely on 3D models of the related heritage entity, but may add or remove parts of it, or require further digital input as in AR, so they should be catalogued separately from 3D models."@en ;
+                                rdfs:label "HC7 Digital Visual Object"@en .
+
+
+###  http://vast-lab.org/rhdto/HC8_3D_Model
+rhdto:HC8_3D_Model rdf:type owl:Class ;
+                   rdfs:subClassOf rhdto:HC5_Digital_Representation ;
+                   rdfs:comment "This class is used for rendering in detail the 3D model of HC1 Heritage Entity and intended as a particular crmdig:D1 Digital Object having its definite identity and resulting from operations such as digitization, acquisition, processing and other actions typical of the three-dimensional modelling world (e.g., 3D scanning, wireframe modelling and so on). The particular features of a 3D model (e.g., its type, format, resolution, size, etc.) and its relationships with the series of activities carried out for its creation and manipulation are modelled through the properties inherited from its superclass HC5, which in turn inherits from crmdig:D1 Digital Object, and through the other classes and properties of CRMdig."@en ;
+                   rdfs:label "HC8 3D Model"@en .
+
+
+###  http://vast-lab.org/rhdto/HC9_Sensor
+rhdto:HC9_Sensor rdf:type owl:Class ;
+                 rdfs:subClassOf crmdig:D8_Digital_Device ;
+                 rdfs:comment "This class comprises specialised devices utilised for monitoring and evaluating the conditions of artifacts, structures, or environments of historical significance. These devices are designed to detect changes in parameters such as temperature, humidity, vibration, or light exposure which may impact the conservation of cultural assets. Operated by dedicated software, sensors can exist in various states, including active, standby, or alert. For example, a temperature sensor may indicate fluctuations that could endanger delicate artifacts like manuscripts or artworks. When certain predefined thresholds are surpassed, the sensor enters an alert state, signalling potential risks and prompting appropriate intervention measures."@en ;
+                 rdfs:label "HC9 Sensor"@en .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/E3_Condition_State
+crm:E3_Condition_State rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                         owl:onProperty crm:P2_has_type ;
+                                         owl:someValuesFrom crm:E55_Type
+                                       ] .
+
+
+###  http://www.semanticweb.org/egrigori/ontologies/2026/8/untitled-ontology-8/AlertingActivity
+hr:AlertingActivity rdf:type owl:Class ;
+                    rdfs:subClassOf crm:E7_Activity ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty crm:P134i_was_continued_by ;
+                                      owl:someValuesFrom hr:RiskManagementActivity
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty crm:P9_consists_of ;
+                                      owl:someValuesFrom rhdto:HC14_Activation_Event
+                                    ] ;
+                    rdfs:label "Alerting Activity" .
+
+
+###  http://www.semanticweb.org/egrigori/ontologies/2026/8/untitled-ontology-8/AnthropogenicHazardActivity
+hr:AnthropogenicHazardActivity rdf:type owl:Class ;
+                               rdfs:subClassOf crm:E7_Activity ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty crm:P14_carried_out_by ;
+                                                 owl:someValuesFrom crm:E39_Actor
+                                               ] ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty crm:P15i_influenced ;
+                                                 owl:someValuesFrom crm:E14_Condition_Assessment
+                                               ] ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty crm:P9_consists_of ;
+                                                 owl:someValuesFrom crm:E11_Modification
+                                               ] ;
+                               rdfs:label "Anthropogenic Hazard Activity" .
+
+
+###  http://www.semanticweb.org/egrigori/ontologies/2026/8/untitled-ontology-8/DamageState
+hr:DamageState rdf:type owl:Class ;
+               rdfs:subClassOf crm:E3_Condition_State ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty crm:P2_has_type ;
+                                 owl:someValuesFrom crm:E55_Type
+                               ] ;
+               rdfs:label "Damage State" .
+
+
+###  http://www.semanticweb.org/egrigori/ontologies/2026/8/untitled-ontology-8/DataProcessing
+hr:DataProcessing rdf:type owl:Class ;
+                  rdfs:subClassOf rhdto:HC22_Digital_Operation ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty rhdto:HP28_implemented_using ;
+                                    owl:someValuesFrom rhdto:HC21_Digital_Service
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty crm:P134i_was_continued_by ;
+                                    owl:someValuesFrom hr:RiskEvaluation
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty crmdig:L10_had_input ;
+                                    owl:someValuesFrom hr:IncomingMonitoringData
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty crmdig:L11_had_output ;
+                                    owl:someValuesFrom hr:ProcessedIndicatorData
+                                  ] ;
+                  rdfs:label "Data Processing" .
+
+
+###  http://www.semanticweb.org/egrigori/ontologies/2026/8/untitled-ontology-8/DigitalTwinUpdateOperation
+hr:DigitalTwinUpdateOperation rdf:type owl:Class ;
+                              rdfs:subClassOf rhdto:HC22_Digital_Operation ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty rhdto:HP27_concerns_heritage_entity ;
+                                                owl:someValuesFrom rhdto:HC3_Tangible_Entity
+                                              ] ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty rhdto:HP28_implemented_using ;
+                                                owl:someValuesFrom rhdto:HC21_Digital_Service
+                                              ] ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty crmdig:L11_had_output ;
+                                                owl:someValuesFrom hr:RiskConditionUpdateData
+                                              ] ;
+                              rdfs:label "Digital Twin Update Operation" .
+
+
+###  http://www.semanticweb.org/egrigori/ontologies/2026/8/untitled-ontology-8/HazardEvent
+hr:HazardEvent rdf:type owl:Class ;
+               rdfs:subClassOf crm:E5_Event ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty crm:P15i_influenced ;
+                                 owl:someValuesFrom crm:E14_Condition_Assessment
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty crm:P4_has_time-span ;
+                                 owl:someValuesFrom crm:E52_Time-Span
+                               ] ;
+               rdfs:label "Hazard Event" .
+
+
+###  http://www.semanticweb.org/egrigori/ontologies/2026/8/untitled-ontology-8/HazardIntensityAssignment
+hr:HazardIntensityAssignment rdf:type owl:Class ;
+                             rdfs:subClassOf crm:E13_Attribute_Assignment ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty crm:P140_assigned_attribute_to ;
+                                               owl:someValuesFrom hr:HazardEvent
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty crm:P141_assigned ;
+                                               owl:someValuesFrom crm:E54_Dimension
+                                             ] ;
+                             rdfs:label "Hazard Intensity Assignment" .
+
+
+###  http://www.semanticweb.org/egrigori/ontologies/2026/8/untitled-ontology-8/HazardScenario
+hr:HazardScenario rdf:type owl:Class ;
+                  rdfs:subClassOf crm:E89_Propositional_Object ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty crm:P129_is_about ;
+                                    owl:someValuesFrom rhdto:HC3_Tangible_Entity
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty crm:P2_has_type ;
+                                    owl:someValuesFrom crm:E55_Type
+                                  ] ;
+                  rdfs:label "Hazard Scenario" .
+
+
+###  http://www.semanticweb.org/egrigori/ontologies/2026/8/untitled-ontology-8/IncomingMonitoringData
+hr:IncomingMonitoringData rdf:type owl:Class ;
+                          rdfs:subClassOf crmdig:D9_Data_Object ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty crmdig:L61_contains_value_set_of ;
+                                            owl:someValuesFrom crm:E54_Dimension
+                                          ] ;
+                          rdfs:label "Incoming Monitoring Data" .
+
+
+###  http://www.semanticweb.org/egrigori/ontologies/2026/8/untitled-ontology-8/ManagementAction
+hr:ManagementAction rdf:type owl:Class ;
+                    rdfs:subClassOf crm:E7_Activity ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty crm:P134i_was_continued_by ;
+                                      owl:someValuesFrom hr:DigitalTwinUpdateOperation
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty crm:P16_used_specific_object ;
+                                      owl:someValuesFrom rhdto:HC2_Heritage_Digital_Twin
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty crm:P2_has_type ;
+                                      owl:someValuesFrom crm:E55_Type
+                                    ] ;
+                    rdfs:label "Management Action" .
+
+
+###  http://www.semanticweb.org/egrigori/ontologies/2026/8/untitled-ontology-8/ProcessedIndicatorData
+hr:ProcessedIndicatorData rdf:type owl:Class ;
+                          rdfs:subClassOf crmdig:D9_Data_Object ;
+                          rdfs:label "Processed Indicator Data" .
+
+
+###  http://www.semanticweb.org/egrigori/ontologies/2026/8/untitled-ontology-8/RiskAssessment
+hr:RiskAssessment rdf:type owl:Class ;
+                  rdfs:subClassOf crm:E13_Attribute_Assignment ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty crm:P134i_was_continued_by ;
+                                    owl:someValuesFrom hr:AlertingActivity
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty crm:P140_assigned_attribute_to ;
+                                    owl:someValuesFrom rhdto:HC3_Tangible_Entity
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty crm:P141_assigned ;
+                                    owl:someValuesFrom crm:E54_Dimension
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty crm:P141_assigned ;
+                                    owl:someValuesFrom hr:RiskState
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty crm:P15_was_influenced_by ;
+                                    owl:someValuesFrom hr:RiskEvaluation
+                                  ] ;
+                  rdfs:label "Risk Assessment" .
+
+
+###  http://www.semanticweb.org/egrigori/ontologies/2026/8/untitled-ontology-8/RiskConditionUpdateData
+hr:RiskConditionUpdateData rdf:type owl:Class ;
+                           rdfs:subClassOf crmdig:D9_Data_Object ;
+                           rdfs:label "Risk / Condition Update Data" .
+
+
+###  http://www.semanticweb.org/egrigori/ontologies/2026/8/untitled-ontology-8/RiskEvaluation
+hr:RiskEvaluation rdf:type owl:Class ;
+                  rdfs:subClassOf rhdto:HC22_Digital_Operation ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty rhdto:HP27_concerns_heritage_entity ;
+                                    owl:someValuesFrom rhdto:HC3_Tangible_Entity
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty rhdto:HP28_implemented_using ;
+                                    owl:someValuesFrom rhdto:HC21_Digital_Service
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty crm:P134i_was_continued_by ;
+                                    owl:someValuesFrom hr:RiskAssessment
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty crm:P16_used_specific_object ;
+                                    owl:someValuesFrom rhdto:HC23_Parameter_Set
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty crmdig:L10_had_input ;
+                                    owl:someValuesFrom crmdig:D9_Data_Object
+                                  ] ;
+                  rdfs:label "Risk Evaluation" .
+
+
+###  http://www.semanticweb.org/egrigori/ontologies/2026/8/untitled-ontology-8/RiskManagementActivity
+hr:RiskManagementActivity rdf:type owl:Class ;
+                          rdfs:subClassOf crm:E7_Activity ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty crm:P134i_was_continued_by ;
+                                            owl:someValuesFrom hr:ManagementAction
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty crm:P14_carried_out_by ;
+                                            owl:someValuesFrom crm:E74_Group
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty crm:P15_was_influenced_by ;
+                                            owl:someValuesFrom hr:DamageState
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty crm:P15_was_influenced_by ;
+                                            owl:someValuesFrom hr:RiskState
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty crm:P9_consists_of ;
+                                            owl:someValuesFrom hr:ManagementAction
+                                          ] ;
+                          rdfs:label "Risk Management Activity" .
+
+
+###  http://www.semanticweb.org/egrigori/ontologies/2026/8/untitled-ontology-8/RiskState
+hr:RiskState rdf:type owl:Class ;
+             rdfs:subClassOf crm:E3_Condition_State ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty crm:P2_has_type ;
+                               owl:someValuesFrom crm:E55_Type
+                             ] ;
+             rdfs:label "Risk State" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://w3id.org/heritage-risk-management/instance/AccidentalMaintenanceDamage
+inst:AccidentalMaintenanceDamage rdf:type owl:NamedIndividual ,
+                                          crm:E55_Type ;
+                                 rdfs:label "Accidental Maintenance Damage"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/AncientTheatreOfEpidaurus
+inst:AncientTheatreOfEpidaurus rdf:type owl:NamedIndividual ,
+                                        rhdto:HC3_Tangible_Entity ;
+                               rhdto:HP1_has_digital_twin inst:AncientTheatreOfEpidaurusDigitalTwin ;
+                               rdfs:label "Ancient Theatre of Epidaurus"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/AncientTheatreOfEpidaurusDigitalTwin
+inst:AncientTheatreOfEpidaurusDigitalTwin rdf:type owl:NamedIndividual ,
+                                                   rhdto:HC2_Heritage_Digital_Twin ;
+                                          rhdto:HP1i_is_digital_twin_of inst:AncientTheatreOfEpidaurus ;
+                                          crm:P148_has_component inst:HeatwaveUpdateData_001 ,
+                                                                 inst:MaintenanceUpdateData_001 ;
+                                          rdfs:label "Ancient Theatre of Epidaurus Heritage Digital Twin"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ArsonActivation_001
+inst:ArsonActivation_001 rdf:type owl:NamedIndividual ,
+                                  rhdto:HC14_Activation_Event ;
+                         rhdto:HP15_activated inst:ProtectionActuator ;
+                         rhdto:HP16_alerted inst:EmergencyResponseTeam ;
+                         crm:P2_has_type inst:AutomatedActivation ;
+                         rdfs:label "Arson / Human-caused Fire activation event 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ArsonActivity_001
+inst:ArsonActivity_001 rdf:type owl:NamedIndividual ,
+                                hr:AnthropogenicHazardActivity ;
+                       crm:P14_carried_out_by inst:Offender_003 ;
+                       crm:P15i_influenced inst:ArsonConditionAssessment_001 ;
+                       crm:P9_consists_of inst:ArsonModification_001 ;
+                       rdfs:label "Arson / Human-caused Fire activity 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ArsonAlerting_001
+inst:ArsonAlerting_001 rdf:type owl:NamedIndividual ,
+                                hr:AlertingActivity ;
+                       crm:P134i_was_continued_by inst:ArsonRiskManagement_001 ;
+                       crm:P9_consists_of inst:ArsonActivation_001 ;
+                       rdfs:label "Arson / Human-caused Fire alerting activity 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ArsonConditionAssessment_001
+inst:ArsonConditionAssessment_001 rdf:type owl:NamedIndividual ,
+                                           crm:E14_Condition_Assessment ;
+                                  crm:P34_concerned inst:KnossosPalace ;
+                                  crm:P35_has_identified inst:ArsonDamageState_001 ;
+                                  rdfs:label "Arson / Human-caused Fire condition assessment 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ArsonDTUpdate_001
+inst:ArsonDTUpdate_001 rdf:type owl:NamedIndividual ,
+                                hr:DigitalTwinUpdateOperation ;
+                       rhdto:HP27_concerns_heritage_entity inst:KnossosPalace ;
+                       rhdto:HP28_implemented_using inst:DigitalTwinUpdateService ;
+                       crmdig:L11_had_output inst:ArsonUpdateData_001 ;
+                       rdfs:label "Arson / Human-caused Fire digital twin update operation 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ArsonDamageState_001
+inst:ArsonDamageState_001 rdf:type owl:NamedIndividual ,
+                                   hr:DamageState ;
+                          crm:P2_has_type inst:FireDamage ;
+                          rdfs:label "Fire-related damage"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ArsonDataProcessing_001
+inst:ArsonDataProcessing_001 rdf:type owl:NamedIndividual ,
+                                      hr:DataProcessing ;
+                             rhdto:HP28_implemented_using inst:RiskMonitoringService ;
+                             crm:P134i_was_continued_by inst:ArsonRiskEvaluation_001 ;
+                             crmdig:L10_had_input inst:ArsonIncomingData_001 ;
+                             crmdig:L11_had_output inst:ArsonProcessedData_001 ;
+                             rdfs:label "Arson / Human-caused Fire data processing 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ArsonIncomingData_001
+inst:ArsonIncomingData_001 rdf:type owl:NamedIndividual ,
+                                    hr:IncomingMonitoringData ;
+                           crmdig:L61_contains_value_set_of inst:ArsonMonitoringIndicator_001 ;
+                           rdfs:label "Arson / Human-caused Fire incoming monitoring data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ArsonManagementAction_001
+inst:ArsonManagementAction_001 rdf:type owl:NamedIndividual ,
+                                        hr:ManagementAction ;
+                               crm:P134i_was_continued_by inst:ArsonDTUpdate_001 ;
+                               crm:P16_used_specific_object inst:KnossosPalaceDigitalTwin ;
+                               crm:P2_has_type inst:FireEmergencyResponse ;
+                               rdfs:label "Activate emergency fire response and protect affected area"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ArsonModification_001
+inst:ArsonModification_001 rdf:type owl:NamedIndividual ,
+                                    crm:E11_Modification ;
+                           crm:P31_has_modified inst:KnossosPalace ;
+                           rdfs:label "Arson / Human-caused Fire modification 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ArsonMonitoringIndicator_001
+inst:ArsonMonitoringIndicator_001 rdf:type owl:NamedIndividual ,
+                                           crm:E54_Dimension ;
+                                  rdfs:label "Fire / smoke risk indicator 0.95"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ArsonParameters_001
+inst:ArsonParameters_001 rdf:type owl:NamedIndividual ,
+                                  rhdto:HC23_Parameter_Set ;
+                         rdfs:label "Fire alert thresholds"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ArsonProcessedData_001
+inst:ArsonProcessedData_001 rdf:type owl:NamedIndividual ,
+                                     hr:ProcessedIndicatorData ;
+                            rdfs:label "Arson / Human-caused Fire processed indicator data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ArsonRiskAssessment_001
+inst:ArsonRiskAssessment_001 rdf:type owl:NamedIndividual ,
+                                      hr:RiskAssessment ;
+                             crm:P134i_was_continued_by inst:ArsonAlerting_001 ;
+                             crm:P140_assigned_attribute_to inst:KnossosPalace ;
+                             crm:P141_assigned inst:ArsonRiskScore_001 ,
+                                               inst:ArsonRiskState_001 ;
+                             crm:P15_was_influenced_by inst:ArsonRiskEvaluation_001 ;
+                             rdfs:label "Arson / Human-caused Fire risk assessment 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ArsonRiskEvaluation_001
+inst:ArsonRiskEvaluation_001 rdf:type owl:NamedIndividual ,
+                                      hr:RiskEvaluation ;
+                             rhdto:HP27_concerns_heritage_entity inst:KnossosPalace ;
+                             rhdto:HP28_implemented_using inst:RiskEvaluationService ;
+                             crm:P134i_was_continued_by inst:ArsonRiskAssessment_001 ;
+                             crm:P16_used_specific_object inst:ArsonParameters_001 ;
+                             crmdig:L10_had_input inst:ArsonProcessedData_001 ;
+                             rdfs:label "Arson / Human-caused Fire risk evaluation 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ArsonRiskManagement_001
+inst:ArsonRiskManagement_001 rdf:type owl:NamedIndividual ,
+                                      hr:RiskManagementActivity ;
+                             crm:P134i_was_continued_by inst:ArsonManagementAction_001 ;
+                             crm:P14_carried_out_by inst:EmergencyResponseTeam ;
+                             crm:P15_was_influenced_by inst:ArsonDamageState_001 ,
+                                                       inst:ArsonRiskState_001 ;
+                             crm:P9_consists_of inst:ArsonManagementAction_001 ;
+                             rdfs:label "Arson / Human-caused Fire risk management activity 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ArsonRiskScore_001
+inst:ArsonRiskScore_001 rdf:type owl:NamedIndividual ,
+                                 crm:E54_Dimension ;
+                        rdfs:label "Fire risk score 9.7 / 10"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ArsonRiskState_001
+inst:ArsonRiskState_001 rdf:type owl:NamedIndividual ,
+                                 hr:RiskState ;
+                        crm:P2_has_type inst:CRITICAL ;
+                        rdfs:label "Arson / Human-caused Fire risk state 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ArsonScenario_001
+inst:ArsonScenario_001 rdf:type owl:NamedIndividual ,
+                                hr:HazardScenario ;
+                       crm:P129_is_about inst:KnossosPalace ;
+                       crm:P2_has_type inst:ArsonType ;
+                       crm:P3_has_note "Demonstration scenario used to validate the ontology; not asserted as a documented historical incident."@en ;
+                       rdfs:label "Arson / Human-caused Fire scenario 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ArsonType
+inst:ArsonType rdf:type owl:NamedIndividual ,
+                        crm:E55_Type ;
+               rdfs:label "Arson / Human-caused Fire"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ArsonUpdateData_001
+inst:ArsonUpdateData_001 rdf:type owl:NamedIndividual ,
+                                  hr:RiskConditionUpdateData ;
+                         rdfs:label "Arson / Human-caused Fire risk / condition update data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/AutomatedActivation
+inst:AutomatedActivation rdf:type owl:NamedIndividual ,
+                                  crm:E55_Type ;
+                         rdfs:label "Automated Activation"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/CRITICAL
+inst:CRITICAL rdf:type owl:NamedIndividual ,
+                       crm:E55_Type ;
+              rdfs:label "CRITICAL"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ChemicalActivation_001
+inst:ChemicalActivation_001 rdf:type owl:NamedIndividual ,
+                                     rhdto:HC14_Activation_Event ;
+                            rhdto:HP16_alerted inst:ConservationTeam ;
+                            crm:P2_has_type inst:HumanAlert ;
+                            rdfs:label "Unauthorized Chemical / Surface Intervention activation event 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ChemicalActivity_001
+inst:ChemicalActivity_001 rdf:type owl:NamedIndividual ,
+                                   hr:AnthropogenicHazardActivity ;
+                          crm:P14_carried_out_by inst:Person_004 ;
+                          crm:P15i_influenced inst:ChemicalConditionAssessment_001 ;
+                          crm:P9_consists_of inst:ChemicalModification_001 ;
+                          rdfs:label "Unauthorized Chemical / Surface Intervention activity 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ChemicalAlerting_001
+inst:ChemicalAlerting_001 rdf:type owl:NamedIndividual ,
+                                   hr:AlertingActivity ;
+                          crm:P134i_was_continued_by inst:ChemicalRiskManagement_001 ;
+                          crm:P9_consists_of inst:ChemicalActivation_001 ;
+                          rdfs:label "Unauthorized Chemical / Surface Intervention alerting activity 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ChemicalConditionAssessment_001
+inst:ChemicalConditionAssessment_001 rdf:type owl:NamedIndividual ,
+                                              crm:E14_Condition_Assessment ;
+                                     crm:P34_concerned inst:MystrasMonument ;
+                                     crm:P35_has_identified inst:ChemicalDamageState_001 ;
+                                     rdfs:label "Unauthorized Chemical / Surface Intervention condition assessment 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ChemicalDTUpdate_001
+inst:ChemicalDTUpdate_001 rdf:type owl:NamedIndividual ,
+                                   hr:DigitalTwinUpdateOperation ;
+                          rhdto:HP27_concerns_heritage_entity inst:MystrasMonument ;
+                          rhdto:HP28_implemented_using inst:DigitalTwinUpdateService ;
+                          crmdig:L11_had_output inst:ChemicalUpdateData_001 ;
+                          rdfs:label "Unauthorized Chemical / Surface Intervention digital twin update operation 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ChemicalDamageState_001
+inst:ChemicalDamageState_001 rdf:type owl:NamedIndividual ,
+                                      hr:DamageState ;
+                             crm:P2_has_type inst:ChemicalSurfaceDamage ;
+                             rdfs:label "Chemical alteration of heritage surface"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ChemicalDataProcessing_001
+inst:ChemicalDataProcessing_001 rdf:type owl:NamedIndividual ,
+                                         hr:DataProcessing ;
+                                rhdto:HP28_implemented_using inst:RiskMonitoringService ;
+                                crm:P134i_was_continued_by inst:ChemicalRiskEvaluation_001 ;
+                                crmdig:L10_had_input inst:ChemicalIncomingData_001 ;
+                                crmdig:L11_had_output inst:ChemicalProcessedData_001 ;
+                                rdfs:label "Unauthorized Chemical / Surface Intervention data processing 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ChemicalIncomingData_001
+inst:ChemicalIncomingData_001 rdf:type owl:NamedIndividual ,
+                                       hr:IncomingMonitoringData ;
+                              crmdig:L61_contains_value_set_of inst:ChemicalMonitoringIndicator_001 ;
+                              rdfs:label "Unauthorized Chemical / Surface Intervention incoming monitoring data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ChemicalManagementAction_001
+inst:ChemicalManagementAction_001 rdf:type owl:NamedIndividual ,
+                                           hr:ManagementAction ;
+                                  crm:P134i_was_continued_by inst:ChemicalDTUpdate_001 ;
+                                  crm:P16_used_specific_object inst:MystrasMonumentDigitalTwin ;
+                                  crm:P2_has_type inst:ChemicalTreatmentResponse ;
+                                  rdfs:label "Stop intervention and initiate conservation treatment assessment"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ChemicalModification_001
+inst:ChemicalModification_001 rdf:type owl:NamedIndividual ,
+                                       crm:E11_Modification ;
+                              crm:P31_has_modified inst:MystrasMonument ;
+                              rdfs:label "Unauthorized Chemical / Surface Intervention modification 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ChemicalMonitoringIndicator_001
+inst:ChemicalMonitoringIndicator_001 rdf:type owl:NamedIndividual ,
+                                              crm:E54_Dimension ;
+                                     rdfs:label "Chemical exposure indicator 0.78"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ChemicalParameters_001
+inst:ChemicalParameters_001 rdf:type owl:NamedIndividual ,
+                                     rhdto:HC23_Parameter_Set ;
+                            rdfs:label "Chemical exposure risk parameters"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ChemicalProcessedData_001
+inst:ChemicalProcessedData_001 rdf:type owl:NamedIndividual ,
+                                        hr:ProcessedIndicatorData ;
+                               rdfs:label "Unauthorized Chemical / Surface Intervention processed indicator data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ChemicalRiskAssessment_001
+inst:ChemicalRiskAssessment_001 rdf:type owl:NamedIndividual ,
+                                         hr:RiskAssessment ;
+                                crm:P134i_was_continued_by inst:ChemicalAlerting_001 ;
+                                crm:P140_assigned_attribute_to inst:MystrasMonument ;
+                                crm:P141_assigned inst:ChemicalRiskScore_001 ,
+                                                  inst:ChemicalRiskState_001 ;
+                                crm:P15_was_influenced_by inst:ChemicalRiskEvaluation_001 ;
+                                rdfs:label "Unauthorized Chemical / Surface Intervention risk assessment 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ChemicalRiskEvaluation_001
+inst:ChemicalRiskEvaluation_001 rdf:type owl:NamedIndividual ,
+                                         hr:RiskEvaluation ;
+                                rhdto:HP27_concerns_heritage_entity inst:MystrasMonument ;
+                                rhdto:HP28_implemented_using inst:RiskEvaluationService ;
+                                crm:P134i_was_continued_by inst:ChemicalRiskAssessment_001 ;
+                                crm:P16_used_specific_object inst:ChemicalParameters_001 ;
+                                crmdig:L10_had_input inst:ChemicalProcessedData_001 ;
+                                rdfs:label "Unauthorized Chemical / Surface Intervention risk evaluation 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ChemicalRiskManagement_001
+inst:ChemicalRiskManagement_001 rdf:type owl:NamedIndividual ,
+                                         hr:RiskManagementActivity ;
+                                crm:P134i_was_continued_by inst:ChemicalManagementAction_001 ;
+                                crm:P14_carried_out_by inst:ConservationTeam ;
+                                crm:P15_was_influenced_by inst:ChemicalDamageState_001 ,
+                                                          inst:ChemicalRiskState_001 ;
+                                crm:P9_consists_of inst:ChemicalManagementAction_001 ;
+                                rdfs:label "Unauthorized Chemical / Surface Intervention risk management activity 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ChemicalRiskScore_001
+inst:ChemicalRiskScore_001 rdf:type owl:NamedIndividual ,
+                                    crm:E54_Dimension ;
+                           rdfs:label "Chemical intervention risk score 8.3 / 10"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ChemicalRiskState_001
+inst:ChemicalRiskState_001 rdf:type owl:NamedIndividual ,
+                                    hr:RiskState ;
+                           crm:P2_has_type inst:HIGH ;
+                           rdfs:label "Unauthorized Chemical / Surface Intervention risk state 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ChemicalScenario_001
+inst:ChemicalScenario_001 rdf:type owl:NamedIndividual ,
+                                   hr:HazardScenario ;
+                          crm:P129_is_about inst:MystrasMonument ;
+                          crm:P2_has_type inst:UnauthorizedChemicalIntervention ;
+                          crm:P3_has_note "Demonstration scenario used to validate the ontology; not asserted as a documented historical incident."@en ;
+                          rdfs:label "Unauthorized Chemical / Surface Intervention scenario 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ChemicalSurfaceDamage
+inst:ChemicalSurfaceDamage rdf:type owl:NamedIndividual ,
+                                    crm:E55_Type ;
+                           rdfs:label "Chemical Surface Damage"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ChemicalTreatmentResponse
+inst:ChemicalTreatmentResponse rdf:type owl:NamedIndividual ,
+                                        crm:E55_Type ;
+                               rdfs:label "Chemical Treatment Response"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ChemicalUpdateData_001
+inst:ChemicalUpdateData_001 rdf:type owl:NamedIndividual ,
+                                     hr:RiskConditionUpdateData ;
+                            rdfs:label "Unauthorized Chemical / Surface Intervention risk / condition update data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ConservationTeam
+inst:ConservationTeam rdf:type owl:NamedIndividual ,
+                               crm:E74_Group ;
+                      rdfs:label "Conservation Team"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/DigitalTwinUpdateService
+inst:DigitalTwinUpdateService rdf:type owl:NamedIndividual ,
+                                       rhdto:HC21_Digital_Service ;
+                              rdfs:label "Digital Twin Update Service"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/DrainageInspection
+inst:DrainageInspection rdf:type owl:NamedIndividual ,
+                                 crm:E55_Type ;
+                        rdfs:label "Drainage Inspection"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/EarthquakeActivation_001
+inst:EarthquakeActivation_001 rdf:type owl:NamedIndividual ,
+                                       rhdto:HC14_Activation_Event ;
+                              rhdto:HP15_activated inst:ProtectionActuator ;
+                              rhdto:HP16_alerted inst:EmergencyResponseTeam ;
+                              crm:P2_has_type inst:AutomatedActivation ;
+                              rdfs:label "Earthquake activation event 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/EarthquakeAlerting_001
+inst:EarthquakeAlerting_001 rdf:type owl:NamedIndividual ,
+                                     hr:AlertingActivity ;
+                            crm:P134i_was_continued_by inst:EarthquakeRiskManagement_001 ;
+                            crm:P9_consists_of inst:EarthquakeActivation_001 ;
+                            rdfs:label "Earthquake alerting activity 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/EarthquakeConditionAssessment_001
+inst:EarthquakeConditionAssessment_001 rdf:type owl:NamedIndividual ,
+                                                crm:E14_Condition_Assessment ;
+                                       crm:P34_concerned inst:Parthenon ;
+                                       crm:P35_has_identified inst:EarthquakeDamageState_001 ;
+                                       rdfs:label "Earthquake condition assessment 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/EarthquakeDTUpdate_001
+inst:EarthquakeDTUpdate_001 rdf:type owl:NamedIndividual ,
+                                     hr:DigitalTwinUpdateOperation ;
+                            rhdto:HP27_concerns_heritage_entity inst:Parthenon ;
+                            rhdto:HP28_implemented_using inst:DigitalTwinUpdateService ;
+                            crmdig:L11_had_output inst:EarthquakeUpdateData_001 ;
+                            rdfs:label "Earthquake digital twin update operation 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/EarthquakeDamageState_001
+inst:EarthquakeDamageState_001 rdf:type owl:NamedIndividual ,
+                                        hr:DamageState ;
+                               crm:P2_has_type inst:StructuralCracking ;
+                               rdfs:label "Structural cracking after earthquake"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/EarthquakeDataProcessing_001
+inst:EarthquakeDataProcessing_001 rdf:type owl:NamedIndividual ,
+                                           hr:DataProcessing ;
+                                  rhdto:HP28_implemented_using inst:RiskMonitoringService ;
+                                  crm:P134i_was_continued_by inst:EarthquakeRiskEvaluation_001 ;
+                                  crmdig:L10_had_input inst:EarthquakeIncomingData_001 ;
+                                  crmdig:L11_had_output inst:EarthquakeProcessedData_001 ;
+                                  rdfs:label "Earthquake data processing 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/EarthquakeEvent_001
+inst:EarthquakeEvent_001 rdf:type owl:NamedIndividual ,
+                                  hr:HazardEvent ;
+                         crm:P15i_influenced inst:EarthquakeConditionAssessment_001 ;
+                         crm:P4_has_time-span inst:EarthquakeTimeSpan_001 ;
+                         rdfs:label "Earthquake event 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/EarthquakeHazardIntensity_001
+inst:EarthquakeHazardIntensity_001 rdf:type owl:NamedIndividual ,
+                                            crm:E54_Dimension ;
+                                   rdfs:label "Earthquake intensity: Mw 6.1; PGA 0.37g"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/EarthquakeIncomingData_001
+inst:EarthquakeIncomingData_001 rdf:type owl:NamedIndividual ,
+                                         hr:IncomingMonitoringData ;
+                                crmdig:L61_contains_value_set_of inst:EarthquakeMonitoringIndicator_001 ;
+                                rdfs:label "Earthquake incoming monitoring data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/EarthquakeIntensityAssignment_001
+inst:EarthquakeIntensityAssignment_001 rdf:type owl:NamedIndividual ,
+                                                hr:HazardIntensityAssignment ;
+                                       crm:P140_assigned_attribute_to inst:EarthquakeEvent_001 ;
+                                       crm:P141_assigned inst:EarthquakeHazardIntensity_001 ;
+                                       rdfs:label "Earthquake intensity assignment 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/EarthquakeManagementAction_001
+inst:EarthquakeManagementAction_001 rdf:type owl:NamedIndividual ,
+                                             hr:ManagementAction ;
+                                    crm:P134i_was_continued_by inst:EarthquakeDTUpdate_001 ;
+                                    crm:P16_used_specific_object inst:ParthenonDigitalTwin ;
+                                    crm:P2_has_type inst:EmergencyStructuralInspection ;
+                                    rdfs:label "Perform emergency structural inspection"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/EarthquakeMonitoringIndicator_001
+inst:EarthquakeMonitoringIndicator_001 rdf:type owl:NamedIndividual ,
+                                                crm:E54_Dimension ;
+                                       rdfs:label "Seismic monitoring indicator: PGA 0.37g"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/EarthquakeParameters_001
+inst:EarthquakeParameters_001 rdf:type owl:NamedIndividual ,
+                                       rhdto:HC23_Parameter_Set ;
+                              rdfs:label "Earthquake thresholds (structural risk threshold 0.65)"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/EarthquakeProcessedData_001
+inst:EarthquakeProcessedData_001 rdf:type owl:NamedIndividual ,
+                                          hr:ProcessedIndicatorData ;
+                                 rdfs:label "Earthquake processed indicator data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/EarthquakeRiskAssessment_001
+inst:EarthquakeRiskAssessment_001 rdf:type owl:NamedIndividual ,
+                                           hr:RiskAssessment ;
+                                  crm:P134i_was_continued_by inst:EarthquakeAlerting_001 ;
+                                  crm:P140_assigned_attribute_to inst:Parthenon ;
+                                  crm:P141_assigned inst:EarthquakeRiskScore_001 ,
+                                                    inst:EarthquakeRiskState_001 ;
+                                  crm:P15_was_influenced_by inst:EarthquakeRiskEvaluation_001 ;
+                                  rdfs:label "Earthquake risk assessment 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/EarthquakeRiskEvaluation_001
+inst:EarthquakeRiskEvaluation_001 rdf:type owl:NamedIndividual ,
+                                           hr:RiskEvaluation ;
+                                  rhdto:HP27_concerns_heritage_entity inst:Parthenon ;
+                                  rhdto:HP28_implemented_using inst:RiskEvaluationService ;
+                                  crm:P134i_was_continued_by inst:EarthquakeRiskAssessment_001 ;
+                                  crm:P16_used_specific_object inst:EarthquakeParameters_001 ;
+                                  crmdig:L10_had_input inst:EarthquakeProcessedData_001 ;
+                                  rdfs:label "Earthquake risk evaluation 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/EarthquakeRiskManagement_001
+inst:EarthquakeRiskManagement_001 rdf:type owl:NamedIndividual ,
+                                           hr:RiskManagementActivity ;
+                                  crm:P134i_was_continued_by inst:EarthquakeManagementAction_001 ;
+                                  crm:P14_carried_out_by inst:EmergencyResponseTeam ;
+                                  crm:P15_was_influenced_by inst:EarthquakeDamageState_001 ,
+                                                            inst:EarthquakeRiskState_001 ;
+                                  crm:P9_consists_of inst:EarthquakeManagementAction_001 ;
+                                  rdfs:label "Earthquake risk management activity 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/EarthquakeRiskScore_001
+inst:EarthquakeRiskScore_001 rdf:type owl:NamedIndividual ,
+                                      crm:E54_Dimension ;
+                             rdfs:label "Earthquake risk score 9.4 / 10"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/EarthquakeRiskState_001
+inst:EarthquakeRiskState_001 rdf:type owl:NamedIndividual ,
+                                      hr:RiskState ;
+                             crm:P2_has_type inst:CRITICAL ;
+                             rdfs:label "Earthquake risk state 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/EarthquakeScenario_001
+inst:EarthquakeScenario_001 rdf:type owl:NamedIndividual ,
+                                     hr:HazardScenario ;
+                            crm:P129_is_about inst:Parthenon ;
+                            crm:P2_has_type inst:EarthquakeType ;
+                            crm:P3_has_note "Demonstration scenario used to validate the ontology; not asserted as a documented historical incident."@en ;
+                            rdfs:label "Earthquake scenario 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/EarthquakeTimeSpan_001
+inst:EarthquakeTimeSpan_001 rdf:type owl:NamedIndividual ,
+                                     crm:E52_Time-Span ;
+                            rdfs:label "Earthquake event time-span"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/EarthquakeType
+inst:EarthquakeType rdf:type owl:NamedIndividual ,
+                             crm:E55_Type ;
+                    rdfs:label "Earthquake"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/EarthquakeUpdateData_001
+inst:EarthquakeUpdateData_001 rdf:type owl:NamedIndividual ,
+                                       hr:RiskConditionUpdateData ;
+                              rdfs:label "Earthquake risk / condition update data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/EmergencyResponseTeam
+inst:EmergencyResponseTeam rdf:type owl:NamedIndividual ,
+                                    crm:E74_Group ;
+                           rdfs:label "Emergency Response Team"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/EmergencyStructuralInspection
+inst:EmergencyStructuralInspection rdf:type owl:NamedIndividual ,
+                                            crm:E55_Type ;
+                                   rdfs:label "Emergency Structural Inspection"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ExtremeRainfallType
+inst:ExtremeRainfallType rdf:type owl:NamedIndividual ,
+                                  crm:E55_Type ;
+                         rdfs:label "Extreme Rainfall / Storm"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/FireDamage
+inst:FireDamage rdf:type owl:NamedIndividual ,
+                         crm:E55_Type ;
+                rdfs:label "Fire Damage"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/FireEmergencyResponse
+inst:FireEmergencyResponse rdf:type owl:NamedIndividual ,
+                                    crm:E55_Type ;
+                           rdfs:label "Fire Emergency Response"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/HIGH
+inst:HIGH rdf:type owl:NamedIndividual ,
+                   crm:E55_Type ;
+          rdfs:label "HIGH"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/HeatwaveActivation_001
+inst:HeatwaveActivation_001 rdf:type owl:NamedIndividual ,
+                                     rhdto:HC14_Activation_Event ;
+                            rhdto:HP16_alerted inst:ConservationTeam ;
+                            crm:P2_has_type inst:HumanAlert ;
+                            rdfs:label "Heatwave / Extreme Temperature activation event 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/HeatwaveAlerting_001
+inst:HeatwaveAlerting_001 rdf:type owl:NamedIndividual ,
+                                   hr:AlertingActivity ;
+                          crm:P134i_was_continued_by inst:HeatwaveRiskManagement_001 ;
+                          crm:P9_consists_of inst:HeatwaveActivation_001 ;
+                          rdfs:label "Heatwave / Extreme Temperature alerting activity 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/HeatwaveConditionAssessment_001
+inst:HeatwaveConditionAssessment_001 rdf:type owl:NamedIndividual ,
+                                              crm:E14_Condition_Assessment ;
+                                     crm:P34_concerned inst:AncientTheatreOfEpidaurus ;
+                                     crm:P35_has_identified inst:HeatwaveDamageState_001 ;
+                                     rdfs:label "Heatwave / Extreme Temperature condition assessment 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/HeatwaveDTUpdate_001
+inst:HeatwaveDTUpdate_001 rdf:type owl:NamedIndividual ,
+                                   hr:DigitalTwinUpdateOperation ;
+                          rhdto:HP27_concerns_heritage_entity inst:AncientTheatreOfEpidaurus ;
+                          rhdto:HP28_implemented_using inst:DigitalTwinUpdateService ;
+                          crmdig:L11_had_output inst:HeatwaveUpdateData_001 ;
+                          rdfs:label "Heatwave / Extreme Temperature digital twin update operation 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/HeatwaveDamageState_001
+inst:HeatwaveDamageState_001 rdf:type owl:NamedIndividual ,
+                                      hr:DamageState ;
+                             crm:P2_has_type inst:ThermalStressDamage ;
+                             rdfs:label "Thermal stress deterioration"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/HeatwaveDataProcessing_001
+inst:HeatwaveDataProcessing_001 rdf:type owl:NamedIndividual ,
+                                         hr:DataProcessing ;
+                                rhdto:HP28_implemented_using inst:RiskMonitoringService ;
+                                crm:P134i_was_continued_by inst:HeatwaveRiskEvaluation_001 ;
+                                crmdig:L10_had_input inst:HeatwaveIncomingData_001 ;
+                                crmdig:L11_had_output inst:HeatwaveProcessedData_001 ;
+                                rdfs:label "Heatwave / Extreme Temperature data processing 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/HeatwaveEvent_001
+inst:HeatwaveEvent_001 rdf:type owl:NamedIndividual ,
+                                hr:HazardEvent ;
+                       crm:P15i_influenced inst:HeatwaveConditionAssessment_001 ;
+                       crm:P4_has_time-span inst:HeatwaveTimeSpan_001 ;
+                       rdfs:label "Heatwave / Extreme Temperature event 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/HeatwaveHazardIntensity_001
+inst:HeatwaveHazardIntensity_001 rdf:type owl:NamedIndividual ,
+                                          crm:E54_Dimension ;
+                                 rdfs:label "Surface temperature: 48 degrees Celsius"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/HeatwaveIncomingData_001
+inst:HeatwaveIncomingData_001 rdf:type owl:NamedIndividual ,
+                                       hr:IncomingMonitoringData ;
+                              crmdig:L61_contains_value_set_of inst:HeatwaveMonitoringIndicator_001 ;
+                              rdfs:label "Heatwave / Extreme Temperature incoming monitoring data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/HeatwaveIntensityAssignment_001
+inst:HeatwaveIntensityAssignment_001 rdf:type owl:NamedIndividual ,
+                                              hr:HazardIntensityAssignment ;
+                                     crm:P140_assigned_attribute_to inst:HeatwaveEvent_001 ;
+                                     crm:P141_assigned inst:HeatwaveHazardIntensity_001 ;
+                                     rdfs:label "Heatwave / Extreme Temperature intensity assignment 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/HeatwaveManagementAction_001
+inst:HeatwaveManagementAction_001 rdf:type owl:NamedIndividual ,
+                                           hr:ManagementAction ;
+                                  crm:P134i_was_continued_by inst:HeatwaveDTUpdate_001 ;
+                                  crm:P16_used_specific_object inst:AncientTheatreOfEpidaurusDigitalTwin ;
+                                  crm:P2_has_type inst:ThermalInspection ;
+                                  rdfs:label "Inspect thermal stress and adjust protection measures"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/HeatwaveMonitoringIndicator_001
+inst:HeatwaveMonitoringIndicator_001 rdf:type owl:NamedIndividual ,
+                                              crm:E54_Dimension ;
+                                     rdfs:label "Temperature monitoring indicator: 48 degrees Celsius"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/HeatwaveParameters_001
+inst:HeatwaveParameters_001 rdf:type owl:NamedIndividual ,
+                                     rhdto:HC23_Parameter_Set ;
+                            rdfs:label "Thermal stress thresholds"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/HeatwaveProcessedData_001
+inst:HeatwaveProcessedData_001 rdf:type owl:NamedIndividual ,
+                                        hr:ProcessedIndicatorData ;
+                               rdfs:label "Heatwave / Extreme Temperature processed indicator data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/HeatwaveRiskAssessment_001
+inst:HeatwaveRiskAssessment_001 rdf:type owl:NamedIndividual ,
+                                         hr:RiskAssessment ;
+                                crm:P134i_was_continued_by inst:HeatwaveAlerting_001 ;
+                                crm:P140_assigned_attribute_to inst:AncientTheatreOfEpidaurus ;
+                                crm:P141_assigned inst:HeatwaveRiskScore_001 ,
+                                                  inst:HeatwaveRiskState_001 ;
+                                crm:P15_was_influenced_by inst:HeatwaveRiskEvaluation_001 ;
+                                rdfs:label "Heatwave / Extreme Temperature risk assessment 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/HeatwaveRiskEvaluation_001
+inst:HeatwaveRiskEvaluation_001 rdf:type owl:NamedIndividual ,
+                                         hr:RiskEvaluation ;
+                                rhdto:HP27_concerns_heritage_entity inst:AncientTheatreOfEpidaurus ;
+                                rhdto:HP28_implemented_using inst:RiskEvaluationService ;
+                                crm:P134i_was_continued_by inst:HeatwaveRiskAssessment_001 ;
+                                crm:P16_used_specific_object inst:HeatwaveParameters_001 ;
+                                crmdig:L10_had_input inst:HeatwaveProcessedData_001 ;
+                                rdfs:label "Heatwave / Extreme Temperature risk evaluation 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/HeatwaveRiskManagement_001
+inst:HeatwaveRiskManagement_001 rdf:type owl:NamedIndividual ,
+                                         hr:RiskManagementActivity ;
+                                crm:P134i_was_continued_by inst:HeatwaveManagementAction_001 ;
+                                crm:P14_carried_out_by inst:ConservationTeam ;
+                                crm:P15_was_influenced_by inst:HeatwaveDamageState_001 ,
+                                                          inst:HeatwaveRiskState_001 ;
+                                crm:P9_consists_of inst:HeatwaveManagementAction_001 ;
+                                rdfs:label "Heatwave / Extreme Temperature risk management activity 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/HeatwaveRiskScore_001
+inst:HeatwaveRiskScore_001 rdf:type owl:NamedIndividual ,
+                                    crm:E54_Dimension ;
+                           rdfs:label "Heatwave risk score 7.4 / 10"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/HeatwaveRiskState_001
+inst:HeatwaveRiskState_001 rdf:type owl:NamedIndividual ,
+                                    hr:RiskState ;
+                           crm:P2_has_type inst:HIGH ;
+                           rdfs:label "Heatwave / Extreme Temperature risk state 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/HeatwaveScenario_001
+inst:HeatwaveScenario_001 rdf:type owl:NamedIndividual ,
+                                   hr:HazardScenario ;
+                          crm:P129_is_about inst:AncientTheatreOfEpidaurus ;
+                          crm:P2_has_type inst:HeatwaveType ;
+                          crm:P3_has_note "Demonstration scenario used to validate the ontology; not asserted as a documented historical incident."@en ;
+                          rdfs:label "Heatwave / Extreme Temperature scenario 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/HeatwaveTimeSpan_001
+inst:HeatwaveTimeSpan_001 rdf:type owl:NamedIndividual ,
+                                   crm:E52_Time-Span ;
+                          rdfs:label "Heatwave event time-span"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/HeatwaveType
+inst:HeatwaveType rdf:type owl:NamedIndividual ,
+                           crm:E55_Type ;
+                  rdfs:label "Heatwave / Extreme Temperature"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/HeatwaveUpdateData_001
+inst:HeatwaveUpdateData_001 rdf:type owl:NamedIndividual ,
+                                     hr:RiskConditionUpdateData ;
+                            rdfs:label "Heatwave / Extreme Temperature risk / condition update data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/HumanAlert
+inst:HumanAlert rdf:type owl:NamedIndividual ,
+                         crm:E55_Type ;
+                rdfs:label "Human Alert"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/IntentionalPhysicalDamage
+inst:IntentionalPhysicalDamage rdf:type owl:NamedIndividual ,
+                                        crm:E55_Type ;
+                               rdfs:label "Intentional Physical Damage"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/KnossosPalace
+inst:KnossosPalace rdf:type owl:NamedIndividual ,
+                            rhdto:HC3_Tangible_Entity ;
+                   rhdto:HP1_has_digital_twin inst:KnossosPalaceDigitalTwin ;
+                   rdfs:label "Knossos Palace"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/KnossosPalaceDigitalTwin
+inst:KnossosPalaceDigitalTwin rdf:type owl:NamedIndividual ,
+                                       rhdto:HC2_Heritage_Digital_Twin ;
+                              rhdto:HP1i_is_digital_twin_of inst:KnossosPalace ;
+                              crm:P148_has_component inst:ArsonUpdateData_001 ,
+                                                     inst:LightningUpdateData_001 ;
+                              rdfs:label "Knossos Palace Heritage Digital Twin"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/LOW
+inst:LOW rdf:type owl:NamedIndividual ,
+                  crm:E55_Type ;
+         rdfs:label "LOW"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/LightningActivation_001
+inst:LightningActivation_001 rdf:type owl:NamedIndividual ,
+                                      rhdto:HC14_Activation_Event ;
+                             rhdto:HP15_activated inst:ProtectionActuator ;
+                             rhdto:HP16_alerted inst:EmergencyResponseTeam ;
+                             crm:P2_has_type inst:AutomatedActivation ;
+                             rdfs:label "Lightning Strike activation event 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/LightningAlerting_001
+inst:LightningAlerting_001 rdf:type owl:NamedIndividual ,
+                                    hr:AlertingActivity ;
+                           crm:P134i_was_continued_by inst:LightningRiskManagement_001 ;
+                           crm:P9_consists_of inst:LightningActivation_001 ;
+                           rdfs:label "Lightning Strike alerting activity 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/LightningConditionAssessment_001
+inst:LightningConditionAssessment_001 rdf:type owl:NamedIndividual ,
+                                               crm:E14_Condition_Assessment ;
+                                      crm:P34_concerned inst:KnossosPalace ;
+                                      crm:P35_has_identified inst:LightningDamageState_001 ;
+                                      rdfs:label "Lightning Strike condition assessment 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/LightningDTUpdate_001
+inst:LightningDTUpdate_001 rdf:type owl:NamedIndividual ,
+                                    hr:DigitalTwinUpdateOperation ;
+                           rhdto:HP27_concerns_heritage_entity inst:KnossosPalace ;
+                           rhdto:HP28_implemented_using inst:DigitalTwinUpdateService ;
+                           crmdig:L11_had_output inst:LightningUpdateData_001 ;
+                           rdfs:label "Lightning Strike digital twin update operation 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/LightningDamage
+inst:LightningDamage rdf:type owl:NamedIndividual ,
+                              crm:E55_Type ;
+                     rdfs:label "Lightning Damage"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/LightningDamageState_001
+inst:LightningDamageState_001 rdf:type owl:NamedIndividual ,
+                                       hr:DamageState ;
+                              crm:P2_has_type inst:LightningDamage ;
+                              rdfs:label "Damage associated with lightning strike"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/LightningDataProcessing_001
+inst:LightningDataProcessing_001 rdf:type owl:NamedIndividual ,
+                                          hr:DataProcessing ;
+                                 rhdto:HP28_implemented_using inst:RiskMonitoringService ;
+                                 crm:P134i_was_continued_by inst:LightningRiskEvaluation_001 ;
+                                 crmdig:L10_had_input inst:LightningIncomingData_001 ;
+                                 crmdig:L11_had_output inst:LightningProcessedData_001 ;
+                                 rdfs:label "Lightning Strike data processing 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/LightningEmergencyInspection
+inst:LightningEmergencyInspection rdf:type owl:NamedIndividual ,
+                                           crm:E55_Type ;
+                                  rdfs:label "Lightning Emergency Inspection"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/LightningEvent_001
+inst:LightningEvent_001 rdf:type owl:NamedIndividual ,
+                                 hr:HazardEvent ;
+                        crm:P15i_influenced inst:LightningConditionAssessment_001 ;
+                        crm:P4_has_time-span inst:LightningTimeSpan_001 ;
+                        rdfs:label "Lightning Strike event 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/LightningHazardIntensity_001
+inst:LightningHazardIntensity_001 rdf:type owl:NamedIndividual ,
+                                           crm:E54_Dimension ;
+                                  rdfs:label "Lightning event severity: high"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/LightningIncomingData_001
+inst:LightningIncomingData_001 rdf:type owl:NamedIndividual ,
+                                        hr:IncomingMonitoringData ;
+                               crmdig:L61_contains_value_set_of inst:LightningMonitoringIndicator_001 ;
+                               rdfs:label "Lightning Strike incoming monitoring data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/LightningIntensityAssignment_001
+inst:LightningIntensityAssignment_001 rdf:type owl:NamedIndividual ,
+                                               hr:HazardIntensityAssignment ;
+                                      crm:P140_assigned_attribute_to inst:LightningEvent_001 ;
+                                      crm:P141_assigned inst:LightningHazardIntensity_001 ;
+                                      rdfs:label "Lightning Strike intensity assignment 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/LightningManagementAction_001
+inst:LightningManagementAction_001 rdf:type owl:NamedIndividual ,
+                                            hr:ManagementAction ;
+                                   crm:P134i_was_continued_by inst:LightningDTUpdate_001 ;
+                                   crm:P16_used_specific_object inst:KnossosPalaceDigitalTwin ;
+                                   crm:P2_has_type inst:LightningEmergencyInspection ;
+                                   rdfs:label "Inspect lightning protection and affected structural elements"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/LightningMonitoringIndicator_001
+inst:LightningMonitoringIndicator_001 rdf:type owl:NamedIndividual ,
+                                               crm:E54_Dimension ;
+                                      rdfs:label "Lightning proximity / severity indicator: high"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/LightningParameters_001
+inst:LightningParameters_001 rdf:type owl:NamedIndividual ,
+                                      rhdto:HC23_Parameter_Set ;
+                             rdfs:label "Lightning protection thresholds"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/LightningProcessedData_001
+inst:LightningProcessedData_001 rdf:type owl:NamedIndividual ,
+                                         hr:ProcessedIndicatorData ;
+                                rdfs:label "Lightning Strike processed indicator data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/LightningRiskAssessment_001
+inst:LightningRiskAssessment_001 rdf:type owl:NamedIndividual ,
+                                          hr:RiskAssessment ;
+                                 crm:P134i_was_continued_by inst:LightningAlerting_001 ;
+                                 crm:P140_assigned_attribute_to inst:KnossosPalace ;
+                                 crm:P141_assigned inst:LightningRiskScore_001 ,
+                                                   inst:LightningRiskState_001 ;
+                                 crm:P15_was_influenced_by inst:LightningRiskEvaluation_001 ;
+                                 rdfs:label "Lightning Strike risk assessment 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/LightningRiskEvaluation_001
+inst:LightningRiskEvaluation_001 rdf:type owl:NamedIndividual ,
+                                          hr:RiskEvaluation ;
+                                 rhdto:HP27_concerns_heritage_entity inst:KnossosPalace ;
+                                 rhdto:HP28_implemented_using inst:RiskEvaluationService ;
+                                 crm:P134i_was_continued_by inst:LightningRiskAssessment_001 ;
+                                 crm:P16_used_specific_object inst:LightningParameters_001 ;
+                                 crmdig:L10_had_input inst:LightningProcessedData_001 ;
+                                 rdfs:label "Lightning Strike risk evaluation 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/LightningRiskManagement_001
+inst:LightningRiskManagement_001 rdf:type owl:NamedIndividual ,
+                                          hr:RiskManagementActivity ;
+                                 crm:P134i_was_continued_by inst:LightningManagementAction_001 ;
+                                 crm:P14_carried_out_by inst:EmergencyResponseTeam ;
+                                 crm:P15_was_influenced_by inst:LightningDamageState_001 ,
+                                                           inst:LightningRiskState_001 ;
+                                 crm:P9_consists_of inst:LightningManagementAction_001 ;
+                                 rdfs:label "Lightning Strike risk management activity 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/LightningRiskScore_001
+inst:LightningRiskScore_001 rdf:type owl:NamedIndividual ,
+                                     crm:E54_Dimension ;
+                            rdfs:label "Lightning risk score 9.0 / 10"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/LightningRiskState_001
+inst:LightningRiskState_001 rdf:type owl:NamedIndividual ,
+                                     hr:RiskState ;
+                            crm:P2_has_type inst:CRITICAL ;
+                            rdfs:label "Lightning Strike risk state 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/LightningScenario_001
+inst:LightningScenario_001 rdf:type owl:NamedIndividual ,
+                                    hr:HazardScenario ;
+                           crm:P129_is_about inst:KnossosPalace ;
+                           crm:P2_has_type inst:LightningStrikeType ;
+                           crm:P3_has_note "Demonstration scenario used to validate the ontology; not asserted as a documented historical incident."@en ;
+                           rdfs:label "Lightning Strike scenario 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/LightningStrikeType
+inst:LightningStrikeType rdf:type owl:NamedIndividual ,
+                                  crm:E55_Type ;
+                         rdfs:label "Lightning Strike"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/LightningTimeSpan_001
+inst:LightningTimeSpan_001 rdf:type owl:NamedIndividual ,
+                                    crm:E52_Time-Span ;
+                           rdfs:label "Lightning strike event time-span"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/LightningUpdateData_001
+inst:LightningUpdateData_001 rdf:type owl:NamedIndividual ,
+                                      hr:RiskConditionUpdateData ;
+                             rdfs:label "Lightning Strike risk / condition update data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/MEDIUM
+inst:MEDIUM rdf:type owl:NamedIndividual ,
+                     crm:E55_Type ;
+            rdfs:label "MEDIUM"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/MaintenanceActivation_001
+inst:MaintenanceActivation_001 rdf:type owl:NamedIndividual ,
+                                        rhdto:HC14_Activation_Event ;
+                               rhdto:HP16_alerted inst:ConservationTeam ;
+                               crm:P2_has_type inst:HumanAlert ;
+                               rdfs:label "Accidental Maintenance Damage activation event 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/MaintenanceActivity_001
+inst:MaintenanceActivity_001 rdf:type owl:NamedIndividual ,
+                                      hr:AnthropogenicHazardActivity ;
+                             crm:P14_carried_out_by inst:MaintenanceTeam ;
+                             crm:P15i_influenced inst:MaintenanceConditionAssessment_001 ;
+                             crm:P9_consists_of inst:MaintenanceModification_001 ;
+                             rdfs:label "Accidental Maintenance Damage activity 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/MaintenanceAlerting_001
+inst:MaintenanceAlerting_001 rdf:type owl:NamedIndividual ,
+                                      hr:AlertingActivity ;
+                             crm:P134i_was_continued_by inst:MaintenanceRiskManagement_001 ;
+                             crm:P9_consists_of inst:MaintenanceActivation_001 ;
+                             rdfs:label "Accidental Maintenance Damage alerting activity 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/MaintenanceConditionAssessment_001
+inst:MaintenanceConditionAssessment_001 rdf:type owl:NamedIndividual ,
+                                                 crm:E14_Condition_Assessment ;
+                                        crm:P34_concerned inst:AncientTheatreOfEpidaurus ;
+                                        crm:P35_has_identified inst:MaintenanceDamageState_001 ;
+                                        rdfs:label "Accidental Maintenance Damage condition assessment 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/MaintenanceDTUpdate_001
+inst:MaintenanceDTUpdate_001 rdf:type owl:NamedIndividual ,
+                                      hr:DigitalTwinUpdateOperation ;
+                             rhdto:HP27_concerns_heritage_entity inst:AncientTheatreOfEpidaurus ;
+                             rhdto:HP28_implemented_using inst:DigitalTwinUpdateService ;
+                             crmdig:L11_had_output inst:MaintenanceUpdateData_001 ;
+                             rdfs:label "Accidental Maintenance Damage digital twin update operation 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/MaintenanceDamageState_001
+inst:MaintenanceDamageState_001 rdf:type owl:NamedIndividual ,
+                                         hr:DamageState ;
+                                crm:P2_has_type inst:MaintenanceSurfaceDamage ;
+                                rdfs:label "Accidental maintenance-related damage"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/MaintenanceDataProcessing_001
+inst:MaintenanceDataProcessing_001 rdf:type owl:NamedIndividual ,
+                                            hr:DataProcessing ;
+                                   rhdto:HP28_implemented_using inst:RiskMonitoringService ;
+                                   crm:P134i_was_continued_by inst:MaintenanceRiskEvaluation_001 ;
+                                   crmdig:L10_had_input inst:MaintenanceIncomingData_001 ;
+                                   crmdig:L11_had_output inst:MaintenanceProcessedData_001 ;
+                                   rdfs:label "Accidental Maintenance Damage data processing 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/MaintenanceIncomingData_001
+inst:MaintenanceIncomingData_001 rdf:type owl:NamedIndividual ,
+                                          hr:IncomingMonitoringData ;
+                                 crmdig:L61_contains_value_set_of inst:MaintenanceMonitoringIndicator_001 ;
+                                 rdfs:label "Accidental Maintenance Damage incoming monitoring data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/MaintenanceInspection
+inst:MaintenanceInspection rdf:type owl:NamedIndividual ,
+                                    crm:E55_Type ;
+                           rdfs:label "Maintenance Inspection"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/MaintenanceManagementAction_001
+inst:MaintenanceManagementAction_001 rdf:type owl:NamedIndividual ,
+                                              hr:ManagementAction ;
+                                     crm:P134i_was_continued_by inst:MaintenanceDTUpdate_001 ;
+                                     crm:P16_used_specific_object inst:AncientTheatreOfEpidaurusDigitalTwin ;
+                                     crm:P2_has_type inst:MaintenanceInspection ;
+                                     rdfs:label "Suspend maintenance and inspect affected area"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/MaintenanceModification_001
+inst:MaintenanceModification_001 rdf:type owl:NamedIndividual ,
+                                          crm:E11_Modification ;
+                                 crm:P31_has_modified inst:AncientTheatreOfEpidaurus ;
+                                 rdfs:label "Accidental Maintenance Damage modification 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/MaintenanceMonitoringIndicator_001
+inst:MaintenanceMonitoringIndicator_001 rdf:type owl:NamedIndividual ,
+                                                 crm:E54_Dimension ;
+                                        rdfs:label "Maintenance impact indicator 0.62"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/MaintenanceParameters_001
+inst:MaintenanceParameters_001 rdf:type owl:NamedIndividual ,
+                                        rhdto:HC23_Parameter_Set ;
+                               rdfs:label "Maintenance safety thresholds"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/MaintenanceProcessedData_001
+inst:MaintenanceProcessedData_001 rdf:type owl:NamedIndividual ,
+                                           hr:ProcessedIndicatorData ;
+                                  rdfs:label "Accidental Maintenance Damage processed indicator data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/MaintenanceRiskAssessment_001
+inst:MaintenanceRiskAssessment_001 rdf:type owl:NamedIndividual ,
+                                            hr:RiskAssessment ;
+                                   crm:P134i_was_continued_by inst:MaintenanceAlerting_001 ;
+                                   crm:P140_assigned_attribute_to inst:AncientTheatreOfEpidaurus ;
+                                   crm:P141_assigned inst:MaintenanceRiskScore_001 ,
+                                                     inst:MaintenanceRiskState_001 ;
+                                   crm:P15_was_influenced_by inst:MaintenanceRiskEvaluation_001 ;
+                                   rdfs:label "Accidental Maintenance Damage risk assessment 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/MaintenanceRiskEvaluation_001
+inst:MaintenanceRiskEvaluation_001 rdf:type owl:NamedIndividual ,
+                                            hr:RiskEvaluation ;
+                                   rhdto:HP27_concerns_heritage_entity inst:AncientTheatreOfEpidaurus ;
+                                   rhdto:HP28_implemented_using inst:RiskEvaluationService ;
+                                   crm:P134i_was_continued_by inst:MaintenanceRiskAssessment_001 ;
+                                   crm:P16_used_specific_object inst:MaintenanceParameters_001 ;
+                                   crmdig:L10_had_input inst:MaintenanceProcessedData_001 ;
+                                   rdfs:label "Accidental Maintenance Damage risk evaluation 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/MaintenanceRiskManagement_001
+inst:MaintenanceRiskManagement_001 rdf:type owl:NamedIndividual ,
+                                            hr:RiskManagementActivity ;
+                                   crm:P134i_was_continued_by inst:MaintenanceManagementAction_001 ;
+                                   crm:P14_carried_out_by inst:ConservationTeam ;
+                                   crm:P15_was_influenced_by inst:MaintenanceDamageState_001 ,
+                                                             inst:MaintenanceRiskState_001 ;
+                                   crm:P9_consists_of inst:MaintenanceManagementAction_001 ;
+                                   rdfs:label "Accidental Maintenance Damage risk management activity 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/MaintenanceRiskScore_001
+inst:MaintenanceRiskScore_001 rdf:type owl:NamedIndividual ,
+                                       crm:E54_Dimension ;
+                              rdfs:label "Maintenance damage risk score 6.2 / 10"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/MaintenanceRiskState_001
+inst:MaintenanceRiskState_001 rdf:type owl:NamedIndividual ,
+                                       hr:RiskState ;
+                              crm:P2_has_type inst:MEDIUM ;
+                              rdfs:label "Accidental Maintenance Damage risk state 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/MaintenanceScenario_001
+inst:MaintenanceScenario_001 rdf:type owl:NamedIndividual ,
+                                      hr:HazardScenario ;
+                             crm:P129_is_about inst:AncientTheatreOfEpidaurus ;
+                             crm:P2_has_type inst:AccidentalMaintenanceDamage ;
+                             crm:P3_has_note "Demonstration scenario used to validate the ontology; not asserted as a documented historical incident."@en ;
+                             rdfs:label "Accidental Maintenance Damage scenario 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/MaintenanceSurfaceDamage
+inst:MaintenanceSurfaceDamage rdf:type owl:NamedIndividual ,
+                                       crm:E55_Type ;
+                              rdfs:label "Maintenance Surface Damage"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/MaintenanceTeam
+inst:MaintenanceTeam rdf:type owl:NamedIndividual ,
+                              crm:E74_Group ;
+                     rdfs:label "Maintenance Team"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/MaintenanceUpdateData_001
+inst:MaintenanceUpdateData_001 rdf:type owl:NamedIndividual ,
+                                        hr:RiskConditionUpdateData ;
+                               rdfs:label "Accidental Maintenance Damage risk / condition update data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/MechanicalDamage
+inst:MechanicalDamage rdf:type owl:NamedIndividual ,
+                               crm:E55_Type ;
+                      rdfs:label "Mechanical Damage"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/MystrasMonument
+inst:MystrasMonument rdf:type owl:NamedIndividual ,
+                              rhdto:HC3_Tangible_Entity ;
+                     rhdto:HP1_has_digital_twin inst:MystrasMonumentDigitalTwin ;
+                     rdfs:label "Mystras Monument"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/MystrasMonumentDigitalTwin
+inst:MystrasMonumentDigitalTwin rdf:type owl:NamedIndividual ,
+                                         rhdto:HC2_Heritage_Digital_Twin ;
+                                rhdto:HP1i_is_digital_twin_of inst:MystrasMonument ;
+                                crm:P148_has_component inst:ChemicalUpdateData_001 ,
+                                                       inst:PhysicalDamageUpdateData_001 ;
+                                rdfs:label "Mystras Monument Heritage Digital Twin"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/Offender_002
+inst:Offender_002 rdf:type owl:NamedIndividual ,
+                           crm:E39_Actor ;
+                  rdfs:label "Offender 002"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/Offender_003
+inst:Offender_003 rdf:type owl:NamedIndividual ,
+                           crm:E39_Actor ;
+                  rdfs:label "Offender 003"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/Parthenon
+inst:Parthenon rdf:type owl:NamedIndividual ,
+                        rhdto:HC3_Tangible_Entity ;
+               rhdto:HP1_has_digital_twin inst:ParthenonDigitalTwin ;
+               rdfs:label "Parthenon"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ParthenonDigitalTwin
+inst:ParthenonDigitalTwin rdf:type owl:NamedIndividual ,
+                                   rhdto:HC2_Heritage_Digital_Twin ;
+                          rhdto:HP1i_is_digital_twin_of inst:Parthenon ;
+                          crm:P148_has_component inst:EarthquakeUpdateData_001 ,
+                                                 inst:VandalismUpdateData_001 ;
+                          rdfs:label "Parthenon Heritage Digital Twin"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/Person_004
+inst:Person_004 rdf:type owl:NamedIndividual ,
+                         crm:E39_Actor ;
+                rdfs:label "Unauthorized person 004"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/PhysicalDamageActivation_001
+inst:PhysicalDamageActivation_001 rdf:type owl:NamedIndividual ,
+                                           rhdto:HC14_Activation_Event ;
+                                  rhdto:HP16_alerted inst:SecurityTeam ;
+                                  crm:P2_has_type inst:HumanAlert ;
+                                  rdfs:label "Intentional Physical Damage activation event 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/PhysicalDamageActivity_001
+inst:PhysicalDamageActivity_001 rdf:type owl:NamedIndividual ,
+                                         hr:AnthropogenicHazardActivity ;
+                                crm:P14_carried_out_by inst:Offender_002 ;
+                                crm:P15i_influenced inst:PhysicalDamageConditionAssessment_001 ;
+                                crm:P9_consists_of inst:PhysicalDamageModification_001 ;
+                                rdfs:label "Intentional Physical Damage activity 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/PhysicalDamageAlerting_001
+inst:PhysicalDamageAlerting_001 rdf:type owl:NamedIndividual ,
+                                         hr:AlertingActivity ;
+                                crm:P134i_was_continued_by inst:PhysicalDamageRiskManagement_001 ;
+                                crm:P9_consists_of inst:PhysicalDamageActivation_001 ;
+                                rdfs:label "Intentional Physical Damage alerting activity 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/PhysicalDamageConditionAssessment_001
+inst:PhysicalDamageConditionAssessment_001 rdf:type owl:NamedIndividual ,
+                                                    crm:E14_Condition_Assessment ;
+                                           crm:P34_concerned inst:MystrasMonument ;
+                                           crm:P35_has_identified inst:PhysicalDamageDamageState_001 ;
+                                           rdfs:label "Intentional Physical Damage condition assessment 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/PhysicalDamageDTUpdate_001
+inst:PhysicalDamageDTUpdate_001 rdf:type owl:NamedIndividual ,
+                                         hr:DigitalTwinUpdateOperation ;
+                                rhdto:HP27_concerns_heritage_entity inst:MystrasMonument ;
+                                rhdto:HP28_implemented_using inst:DigitalTwinUpdateService ;
+                                crmdig:L11_had_output inst:PhysicalDamageUpdateData_001 ;
+                                rdfs:label "Intentional Physical Damage digital twin update operation 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/PhysicalDamageDamageState_001
+inst:PhysicalDamageDamageState_001 rdf:type owl:NamedIndividual ,
+                                            hr:DamageState ;
+                                   crm:P2_has_type inst:MechanicalDamage ;
+                                   rdfs:label "Mechanical damage to heritage surface"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/PhysicalDamageDataProcessing_001
+inst:PhysicalDamageDataProcessing_001 rdf:type owl:NamedIndividual ,
+                                               hr:DataProcessing ;
+                                      rhdto:HP28_implemented_using inst:RiskMonitoringService ;
+                                      crm:P134i_was_continued_by inst:PhysicalDamageRiskEvaluation_001 ;
+                                      crmdig:L10_had_input inst:PhysicalDamageIncomingData_001 ;
+                                      crmdig:L11_had_output inst:PhysicalDamageProcessedData_001 ;
+                                      rdfs:label "Intentional Physical Damage data processing 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/PhysicalDamageIncomingData_001
+inst:PhysicalDamageIncomingData_001 rdf:type owl:NamedIndividual ,
+                                             hr:IncomingMonitoringData ;
+                                    crmdig:L61_contains_value_set_of inst:PhysicalDamageMonitoringIndicator_001 ;
+                                    rdfs:label "Intentional Physical Damage incoming monitoring data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/PhysicalDamageManagementAction_001
+inst:PhysicalDamageManagementAction_001 rdf:type owl:NamedIndividual ,
+                                                 hr:ManagementAction ;
+                                        crm:P134i_was_continued_by inst:PhysicalDamageDTUpdate_001 ;
+                                        crm:P16_used_specific_object inst:MystrasMonumentDigitalTwin ;
+                                        crm:P2_has_type inst:PhysicalDamageResponse ;
+                                        rdfs:label "Isolate affected area and request structural/conservation assessment"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/PhysicalDamageModification_001
+inst:PhysicalDamageModification_001 rdf:type owl:NamedIndividual ,
+                                             crm:E11_Modification ;
+                                    crm:P31_has_modified inst:MystrasMonument ;
+                                    rdfs:label "Intentional Physical Damage modification 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/PhysicalDamageMonitoringIndicator_001
+inst:PhysicalDamageMonitoringIndicator_001 rdf:type owl:NamedIndividual ,
+                                                    crm:E54_Dimension ;
+                                           rdfs:label "Intentional impact indicator 0.82"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/PhysicalDamageParameters_001
+inst:PhysicalDamageParameters_001 rdf:type owl:NamedIndividual ,
+                                           rhdto:HC23_Parameter_Set ;
+                                  rdfs:label "Physical damage risk parameters"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/PhysicalDamageProcessedData_001
+inst:PhysicalDamageProcessedData_001 rdf:type owl:NamedIndividual ,
+                                              hr:ProcessedIndicatorData ;
+                                     rdfs:label "Intentional Physical Damage processed indicator data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/PhysicalDamageResponse
+inst:PhysicalDamageResponse rdf:type owl:NamedIndividual ,
+                                     crm:E55_Type ;
+                            rdfs:label "Physical Damage Response"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/PhysicalDamageRiskAssessment_001
+inst:PhysicalDamageRiskAssessment_001 rdf:type owl:NamedIndividual ,
+                                               hr:RiskAssessment ;
+                                      crm:P134i_was_continued_by inst:PhysicalDamageAlerting_001 ;
+                                      crm:P140_assigned_attribute_to inst:MystrasMonument ;
+                                      crm:P141_assigned inst:PhysicalDamageRiskScore_001 ,
+                                                        inst:PhysicalDamageRiskState_001 ;
+                                      crm:P15_was_influenced_by inst:PhysicalDamageRiskEvaluation_001 ;
+                                      rdfs:label "Intentional Physical Damage risk assessment 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/PhysicalDamageRiskEvaluation_001
+inst:PhysicalDamageRiskEvaluation_001 rdf:type owl:NamedIndividual ,
+                                               hr:RiskEvaluation ;
+                                      rhdto:HP27_concerns_heritage_entity inst:MystrasMonument ;
+                                      rhdto:HP28_implemented_using inst:RiskEvaluationService ;
+                                      crm:P134i_was_continued_by inst:PhysicalDamageRiskAssessment_001 ;
+                                      crm:P16_used_specific_object inst:PhysicalDamageParameters_001 ;
+                                      crmdig:L10_had_input inst:PhysicalDamageProcessedData_001 ;
+                                      rdfs:label "Intentional Physical Damage risk evaluation 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/PhysicalDamageRiskManagement_001
+inst:PhysicalDamageRiskManagement_001 rdf:type owl:NamedIndividual ,
+                                               hr:RiskManagementActivity ;
+                                      crm:P134i_was_continued_by inst:PhysicalDamageManagementAction_001 ;
+                                      crm:P14_carried_out_by inst:SecurityTeam ;
+                                      crm:P15_was_influenced_by inst:PhysicalDamageDamageState_001 ,
+                                                                inst:PhysicalDamageRiskState_001 ;
+                                      crm:P9_consists_of inst:PhysicalDamageManagementAction_001 ;
+                                      rdfs:label "Intentional Physical Damage risk management activity 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/PhysicalDamageRiskScore_001
+inst:PhysicalDamageRiskScore_001 rdf:type owl:NamedIndividual ,
+                                          crm:E54_Dimension ;
+                                 rdfs:label "Intentional physical damage risk score 8.1 / 10"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/PhysicalDamageRiskState_001
+inst:PhysicalDamageRiskState_001 rdf:type owl:NamedIndividual ,
+                                          hr:RiskState ;
+                                 crm:P2_has_type inst:HIGH ;
+                                 rdfs:label "Intentional Physical Damage risk state 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/PhysicalDamageScenario_001
+inst:PhysicalDamageScenario_001 rdf:type owl:NamedIndividual ,
+                                         hr:HazardScenario ;
+                                crm:P129_is_about inst:MystrasMonument ;
+                                crm:P2_has_type inst:IntentionalPhysicalDamage ;
+                                crm:P3_has_note "Demonstration scenario used to validate the ontology; not asserted as a documented historical incident."@en ;
+                                rdfs:label "Intentional Physical Damage scenario 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/PhysicalDamageUpdateData_001
+inst:PhysicalDamageUpdateData_001 rdf:type owl:NamedIndividual ,
+                                           hr:RiskConditionUpdateData ;
+                                  rdfs:label "Intentional Physical Damage risk / condition update data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ProtectionActuator
+inst:ProtectionActuator rdf:type owl:NamedIndividual ,
+                                 rhdto:HC11_Actuator ;
+                        rdfs:label "Protection Actuator"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/RainfallActivation_001
+inst:RainfallActivation_001 rdf:type owl:NamedIndividual ,
+                                     rhdto:HC14_Activation_Event ;
+                            rhdto:HP16_alerted inst:ConservationTeam ;
+                            crm:P2_has_type inst:HumanAlert ;
+                            rdfs:label "Extreme Rainfall / Storm activation event 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/RainfallAlerting_001
+inst:RainfallAlerting_001 rdf:type owl:NamedIndividual ,
+                                   hr:AlertingActivity ;
+                          crm:P134i_was_continued_by inst:RainfallRiskManagement_001 ;
+                          crm:P9_consists_of inst:RainfallActivation_001 ;
+                          rdfs:label "Extreme Rainfall / Storm alerting activity 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/RainfallConditionAssessment_001
+inst:RainfallConditionAssessment_001 rdf:type owl:NamedIndividual ,
+                                              crm:E14_Condition_Assessment ;
+                                     crm:P34_concerned inst:TempleOfPoseidonSounion ;
+                                     crm:P35_has_identified inst:RainfallDamageState_001 ;
+                                     rdfs:label "Extreme Rainfall / Storm condition assessment 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/RainfallDTUpdate_001
+inst:RainfallDTUpdate_001 rdf:type owl:NamedIndividual ,
+                                   hr:DigitalTwinUpdateOperation ;
+                          rhdto:HP27_concerns_heritage_entity inst:TempleOfPoseidonSounion ;
+                          rhdto:HP28_implemented_using inst:DigitalTwinUpdateService ;
+                          crmdig:L11_had_output inst:RainfallUpdateData_001 ;
+                          rdfs:label "Extreme Rainfall / Storm digital twin update operation 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/RainfallDamageState_001
+inst:RainfallDamageState_001 rdf:type owl:NamedIndividual ,
+                                      hr:DamageState ;
+                             crm:P2_has_type inst:WaterErosion ;
+                             rdfs:label "Water erosion / moisture-related deterioration"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/RainfallDataProcessing_001
+inst:RainfallDataProcessing_001 rdf:type owl:NamedIndividual ,
+                                         hr:DataProcessing ;
+                                rhdto:HP28_implemented_using inst:RiskMonitoringService ;
+                                crm:P134i_was_continued_by inst:RainfallRiskEvaluation_001 ;
+                                crmdig:L10_had_input inst:RainfallIncomingData_001 ;
+                                crmdig:L11_had_output inst:RainfallProcessedData_001 ;
+                                rdfs:label "Extreme Rainfall / Storm data processing 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/RainfallEvent_001
+inst:RainfallEvent_001 rdf:type owl:NamedIndividual ,
+                                hr:HazardEvent ;
+                       crm:P15i_influenced inst:RainfallConditionAssessment_001 ;
+                       crm:P4_has_time-span inst:RainfallTimeSpan_001 ;
+                       rdfs:label "Extreme Rainfall / Storm event 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/RainfallHazardIntensity_001
+inst:RainfallHazardIntensity_001 rdf:type owl:NamedIndividual ,
+                                          crm:E54_Dimension ;
+                                 rdfs:label "Rainfall intensity: 82 mm/h"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/RainfallIncomingData_001
+inst:RainfallIncomingData_001 rdf:type owl:NamedIndividual ,
+                                       hr:IncomingMonitoringData ;
+                              crmdig:L61_contains_value_set_of inst:RainfallMonitoringIndicator_001 ;
+                              rdfs:label "Extreme Rainfall / Storm incoming monitoring data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/RainfallIntensityAssignment_001
+inst:RainfallIntensityAssignment_001 rdf:type owl:NamedIndividual ,
+                                              hr:HazardIntensityAssignment ;
+                                     crm:P140_assigned_attribute_to inst:RainfallEvent_001 ;
+                                     crm:P141_assigned inst:RainfallHazardIntensity_001 ;
+                                     rdfs:label "Extreme Rainfall / Storm intensity assignment 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/RainfallManagementAction_001
+inst:RainfallManagementAction_001 rdf:type owl:NamedIndividual ,
+                                           hr:ManagementAction ;
+                                  crm:P134i_was_continued_by inst:RainfallDTUpdate_001 ;
+                                  crm:P16_used_specific_object inst:TempleOfPoseidonSounionDigitalTwin ;
+                                  crm:P2_has_type inst:DrainageInspection ;
+                                  rdfs:label "Inspect drainage and moisture-affected surfaces"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/RainfallMonitoringIndicator_001
+inst:RainfallMonitoringIndicator_001 rdf:type owl:NamedIndividual ,
+                                              crm:E54_Dimension ;
+                                     rdfs:label "Rainfall monitoring indicator: 82 mm/h"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/RainfallParameters_001
+inst:RainfallParameters_001 rdf:type owl:NamedIndividual ,
+                                     rhdto:HC23_Parameter_Set ;
+                            rdfs:label "Rainfall and moisture thresholds"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/RainfallProcessedData_001
+inst:RainfallProcessedData_001 rdf:type owl:NamedIndividual ,
+                                        hr:ProcessedIndicatorData ;
+                               rdfs:label "Extreme Rainfall / Storm processed indicator data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/RainfallRiskAssessment_001
+inst:RainfallRiskAssessment_001 rdf:type owl:NamedIndividual ,
+                                         hr:RiskAssessment ;
+                                crm:P134i_was_continued_by inst:RainfallAlerting_001 ;
+                                crm:P140_assigned_attribute_to inst:TempleOfPoseidonSounion ;
+                                crm:P141_assigned inst:RainfallRiskScore_001 ,
+                                                  inst:RainfallRiskState_001 ;
+                                crm:P15_was_influenced_by inst:RainfallRiskEvaluation_001 ;
+                                rdfs:label "Extreme Rainfall / Storm risk assessment 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/RainfallRiskEvaluation_001
+inst:RainfallRiskEvaluation_001 rdf:type owl:NamedIndividual ,
+                                         hr:RiskEvaluation ;
+                                rhdto:HP27_concerns_heritage_entity inst:TempleOfPoseidonSounion ;
+                                rhdto:HP28_implemented_using inst:RiskEvaluationService ;
+                                crm:P134i_was_continued_by inst:RainfallRiskAssessment_001 ;
+                                crm:P16_used_specific_object inst:RainfallParameters_001 ;
+                                crmdig:L10_had_input inst:RainfallProcessedData_001 ;
+                                rdfs:label "Extreme Rainfall / Storm risk evaluation 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/RainfallRiskManagement_001
+inst:RainfallRiskManagement_001 rdf:type owl:NamedIndividual ,
+                                         hr:RiskManagementActivity ;
+                                crm:P134i_was_continued_by inst:RainfallManagementAction_001 ;
+                                crm:P14_carried_out_by inst:ConservationTeam ;
+                                crm:P15_was_influenced_by inst:RainfallDamageState_001 ,
+                                                          inst:RainfallRiskState_001 ;
+                                crm:P9_consists_of inst:RainfallManagementAction_001 ;
+                                rdfs:label "Extreme Rainfall / Storm risk management activity 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/RainfallRiskScore_001
+inst:RainfallRiskScore_001 rdf:type owl:NamedIndividual ,
+                                    crm:E54_Dimension ;
+                           rdfs:label "Extreme rainfall risk score 7.8 / 10"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/RainfallRiskState_001
+inst:RainfallRiskState_001 rdf:type owl:NamedIndividual ,
+                                    hr:RiskState ;
+                           crm:P2_has_type inst:HIGH ;
+                           rdfs:label "Extreme Rainfall / Storm risk state 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/RainfallScenario_001
+inst:RainfallScenario_001 rdf:type owl:NamedIndividual ,
+                                   hr:HazardScenario ;
+                          crm:P129_is_about inst:TempleOfPoseidonSounion ;
+                          crm:P2_has_type inst:ExtremeRainfallType ;
+                          crm:P3_has_note "Demonstration scenario used to validate the ontology; not asserted as a documented historical incident."@en ;
+                          rdfs:label "Extreme Rainfall / Storm scenario 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/RainfallTimeSpan_001
+inst:RainfallTimeSpan_001 rdf:type owl:NamedIndividual ,
+                                   crm:E52_Time-Span ;
+                          rdfs:label "Extreme rainfall event time-span"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/RainfallUpdateData_001
+inst:RainfallUpdateData_001 rdf:type owl:NamedIndividual ,
+                                     hr:RiskConditionUpdateData ;
+                            rdfs:label "Extreme Rainfall / Storm risk / condition update data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/RiskEvaluationService
+inst:RiskEvaluationService rdf:type owl:NamedIndividual ,
+                                    rhdto:HC21_Digital_Service ;
+                           rdfs:label "Risk Evaluation Service"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/RiskMonitoringService
+inst:RiskMonitoringService rdf:type owl:NamedIndividual ,
+                                    rhdto:HC21_Digital_Service ;
+                           rdfs:label "Risk Monitoring Service"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/SecurityTeam
+inst:SecurityTeam rdf:type owl:NamedIndividual ,
+                           crm:E74_Group ;
+                  rdfs:label "Security Team"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/StrongWindType
+inst:StrongWindType rdf:type owl:NamedIndividual ,
+                             crm:E55_Type ;
+                    rdfs:label "Strong Wind"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/StructuralCracking
+inst:StructuralCracking rdf:type owl:NamedIndividual ,
+                                 crm:E55_Type ;
+                        rdfs:label "Structural Cracking"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/StructuralSafetyInspection
+inst:StructuralSafetyInspection rdf:type owl:NamedIndividual ,
+                                         crm:E55_Type ;
+                                rdfs:label "Structural Safety Inspection"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/SurfaceDamage
+inst:SurfaceDamage rdf:type owl:NamedIndividual ,
+                            crm:E55_Type ;
+                   rdfs:label "Surface Damage"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/TempleOfPoseidonSounion
+inst:TempleOfPoseidonSounion rdf:type owl:NamedIndividual ,
+                                      rhdto:HC3_Tangible_Entity ;
+                             rhdto:HP1_has_digital_twin inst:TempleOfPoseidonSounionDigitalTwin ;
+                             rdfs:label "Temple of Poseidon at Sounion"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/TempleOfPoseidonSounionDigitalTwin
+inst:TempleOfPoseidonSounionDigitalTwin rdf:type owl:NamedIndividual ,
+                                                 rhdto:HC2_Heritage_Digital_Twin ;
+                                        rhdto:HP1i_is_digital_twin_of inst:TempleOfPoseidonSounion ;
+                                        crm:P148_has_component inst:RainfallUpdateData_001 ,
+                                                               inst:WindUpdateData_001 ;
+                                        rdfs:label "Temple of Poseidon at Sounion Heritage Digital Twin"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ThermalInspection
+inst:ThermalInspection rdf:type owl:NamedIndividual ,
+                                crm:E55_Type ;
+                       rdfs:label "Thermal Inspection"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/ThermalStressDamage
+inst:ThermalStressDamage rdf:type owl:NamedIndividual ,
+                                  crm:E55_Type ;
+                         rdfs:label "Thermal Stress Damage"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/UnauthorizedChemicalIntervention
+inst:UnauthorizedChemicalIntervention rdf:type owl:NamedIndividual ,
+                                               crm:E55_Type ;
+                                      rdfs:label "Unauthorized Chemical / Surface Intervention"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/Vandal_001
+inst:Vandal_001 rdf:type owl:NamedIndividual ,
+                         crm:E39_Actor ;
+                rdfs:label "Vandal 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/VandalismActivation_001
+inst:VandalismActivation_001 rdf:type owl:NamedIndividual ,
+                                      rhdto:HC14_Activation_Event ;
+                             rhdto:HP16_alerted inst:SecurityTeam ;
+                             crm:P2_has_type inst:HumanAlert ;
+                             rdfs:label "Vandalism / Graffiti activation event 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/VandalismActivity_001
+inst:VandalismActivity_001 rdf:type owl:NamedIndividual ,
+                                    hr:AnthropogenicHazardActivity ;
+                           crm:P14_carried_out_by inst:Vandal_001 ;
+                           crm:P15i_influenced inst:VandalismConditionAssessment_001 ;
+                           crm:P9_consists_of inst:VandalismModification_001 ;
+                           rdfs:label "Vandalism / Graffiti activity 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/VandalismAlerting_001
+inst:VandalismAlerting_001 rdf:type owl:NamedIndividual ,
+                                    hr:AlertingActivity ;
+                           crm:P134i_was_continued_by inst:VandalismRiskManagement_001 ;
+                           crm:P9_consists_of inst:VandalismActivation_001 ;
+                           rdfs:label "Vandalism / Graffiti alerting activity 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/VandalismConditionAssessment_001
+inst:VandalismConditionAssessment_001 rdf:type owl:NamedIndividual ,
+                                               crm:E14_Condition_Assessment ;
+                                      crm:P34_concerned inst:Parthenon ;
+                                      crm:P35_has_identified inst:VandalismDamageState_001 ;
+                                      rdfs:label "Vandalism / Graffiti condition assessment 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/VandalismDTUpdate_001
+inst:VandalismDTUpdate_001 rdf:type owl:NamedIndividual ,
+                                    hr:DigitalTwinUpdateOperation ;
+                           rhdto:HP27_concerns_heritage_entity inst:Parthenon ;
+                           rhdto:HP28_implemented_using inst:DigitalTwinUpdateService ;
+                           crmdig:L11_had_output inst:VandalismUpdateData_001 ;
+                           rdfs:label "Vandalism / Graffiti digital twin update operation 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/VandalismDamageState_001
+inst:VandalismDamageState_001 rdf:type owl:NamedIndividual ,
+                                       hr:DamageState ;
+                              crm:P2_has_type inst:SurfaceDamage ;
+                              rdfs:label "Surface damage caused by vandalism"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/VandalismDataProcessing_001
+inst:VandalismDataProcessing_001 rdf:type owl:NamedIndividual ,
+                                          hr:DataProcessing ;
+                                 rhdto:HP28_implemented_using inst:RiskMonitoringService ;
+                                 crm:P134i_was_continued_by inst:VandalismRiskEvaluation_001 ;
+                                 crmdig:L10_had_input inst:VandalismIncomingData_001 ;
+                                 crmdig:L11_had_output inst:VandalismProcessedData_001 ;
+                                 rdfs:label "Vandalism / Graffiti data processing 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/VandalismIncomingData_001
+inst:VandalismIncomingData_001 rdf:type owl:NamedIndividual ,
+                                        hr:IncomingMonitoringData ;
+                               crmdig:L61_contains_value_set_of inst:VandalismMonitoringIndicator_001 ;
+                               rdfs:label "Vandalism / Graffiti incoming monitoring data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/VandalismManagementAction_001
+inst:VandalismManagementAction_001 rdf:type owl:NamedIndividual ,
+                                            hr:ManagementAction ;
+                                   crm:P134i_was_continued_by inst:VandalismDTUpdate_001 ;
+                                   crm:P16_used_specific_object inst:ParthenonDigitalTwin ;
+                                   crm:P2_has_type inst:VandalismResponse ;
+                                   rdfs:label "Secure area and initiate conservation inspection"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/VandalismModification_001
+inst:VandalismModification_001 rdf:type owl:NamedIndividual ,
+                                        crm:E11_Modification ;
+                               crm:P31_has_modified inst:Parthenon ;
+                               rdfs:label "Vandalism / Graffiti modification 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/VandalismMonitoringIndicator_001
+inst:VandalismMonitoringIndicator_001 rdf:type owl:NamedIndividual ,
+                                               crm:E54_Dimension ;
+                                      rdfs:label "Vandalism probability 0.91"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/VandalismParameters_001
+inst:VandalismParameters_001 rdf:type owl:NamedIndividual ,
+                                      rhdto:HC23_Parameter_Set ;
+                             rdfs:label "Vandalism threshold parameters (threshold 0.70)"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/VandalismProcessedData_001
+inst:VandalismProcessedData_001 rdf:type owl:NamedIndividual ,
+                                         hr:ProcessedIndicatorData ;
+                                rdfs:label "Vandalism / Graffiti processed indicator data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/VandalismResponse
+inst:VandalismResponse rdf:type owl:NamedIndividual ,
+                                crm:E55_Type ;
+                       rdfs:label "Vandalism Response"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/VandalismRiskAssessment_001
+inst:VandalismRiskAssessment_001 rdf:type owl:NamedIndividual ,
+                                          hr:RiskAssessment ;
+                                 crm:P134i_was_continued_by inst:VandalismAlerting_001 ;
+                                 crm:P140_assigned_attribute_to inst:Parthenon ;
+                                 crm:P141_assigned inst:VandalismRiskScore_001 ,
+                                                   inst:VandalismRiskState_001 ;
+                                 crm:P15_was_influenced_by inst:VandalismRiskEvaluation_001 ;
+                                 rdfs:label "Vandalism / Graffiti risk assessment 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/VandalismRiskEvaluation_001
+inst:VandalismRiskEvaluation_001 rdf:type owl:NamedIndividual ,
+                                          hr:RiskEvaluation ;
+                                 rhdto:HP27_concerns_heritage_entity inst:Parthenon ;
+                                 rhdto:HP28_implemented_using inst:RiskEvaluationService ;
+                                 crm:P134i_was_continued_by inst:VandalismRiskAssessment_001 ;
+                                 crm:P16_used_specific_object inst:VandalismParameters_001 ;
+                                 crmdig:L10_had_input inst:VandalismProcessedData_001 ;
+                                 rdfs:label "Vandalism / Graffiti risk evaluation 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/VandalismRiskManagement_001
+inst:VandalismRiskManagement_001 rdf:type owl:NamedIndividual ,
+                                          hr:RiskManagementActivity ;
+                                 crm:P134i_was_continued_by inst:VandalismManagementAction_001 ;
+                                 crm:P14_carried_out_by inst:SecurityTeam ;
+                                 crm:P15_was_influenced_by inst:VandalismDamageState_001 ,
+                                                           inst:VandalismRiskState_001 ;
+                                 crm:P9_consists_of inst:VandalismManagementAction_001 ;
+                                 rdfs:label "Vandalism / Graffiti risk management activity 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/VandalismRiskScore_001
+inst:VandalismRiskScore_001 rdf:type owl:NamedIndividual ,
+                                     crm:E54_Dimension ;
+                            rdfs:label "Vandalism risk score 8.6 / 10"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/VandalismRiskState_001
+inst:VandalismRiskState_001 rdf:type owl:NamedIndividual ,
+                                     hr:RiskState ;
+                            crm:P2_has_type inst:HIGH ;
+                            rdfs:label "Vandalism / Graffiti risk state 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/VandalismScenario_001
+inst:VandalismScenario_001 rdf:type owl:NamedIndividual ,
+                                    hr:HazardScenario ;
+                           crm:P129_is_about inst:Parthenon ;
+                           crm:P2_has_type inst:VandalismType ;
+                           crm:P3_has_note "Demonstration scenario used to validate the ontology; not asserted as a documented historical incident."@en ;
+                           rdfs:label "Vandalism / Graffiti scenario 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/VandalismType
+inst:VandalismType rdf:type owl:NamedIndividual ,
+                            crm:E55_Type ;
+                   rdfs:label "Vandalism / Graffiti"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/VandalismUpdateData_001
+inst:VandalismUpdateData_001 rdf:type owl:NamedIndividual ,
+                                      hr:RiskConditionUpdateData ;
+                             rdfs:label "Vandalism / Graffiti risk / condition update data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/WaterErosion
+inst:WaterErosion rdf:type owl:NamedIndividual ,
+                           crm:E55_Type ;
+                  rdfs:label "Water Erosion"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/WindActivation_001
+inst:WindActivation_001 rdf:type owl:NamedIndividual ,
+                                 rhdto:HC14_Activation_Event ;
+                        rhdto:HP16_alerted inst:ConservationTeam ;
+                        crm:P2_has_type inst:HumanAlert ;
+                        rdfs:label "Strong Wind activation event 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/WindAlerting_001
+inst:WindAlerting_001 rdf:type owl:NamedIndividual ,
+                               hr:AlertingActivity ;
+                      crm:P134i_was_continued_by inst:WindRiskManagement_001 ;
+                      crm:P9_consists_of inst:WindActivation_001 ;
+                      rdfs:label "Strong Wind alerting activity 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/WindConditionAssessment_001
+inst:WindConditionAssessment_001 rdf:type owl:NamedIndividual ,
+                                          crm:E14_Condition_Assessment ;
+                                 crm:P34_concerned inst:TempleOfPoseidonSounion ;
+                                 crm:P35_has_identified inst:WindDamageState_001 ;
+                                 rdfs:label "Strong Wind condition assessment 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/WindDTUpdate_001
+inst:WindDTUpdate_001 rdf:type owl:NamedIndividual ,
+                               hr:DigitalTwinUpdateOperation ;
+                      rhdto:HP27_concerns_heritage_entity inst:TempleOfPoseidonSounion ;
+                      rhdto:HP28_implemented_using inst:DigitalTwinUpdateService ;
+                      crmdig:L11_had_output inst:WindUpdateData_001 ;
+                      rdfs:label "Strong Wind digital twin update operation 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/WindDamageState_001
+inst:WindDamageState_001 rdf:type owl:NamedIndividual ,
+                                  hr:DamageState ;
+                         crm:P2_has_type inst:WindRelatedDamage ;
+                         rdfs:label "Wind-related structural / surface damage"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/WindDataProcessing_001
+inst:WindDataProcessing_001 rdf:type owl:NamedIndividual ,
+                                     hr:DataProcessing ;
+                            rhdto:HP28_implemented_using inst:RiskMonitoringService ;
+                            crm:P134i_was_continued_by inst:WindRiskEvaluation_001 ;
+                            crmdig:L10_had_input inst:WindIncomingData_001 ;
+                            crmdig:L11_had_output inst:WindProcessedData_001 ;
+                            rdfs:label "Strong Wind data processing 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/WindEvent_001
+inst:WindEvent_001 rdf:type owl:NamedIndividual ,
+                            hr:HazardEvent ;
+                   crm:P15i_influenced inst:WindConditionAssessment_001 ;
+                   crm:P4_has_time-span inst:WindTimeSpan_001 ;
+                   rdfs:label "Strong Wind event 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/WindHazardIntensity_001
+inst:WindHazardIntensity_001 rdf:type owl:NamedIndividual ,
+                                      crm:E54_Dimension ;
+                             rdfs:label "Wind speed: 105 km/h"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/WindIncomingData_001
+inst:WindIncomingData_001 rdf:type owl:NamedIndividual ,
+                                   hr:IncomingMonitoringData ;
+                          crmdig:L61_contains_value_set_of inst:WindMonitoringIndicator_001 ;
+                          rdfs:label "Strong Wind incoming monitoring data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/WindIntensityAssignment_001
+inst:WindIntensityAssignment_001 rdf:type owl:NamedIndividual ,
+                                          hr:HazardIntensityAssignment ;
+                                 crm:P140_assigned_attribute_to inst:WindEvent_001 ;
+                                 crm:P141_assigned inst:WindHazardIntensity_001 ;
+                                 rdfs:label "Strong Wind intensity assignment 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/WindManagementAction_001
+inst:WindManagementAction_001 rdf:type owl:NamedIndividual ,
+                                       hr:ManagementAction ;
+                              crm:P134i_was_continued_by inst:WindDTUpdate_001 ;
+                              crm:P16_used_specific_object inst:TempleOfPoseidonSounionDigitalTwin ;
+                              crm:P2_has_type inst:StructuralSafetyInspection ;
+                              rdfs:label "Inspect exposed structural and surface elements"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/WindMonitoringIndicator_001
+inst:WindMonitoringIndicator_001 rdf:type owl:NamedIndividual ,
+                                          crm:E54_Dimension ;
+                                 rdfs:label "Wind monitoring indicator: 105 km/h"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/WindParameters_001
+inst:WindParameters_001 rdf:type owl:NamedIndividual ,
+                                 rhdto:HC23_Parameter_Set ;
+                        rdfs:label "Wind safety thresholds"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/WindProcessedData_001
+inst:WindProcessedData_001 rdf:type owl:NamedIndividual ,
+                                    hr:ProcessedIndicatorData ;
+                           rdfs:label "Strong Wind processed indicator data 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/WindRelatedDamage
+inst:WindRelatedDamage rdf:type owl:NamedIndividual ,
+                                crm:E55_Type ;
+                       rdfs:label "Wind-related Damage"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/WindRiskAssessment_001
+inst:WindRiskAssessment_001 rdf:type owl:NamedIndividual ,
+                                     hr:RiskAssessment ;
+                            crm:P134i_was_continued_by inst:WindAlerting_001 ;
+                            crm:P140_assigned_attribute_to inst:TempleOfPoseidonSounion ;
+                            crm:P141_assigned inst:WindRiskScore_001 ,
+                                              inst:WindRiskState_001 ;
+                            crm:P15_was_influenced_by inst:WindRiskEvaluation_001 ;
+                            rdfs:label "Strong Wind risk assessment 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/WindRiskEvaluation_001
+inst:WindRiskEvaluation_001 rdf:type owl:NamedIndividual ,
+                                     hr:RiskEvaluation ;
+                            rhdto:HP27_concerns_heritage_entity inst:TempleOfPoseidonSounion ;
+                            rhdto:HP28_implemented_using inst:RiskEvaluationService ;
+                            crm:P134i_was_continued_by inst:WindRiskAssessment_001 ;
+                            crm:P16_used_specific_object inst:WindParameters_001 ;
+                            crmdig:L10_had_input inst:WindProcessedData_001 ;
+                            rdfs:label "Strong Wind risk evaluation 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/WindRiskManagement_001
+inst:WindRiskManagement_001 rdf:type owl:NamedIndividual ,
+                                     hr:RiskManagementActivity ;
+                            crm:P134i_was_continued_by inst:WindManagementAction_001 ;
+                            crm:P14_carried_out_by inst:ConservationTeam ;
+                            crm:P15_was_influenced_by inst:WindDamageState_001 ,
+                                                      inst:WindRiskState_001 ;
+                            crm:P9_consists_of inst:WindManagementAction_001 ;
+                            rdfs:label "Strong Wind risk management activity 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/WindRiskScore_001
+inst:WindRiskScore_001 rdf:type owl:NamedIndividual ,
+                                crm:E54_Dimension ;
+                       rdfs:label "Strong wind risk score 6.5 / 10"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/WindRiskState_001
+inst:WindRiskState_001 rdf:type owl:NamedIndividual ,
+                                hr:RiskState ;
+                       crm:P2_has_type inst:MEDIUM ;
+                       rdfs:label "Strong Wind risk state 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/WindScenario_001
+inst:WindScenario_001 rdf:type owl:NamedIndividual ,
+                               hr:HazardScenario ;
+                      crm:P129_is_about inst:TempleOfPoseidonSounion ;
+                      crm:P2_has_type inst:StrongWindType ;
+                      crm:P3_has_note "Demonstration scenario used to validate the ontology; not asserted as a documented historical incident."@en ;
+                      rdfs:label "Strong Wind scenario 001"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/WindTimeSpan_001
+inst:WindTimeSpan_001 rdf:type owl:NamedIndividual ,
+                               crm:E52_Time-Span ;
+                      rdfs:label "Strong wind event time-span"@en .
+
+
+###  https://w3id.org/heritage-risk-management/instance/WindUpdateData_001
+inst:WindUpdateData_001 rdf:type owl:NamedIndividual ,
+                                 hr:RiskConditionUpdateData ;
+                        rdfs:label "Strong Wind risk / condition update data 001"@en .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
