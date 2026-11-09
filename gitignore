@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+demo/node_modules/
+
+# Build output
+dist/
+demo/dist/
+build/
+
+# Local env / secrets
+.env
+.env.local
+*.local
+
+# Private npm registry config (ΜΗΝ το ανεβάζεις)
+.npmrc
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
