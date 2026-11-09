@@ -1,0 +1,348 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* surfaces — warm marble ivory */
+    --background: 40 38% 97%;
+    --foreground: 226 32% 14%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 226 32% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 226 32% 14%;
+
+    /* brand — aegean blue with plum accent */
+    --primary: 226 68% 47%;
+    --primary-foreground: 40 40% 98%;
+
+    --secondary: 38 30% 94%;
+    --secondary-foreground: 226 30% 22%;
+
+    --muted: 38 26% 94%;
+    --muted-foreground: 226 14% 43%;
+
+    --accent: 174 52% 92%;
+    --accent-foreground: 176 62% 20%;
+
+    --destructive: 352 76% 47%;
+    --destructive-foreground: 40 40% 98%;
+
+    --border: 36 22% 89%;
+    --input: 36 22% 89%;
+    --ring: 226 68% 47%;
+
+    /* risk states */
+    --risk-normal: 168 62% 30%;
+    --risk-normal-soft: 168 48% 92%;
+    --risk-medium: 32 88% 40%;
+    --risk-medium-soft: 40 92% 90%;
+    --risk-high: 18 82% 45%;
+    --risk-high-soft: 22 92% 92%;
+    --risk-critical: 352 74% 45%;
+    --risk-critical-soft: 352 88% 94%;
+
+    /* ontology layers */
+    --onto-crmdig: 176 66% 29%;
+    --onto-crmdig-soft: 176 48% 92%;
+    --onto-cidoc: 220 74% 44%;
+    --onto-cidoc-soft: 220 80% 94%;
+    --onto-rhdto: 292 50% 43%;
+    --onto-rhdto-soft: 292 52% 94%;
+
+    /* deep semantic panel (sidebar + ontology trace) */
+    --ink-panel: 228 44% 12%;
+    --ink-panel-soft: 234 34% 19%;
+    --ink-panel-foreground: 40 32% 96%;
+    --ink-panel-muted: 228 16% 72%;
+
+    --radius: 1rem;
+
+    --shadow-elegant: 0 1px 2px hsl(226 40% 18% / 0.05), 0 14px 34px -18px hsl(226 40% 18% / 0.28);
+    --shadow-glow: 0 0 0 1px hsl(var(--primary) / 0.14), 0 18px 46px -18px hsl(var(--primary) / 0.45);
+    --shadow-float: 0 2px 6px hsl(226 40% 18% / 0.06), 0 28px 70px -28px hsl(226 40% 18% / 0.35);
+    --transition-smooth: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    --font-console: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --hero-ink: 40 40% 98%;
+    --hero-chip: 40 40% 98%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 228 38% 8%;
+    --foreground: 40 30% 96%;
+
+    --card: 228 32% 12%;
+    --card-foreground: 40 30% 96%;
+
+    --popover: 228 32% 12%;
+    --popover-foreground: 40 30% 96%;
+
+    --primary: 222 76% 66%;
+    --primary-foreground: 228 44% 10%;
+
+    --secondary: 228 26% 18%;
+    --secondary-foreground: 40 26% 92%;
+
+    --muted: 228 26% 18%;
+    --muted-foreground: 40 14% 70%;
+
+    --accent: 174 38% 22%;
+    --accent-foreground: 174 60% 88%;
+
+    --destructive: 352 68% 58%;
+    --destructive-foreground: 228 44% 10%;
+
+    --border: 228 22% 22%;
+    --input: 228 22% 22%;
+    --ring: 222 76% 66%;
+
+    --risk-normal: 168 58% 50%;
+    --risk-normal-soft: 168 40% 16%;
+    --risk-medium: 38 90% 58%;
+    --risk-medium-soft: 38 45% 16%;
+    --risk-high: 22 88% 60%;
+    --risk-high-soft: 22 45% 17%;
+    --risk-critical: 352 84% 62%;
+    --risk-critical-soft: 352 45% 18%;
+
+    --onto-crmdig: 176 60% 56%;
+    --onto-crmdig-soft: 176 38% 17%;
+    --onto-cidoc: 220 76% 66%;
+    --onto-cidoc-soft: 220 40% 19%;
+    --onto-rhdto: 292 58% 68%;
+    --onto-rhdto-soft: 292 34% 20%;
+
+    --ink-panel: 228 42% 10%;
+    --ink-panel-soft: 234 32% 16%;
+    --ink-panel-foreground: 40 30% 96%;
+    --ink-panel-muted: 228 16% 68%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+    background-image:
+      radial-gradient(1200px 560px at 104% -12%, hsl(var(--primary) / 0.14), transparent 62%),
+      radial-gradient(900px 500px at -8% 2%, hsl(var(--onto-crmdig) / 0.14), transparent 58%),
+      radial-gradient(1000px 620px at 60% 108%, hsl(var(--onto-rhdto) / 0.1), transparent 60%);
+    background-attachment: fixed;
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer utilities {
+  /* Card surface with a soft inner highlight and a warm, low-contrast shadow. */
+  .surface-panel {
+    @apply rounded-2xl border border-border bg-card shadow-[var(--shadow-elegant)];
+    background-image: linear-gradient(180deg, hsl(var(--card)) 0%, hsl(var(--secondary) / 0.5) 100%);
+  }
+
+  /* Deep semantic surface used by the sidebar and the ontology trace. */
+  .deep-panel {
+    background-image:
+      radial-gradient(520px 240px at 85% -5%, hsl(var(--primary) / 0.35), transparent 70%),
+      radial-gradient(420px 260px at -10% 105%, hsl(var(--onto-rhdto) / 0.28), transparent 70%),
+      linear-gradient(168deg, hsl(var(--ink-panel)) 0%, hsl(var(--ink-panel-soft)) 100%);
+    color: hsl(var(--ink-panel-foreground));
+  }
+
+  .gradient-text {
+    @apply bg-brand bg-clip-text text-transparent;
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .slim-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+
+  .slim-scroll::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .slim-scroll::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--border));
+    border-radius: 999px;
+  }
+
+  .deep-panel.slim-scroll {
+    scrollbar-color: hsl(var(--ink-panel-foreground) / 0.25) transparent;
+  }
+
+  .deep-panel.slim-scroll::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--ink-panel-foreground) / 0.25);
+  }
+}
+
+
+/* ---------------------------------------------------------------------------
+   Skin: Κέντρο Ελέγχου — dark operations console.
+   Same semantic tokens, different values, plus a few scoped geometry/typography
+   overrides so the two skins read as genuinely different interfaces.
+   --------------------------------------------------------------------------- */
+.skin-console {
+  --background: 222 32% 7%;
+  --foreground: 200 22% 93%;
+
+  --card: 220 27% 10%;
+  --card-foreground: 200 22% 93%;
+
+  --popover: 220 28% 11%;
+  --popover-foreground: 200 22% 93%;
+
+  --primary: 187 92% 52%;
+  --primary-foreground: 222 45% 8%;
+
+  --secondary: 220 20% 15%;
+  --secondary-foreground: 200 20% 88%;
+
+  --muted: 220 20% 15%;
+  --muted-foreground: 205 14% 66%;
+
+  --accent: 168 55% 20%;
+  --accent-foreground: 168 70% 88%;
+
+  --destructive: 356 84% 60%;
+  --destructive-foreground: 222 45% 8%;
+
+  --border: 215 20% 20%;
+  --input: 215 20% 20%;
+  --ring: 187 92% 52%;
+
+  --risk-normal: 152 68% 52%;
+  --risk-normal-soft: 152 42% 15%;
+  --risk-medium: 42 96% 58%;
+  --risk-medium-soft: 42 50% 15%;
+  --risk-high: 24 94% 58%;
+  --risk-high-soft: 24 50% 16%;
+  --risk-critical: 354 88% 62%;
+  --risk-critical-soft: 354 50% 17%;
+
+  --onto-crmdig: 172 76% 52%;
+  --onto-crmdig-soft: 172 45% 15%;
+  --onto-cidoc: 210 92% 64%;
+  --onto-cidoc-soft: 210 50% 17%;
+  --onto-rhdto: 282 72% 70%;
+  --onto-rhdto-soft: 282 45% 18%;
+
+  --ink-panel: 222 38% 6%;
+  --ink-panel-soft: 222 30% 11%;
+  --ink-panel-foreground: 200 24% 94%;
+  --ink-panel-muted: 205 14% 64%;
+
+  --hero-ink: 200 24% 94%;
+  --hero-chip: 200 24% 94%;
+
+  --radius: 0.5rem;
+  --shadow-elegant: 0 1px 0 hsl(222 40% 3% / 0.8), 0 16px 40px -22px hsl(222 60% 2% / 0.9);
+  --shadow-glow: 0 0 0 1px hsl(var(--primary) / 0.35), 0 18px 46px -20px hsl(var(--primary) / 0.45);
+  --shadow-float: 0 2px 10px hsl(222 60% 2% / 0.7), 0 30px 80px -30px hsl(222 60% 2% / 0.9);
+}
+
+.skin-console body {
+  background-image:
+    linear-gradient(hsl(var(--primary) / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--primary) / 0.05) 1px, transparent 1px),
+    radial-gradient(1100px 520px at 100% -10%, hsl(var(--primary) / 0.18), transparent 62%),
+    radial-gradient(900px 500px at -5% 8%, hsl(var(--onto-rhdto) / 0.16), transparent 58%);
+  background-size: 46px 46px, 46px 46px, auto, auto;
+  background-attachment: fixed;
+}
+
+.skin-console h1,
+.skin-console h2,
+.skin-console h3,
+.skin-console h4 {
+  font-family: var(--font-console);
+  letter-spacing: -0.01em;
+}
+
+/* flatter, sharper surfaces — the console reads as instrumentation, not paper */
+.skin-console .surface-panel {
+  background-image: none;
+  border-radius: 0.7rem;
+}
+
+.skin-console .rounded-2xl {
+  border-radius: 0.7rem;
+}
+
+.skin-console .rounded-xl {
+  border-radius: 0.55rem;
+}
+
+.skin-console .deep-panel {
+  box-shadow: inset 0 0 0 1px hsl(var(--border) / 0.7);
+}
+
+/* status hero becomes an instrument readout instead of a painted panel */
+.skin-console .bg-hero-normal {
+  background-image: linear-gradient(150deg, hsl(var(--risk-normal) / 0.24) 0%, hsl(var(--card)) 58%);
+  box-shadow: inset 0 0 0 1px hsl(var(--risk-normal) / 0.45), 0 26px 60px -32px hsl(var(--risk-normal) / 0.7);
+}
+
+.skin-console .bg-hero-medium {
+  background-image: linear-gradient(150deg, hsl(var(--risk-medium) / 0.24) 0%, hsl(var(--card)) 58%);
+  box-shadow: inset 0 0 0 1px hsl(var(--risk-medium) / 0.45), 0 26px 60px -32px hsl(var(--risk-medium) / 0.7);
+}
+
+.skin-console .bg-hero-high {
+  background-image: linear-gradient(150deg, hsl(var(--risk-high) / 0.26) 0%, hsl(var(--card)) 58%);
+  box-shadow: inset 0 0 0 1px hsl(var(--risk-high) / 0.5), 0 26px 60px -32px hsl(var(--risk-high) / 0.75);
+}
+
+.skin-console .bg-hero-critical {
+  background-image: linear-gradient(150deg, hsl(var(--risk-critical) / 0.28) 0%, hsl(var(--card)) 58%);
+  box-shadow: inset 0 0 0 1px hsl(var(--risk-critical) / 0.5), 0 26px 60px -32px hsl(var(--risk-critical) / 0.8);
+}
+
+.skin-console ::selection {
+  background: hsl(var(--primary) / 0.35);
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
