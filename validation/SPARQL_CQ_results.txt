@@ -1,0 +1,89 @@
+SPARQL Competency-Question Execution Report
+======================================================================
+Data     : HeritageRiskOntology.ttl  (w3id namespace, E22-typed monuments)
+Engine   : GraphDB  (SPARQL 1.1)
+Date     : 2026-11-09
+Namespace: inst: = https://w3id.org/heritage-risk-management/instance/
+           (τα ονόματα παρακάτω εμφανίζονται συντομευμένα, χωρίς το πρόθεμα)
+
+CQ1: Ποια πολιτιστικά αγαθά παρακολουθούνται και με ποιο Ψηφιακό Δίδυμο συνδέονται;
+   rows returned: 5
+   asset                     | dt                                  
+   --------------------------+-------------------------------------
+   AncientTheatreOfEpidaurus | AncientTheatreOfEpidaurusDigitalTwin
+   KnossosPalace             | KnossosPalaceDigitalTwin            
+   MystrasMonument           | MystrasMonumentDigitalTwin          
+   Parthenon                 | ParthenonDigitalTwin                
+   TempleOfPoseidonSounion   | TempleOfPoseidonSounionDigitalTwin  
+
+CQ2: Ποιο Risk State και ποιο επίπεδο κινδύνου έχει αποδοθεί σε κάθε αγαθό;
+   rows returned: 10
+   asset                     | riskState                   | level   
+   --------------------------+-----------------------------+---------
+   AncientTheatreOfEpidaurus | HeatwaveRiskState_001       | HIGH    
+   AncientTheatreOfEpidaurus | MaintenanceRiskState_001    | MEDIUM  
+   KnossosPalace             | ArsonRiskState_001          | CRITICAL
+   KnossosPalace             | LightningRiskState_001      | CRITICAL
+   MystrasMonument           | ChemicalRiskState_001       | HIGH    
+   MystrasMonument           | PhysicalDamageRiskState_001 | HIGH    
+   Parthenon                 | EarthquakeRiskState_001     | CRITICAL
+   Parthenon                 | VandalismRiskState_001      | HIGH    
+   TempleOfPoseidonSounion   | RainfallRiskState_001       | HIGH    
+   TempleOfPoseidonSounion   | WindRiskState_001           | MEDIUM  
+
+CQ3: Ποια σενάρια κινδύνου (Hazard Scenario) και ποιου τύπου αφορούν κάθε αγαθό;
+   rows returned: 10
+   asset                     | scenario                   | type                            
+   --------------------------+----------------------------+---------------------------------
+   AncientTheatreOfEpidaurus | HeatwaveScenario_001       | HeatwaveType                    
+   AncientTheatreOfEpidaurus | MaintenanceScenario_001    | AccidentalMaintenanceDamage     
+   KnossosPalace             | ArsonScenario_001          | ArsonType                       
+   KnossosPalace             | LightningScenario_001      | LightningStrikeType             
+   MystrasMonument           | ChemicalScenario_001       | UnauthorizedChemicalIntervention
+   MystrasMonument           | PhysicalDamageScenario_001 | IntentionalPhysicalDamage       
+   Parthenon                 | EarthquakeScenario_001     | EarthquakeType                  
+   Parthenon                 | VandalismScenario_001      | VandalismType                   
+   TempleOfPoseidonSounion   | RainfallScenario_001       | ExtremeRainfallType             
+   TempleOfPoseidonSounion   | WindScenario_001           | StrongWindType                  
+
+CQ4: Για κάθε Risk State, ποια ομάδα αναλαμβάνει τη διαχείριση και ποια ενέργεια (τύπος) εκτελείται;
+   rows returned: 10
+   riskState                   | group                 | action                             | atype                        
+   ----------------------------+-----------------------+------------------------------------+------------------------------
+   ArsonRiskState_001          | EmergencyResponseTeam | ArsonManagementAction_001          | FireEmergencyResponse        
+   ChemicalRiskState_001       | ConservationTeam      | ChemicalManagementAction_001       | ChemicalTreatmentResponse    
+   EarthquakeRiskState_001     | EmergencyResponseTeam | EarthquakeManagementAction_001     | EmergencyStructuralInspection
+   HeatwaveRiskState_001       | ConservationTeam      | HeatwaveManagementAction_001       | ThermalInspection            
+   LightningRiskState_001      | EmergencyResponseTeam | LightningManagementAction_001      | LightningEmergencyInspection 
+   MaintenanceRiskState_001    | ConservationTeam      | MaintenanceManagementAction_001    | MaintenanceInspection        
+   PhysicalDamageRiskState_001 | SecurityTeam          | PhysicalDamageManagementAction_001 | PhysicalDamageResponse       
+   RainfallRiskState_001       | ConservationTeam      | RainfallManagementAction_001       | DrainageInspection           
+   VandalismRiskState_001      | SecurityTeam          | VandalismManagementAction_001      | VandalismResponse            
+   WindRiskState_001           | ConservationTeam      | WindManagementAction_001           | StructuralSafetyInspection   
+
+CQ5: Για τους ανθρωπογενείς κινδύνους, ποιος δράστης εμπλέκεται και ποια κατάσταση βλάβης προκύπτει;
+   rows returned: 5
+   activity                   | actor           | damage                       
+   ---------------------------+-----------------+------------------------------
+   ArsonActivity_001          | Offender_003    | ArsonDamageState_001         
+   ChemicalActivity_001       | Person_004      | ChemicalDamageState_001      
+   MaintenanceActivity_001    | MaintenanceTeam | MaintenanceDamageState_001   
+   PhysicalDamageActivity_001 | Offender_002    | PhysicalDamageDamageState_001
+   VandalismActivity_001      | Vandal_001      | VandalismDamageState_001     
+
+CQ6: Ποια είναι η προέλευση (provenance) ενός Risk State: αποτίμηση, προηγούμενη αξιολόγηση και παράμετροι;
+   rows returned: 10
+   riskState                   | assessment                       | evaluation                       | params                      
+   ----------------------------+----------------------------------+----------------------------------+-----------------------------
+   ArsonRiskState_001          | ArsonRiskAssessment_001          | ArsonRiskEvaluation_001          | ArsonParameters_001         
+   ChemicalRiskState_001       | ChemicalRiskAssessment_001       | ChemicalRiskEvaluation_001       | ChemicalParameters_001      
+   EarthquakeRiskState_001     | EarthquakeRiskAssessment_001     | EarthquakeRiskEvaluation_001     | EarthquakeParameters_001    
+   HeatwaveRiskState_001       | HeatwaveRiskAssessment_001       | HeatwaveRiskEvaluation_001       | HeatwaveParameters_001      
+   LightningRiskState_001      | LightningRiskAssessment_001      | LightningRiskEvaluation_001      | LightningParameters_001     
+   MaintenanceRiskState_001    | MaintenanceRiskAssessment_001    | MaintenanceRiskEvaluation_001    | MaintenanceParameters_001   
+   PhysicalDamageRiskState_001 | PhysicalDamageRiskAssessment_001 | PhysicalDamageRiskEvaluation_001 | PhysicalDamageParameters_001
+   RainfallRiskState_001       | RainfallRiskAssessment_001       | RainfallRiskEvaluation_001       | RainfallParameters_001      
+   VandalismRiskState_001      | VandalismRiskAssessment_001      | VandalismRiskEvaluation_001      | VandalismParameters_001     
+   WindRiskState_001           | WindRiskAssessment_001           | WindRiskEvaluation_001           | WindParameters_001          
+
+Summary: 6/6 competency questions returned non-empty results (ALL PASS).

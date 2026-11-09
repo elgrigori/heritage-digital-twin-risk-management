@@ -1,0 +1,191 @@
+2026-10-20 13:06:26.942 [Classification Thread] INFO  OWLReasonerManager    ------------------------------- Running Reasoner -------------------------------
+2026-10-20 13:06:26.977 [Classification Thread] INFO  OWLReasonerManager    Pre-computing inferences:
+2026-10-20 13:06:26.977 [Classification Thread] INFO  OWLReasonerManager        - class hierarchy
+2026-10-20 13:06:26.977 [Classification Thread] INFO  OWLReasonerManager        - object property hierarchy
+2026-10-20 13:06:26.977 [Classification Thread] INFO  OWLReasonerManager        - data property hierarchy
+2026-10-20 13:06:26.977 [Classification Thread] INFO  OWLReasonerManager        - class assertions
+2026-10-20 13:06:26.977 [Classification Thread] INFO  OWLReasonerManager        - object property assertions
+2026-10-20 13:06:26.977 [Classification Thread] INFO  OWLReasonerManager        - same individuals
+2026-10-20 13:06:27.400 [Classification Thread] INFO  OWLReasonerManager    Ontologies processed in 455 ms by HermiT
+2026-10-20 13:06:27.400 [Classification Thread] INFO  OWLReasonerManager    
+2026-10-22 14:01:03.071 [Close OSGi Session] INFO  Launcher    ----------------------- Shutting down Protege -----------------------
+2026-10-22 14:01:03.163 [Close OSGi Session] INFO  Launcher    Cleaning up temporary directories
+2026-11-09 14:22:37.115 [main] INFO  Launcher    ********************************************************************************
+2026-11-09 14:22:37.115 [main] INFO  Launcher    **                                  Protege                                   **
+2026-11-09 14:22:37.115 [main] INFO  Launcher    ********************************************************************************
+2026-11-09 14:22:37.115 [main] INFO  Launcher    
+2026-11-09 14:22:37.115 [main] INFO  Launcher    ----------------- Initialising and Starting the OSGi Framework -----------------
+2026-11-09 14:22:37.115 [main] INFO  Launcher    FrameworkFactory Class: org.apache.felix.framework.FrameworkFactory
+2026-11-09 14:22:37.115 [main] INFO  Launcher    
+2026-11-09 14:22:37.215 [main] INFO  Launcher    The OSGi framework has been initialised
+2026-11-09 14:22:37.942 [main] INFO  Launcher    ------------------------------- Starting Bundles -------------------------------
+2026-11-09 14:22:37.943 [main] INFO  Launcher    Starting bundle org.protege.common
+2026-11-09 14:22:37.944 [main] INFO  Launcher    Starting bundle org.eclipse.equinox.common
+2026-11-09 14:22:37.946 [main] INFO  Launcher    Starting bundle org.eclipse.equinox.supplement
+2026-11-09 14:22:37.947 [main] INFO  Launcher    Starting bundle org.eclipse.equinox.registry
+2026-11-09 14:22:37.948 [main] INFO  Launcher    Starting bundle org.protege.editor.core.application
+2026-11-09 14:22:37.949 [main] INFO  Launcher    Starting bundle org.objectweb.asm.tree.analysis
+2026-11-09 14:22:37.953 [main] INFO  Launcher    Starting bundle org.objectweb.asm.tree
+2026-11-09 14:22:37.954 [main] INFO  Launcher    Starting bundle org.objectweb.asm.util
+2026-11-09 14:22:37.955 [main] INFO  Launcher    Starting bundle org.objectweb.asm
+2026-11-09 14:22:37.956 [main] INFO  Launcher    Starting bundle org.apache.commons.commons-io
+2026-11-09 14:22:37.957 [main] INFO  Launcher    Starting bundle org.glassfish.corba.glassfish-corba-omgapi
+2026-11-09 14:22:37.959 [main] INFO  Launcher    Starting bundle com.google.guava
+2026-11-09 14:22:37.960 [main] INFO  Launcher    Starting bundle jakarta.activation-api
+2026-11-09 14:22:37.962 [main] INFO  Launcher    Starting bundle com.googlecode.javaewah.JavaEWAH
+2026-11-09 14:22:37.963 [main] INFO  Launcher    Starting bundle jaxb-api
+2026-11-09 14:22:37.964 [main] INFO  Launcher    Starting bundle com.sun.xml.bind.jaxb-core
+2026-11-09 14:22:37.965 [main] INFO  Launcher    Starting bundle com.sun.xml.bind.jaxb-impl
+2026-11-09 14:22:37.966 [main] INFO  Launcher    Starting bundle org.jsr-305
+2026-11-09 14:22:37.967 [main] INFO  Launcher    Starting bundle jul.to.slf4j
+2026-11-09 14:22:37.968 [main] INFO  Launcher    Starting bundle log4j.over.slf4j
+2026-11-09 14:22:37.969 [main] INFO  Launcher    Starting bundle ch.qos.logback.classic
+2026-11-09 14:22:37.970 [main] INFO  Launcher    Starting bundle ch.qos.logback.core
+2026-11-09 14:22:37.971 [main] INFO  Launcher    Starting bundle org.glassfish.external.management-api
+2026-11-09 14:22:37.972 [main] INFO  Launcher    Starting bundle org.apache.felix.main
+2026-11-09 14:22:37.975 [main] INFO  Launcher    Starting bundle org.apache.servicemix.bundles.javax-inject
+2026-11-09 14:22:37.975 [main] INFO  Launcher    Starting bundle org.eclipse.equinox.common
+2026-11-09 14:22:37.975 [main] INFO  Launcher    Starting bundle org.eclipse.equinox.registry
+2026-11-09 14:22:37.975 [main] INFO  Launcher    Starting bundle org.eclipse.equinox.supplement
+2026-11-09 14:22:37.979 [main] INFO  Launcher    Starting bundle org.eclipse.jgit
+2026-11-09 14:22:37.980 [main] INFO  Launcher    Starting bundle org.semanticweb.owl.owlapi
+2026-11-09 14:22:37.981 [main] INFO  Launcher    Starting bundle org.glassfish.pfl.pfl-basic
+2026-11-09 14:22:37.983 [main] INFO  Launcher    Starting bundle org.glassfish.pfl.pfl-dynamic
+2026-11-09 14:22:37.986 [main] INFO  Launcher    Starting bundle org.glassfish.pfl.pfl-tf
+2026-11-09 14:22:37.986 [main] INFO  Launcher    Starting bundle org.protege.common
+2026-11-09 14:22:37.987 [main] INFO  Launcher    Starting bundle org.protege.editor.core.application
+2026-11-09 14:22:37.987 [main] INFO  Launcher    Starting bundle org.protege.editor.owl
+2026-11-09 14:22:37.988 [main] INFO  Launcher    Starting bundle slf4j.api
+2026-11-09 14:22:37.989 [main] INFO  Launcher    Starting bundle cellfie
+2026-11-09 14:22:37.990 [main] INFO  Launcher    Starting bundle code-generation
+2026-11-09 14:22:37.995 [main] INFO  Launcher    Starting bundle org.semanticweb.elk
+2026-11-09 14:22:37.999 [main] INFO  Launcher    Starting bundle existentialquery
+2026-11-09 14:22:38.000 [main] INFO  Launcher    Starting bundle uk.ac.manchester.cs.owl.explanation
+2026-11-09 14:22:38.001 [main] INFO  Launcher    Starting bundle org.protege.ontograf
+2026-11-09 14:22:38.002 [main] INFO  Launcher    Starting bundle org.coode.dlquery
+2026-11-09 14:22:38.003 [main] INFO  Launcher    Starting bundle org.semanticweb.hermit
+2026-11-09 14:22:38.004 [main] INFO  Launcher    Starting bundle org.coode.browser
+2026-11-09 14:22:38.005 [main] INFO  Launcher    Starting bundle org.coode.owlviz
+2026-11-09 14:22:38.007 [main] INFO  Launcher    Starting bundle org.protege.owl.rdf
+2026-11-09 14:22:38.008 [main] INFO  Launcher    Starting bundle org.protege.editor.owl.rdf
+2026-11-09 14:22:38.009 [main] INFO  Launcher    Starting bundle swrltab-plugin
+2026-11-09 14:22:39.352 [main] INFO  Launcher    The OSGi framework has been started
+2026-11-09 14:22:39.352 [main] INFO  Launcher    
+2026-11-09 14:22:39.366 [FelixDispatchQueue] INFO  ProtegeApplication    ------------------------------------ Protege -----------------------------------
+2026-11-09 14:22:39.366 [FelixDispatchQueue] INFO  ProtegeApplication    Protege Desktop
+2026-11-09 14:22:39.366 [FelixDispatchQueue] INFO  ProtegeApplication    Version 5.6.9, Build 
+2026-11-09 14:22:39.378 [FelixDispatchQueue] INFO  ProtegeApplication    
+2026-11-09 14:22:39.378 [FelixDispatchQueue] INFO  ProtegeApplication    
+2026-11-09 14:22:39.382 [FelixDispatchQueue] INFO  ProtegeApplication    ----------------------------------- Platform -----------------------------------
+2026-11-09 14:22:39.382 [FelixDispatchQueue] INFO  ProtegeApplication    Java: JVM 11.0.25+9  Memory: 48318M
+2026-11-09 14:22:39.382 [FelixDispatchQueue] INFO  ProtegeApplication    Language: en, Country: US
+2026-11-09 14:22:39.382 [FelixDispatchQueue] INFO  ProtegeApplication    Framework: Apache Software Foundation (1.9) 
+2026-11-09 14:22:39.382 [FelixDispatchQueue] INFO  ProtegeApplication    OS: win32 (10.0.0)
+2026-11-09 14:22:39.382 [FelixDispatchQueue] INFO  ProtegeApplication    Processor: x86-64
+
+2026-11-09 14:22:39.382 [FelixDispatchQueue] INFO  ProtegeApplication    
+2026-11-09 14:22:39.382 [FelixDispatchQueue] INFO  ProtegeApplication    ------------------------------------ Plugins -----------------------------------
+2026-11-09 14:22:39.382 [FelixDispatchQueue] INFO  ProtegeApplication    Plugin: Cellfie Protege 5.0+ Plugin (2.1.0)
+2026-11-09 14:22:39.387 [FelixDispatchQueue] INFO  ProtegeApplication    Plugin: OWL Code Generation Plug-in (2.0.0)
+2026-11-09 14:22:39.387 [FelixDispatchQueue] INFO  ProtegeApplication    Plugin: ELK Reasoner Protege Plug-in (0.6.0)
+2026-11-09 14:22:39.387 [FelixDispatchQueue] INFO  ProtegeApplication    Plugin: Existential Query (2.0.0)
+2026-11-09 14:22:39.387 [FelixDispatchQueue] INFO  ProtegeApplication    Plugin: Explanation Workbench (3.0.1)
+2026-11-09 14:22:39.387 [FelixDispatchQueue] INFO  ProtegeApplication    Plugin: OntoGraf (2.0.3)
+2026-11-09 14:22:39.387 [FelixDispatchQueue] INFO  ProtegeApplication    Plugin: DL Query (4.0.1)
+2026-11-09 14:22:39.387 [FelixDispatchQueue] INFO  ProtegeApplication    Plugin: HermiT Reasoner (1.4.3.456)
+2026-11-09 14:22:39.387 [FelixDispatchQueue] INFO  ProtegeApplication    Plugin: Browser View (OWLDoc) (3.0.3)
+2026-11-09 14:22:39.387 [FelixDispatchQueue] INFO  ProtegeApplication    Plugin: OWLViz (5.0.3)
+2026-11-09 14:22:39.387 [FelixDispatchQueue] INFO  ProtegeApplication    Plugin: OWLAPI RDF Library (3.0.1)
+2026-11-09 14:22:39.387 [FelixDispatchQueue] INFO  ProtegeApplication    Plugin: SPARQL Query Plugin (3.0.0)
+2026-11-09 14:22:39.387 [FelixDispatchQueue] INFO  ProtegeApplication    Plugin: SWRLTab Plugin (2.0.10)
+2026-11-09 14:22:39.387 [FelixDispatchQueue] INFO  ProtegeApplication    
+2026-11-09 14:22:40.790 [FelixDispatchQueue] INFO  ProtegeApplication    Creating and setting up empty (default) editor kit
+2026-11-09 14:22:40.809 [FelixDispatchQueue] INFO  OWLEditorKit    OWL API Version: 4.5.29.2024-05-13T12:11:03Z
+2026-11-09 14:22:41.448 [FelixDispatchQueue] INFO  OWLModelManagerImpl    Cannot generate ontology catalog for ontology at http://www.semanticweb.org/egrigori/ontologies/2026/10/untitled-ontology-17. URI scheme is not "file"
+2026-11-09 14:22:42.613 [FelixDispatchQueue] INFO  OboFoundryRegistryManager    OBO Foundry registry loaded: 267 entries
+2026-11-09 14:22:42.673 [FelixDispatchQueue] INFO  ProtegeApplication    ------------------------------- Auto-update Check ------------------------------
+2026-11-09 14:22:42.676 [FelixDispatchQueue] INFO  ProtegeApplication    Auto-update last performed: Tue Oct 20 13:04:08 EEST 2026
+2026-11-09 14:22:42.692 [FelixDispatchQueue] INFO  ProtegeApplication    Auto-update has not been performed today.  Running it.
+2026-11-09 14:22:42.696 [FelixDispatchQueue] INFO  ProtegeApplication    
+2026-11-09 14:22:42.696 [Auto-Update] INFO  PluginRegistryImpl    ------------------------------ Running Auto-update -----------------------------
+2026-11-09 14:22:42.696 [Auto-Update] INFO  PluginRegistryImpl    
+2026-11-09 14:22:42.698 [Auto-Update] INFO  PluginRegistryImpl    --- Searching for plugins ---
+2026-11-09 14:22:42.711 [Auto-Update] INFO  PluginRegistryImpl    Checking https://raw.githubusercontent.com/protegeproject/autoupdate/master/update-info/5.0.0/plugins.repository
+2026-11-09 14:22:42.717 [Auto-Update] INFO  PluginRegistryImpl        Processing https://raw.githubusercontent.com/protegeproject/autoupdate/master/update-info/5.0.0/plugins.repository as a plugin registry
+2026-11-09 14:22:42.960 [Auto-Update] INFO  PluginRegistryImpl            Checking https://raw.githubusercontent.com/protegeproject/cellfie-plugin/master/update-info/protege-5/update.properties
+2026-11-09 14:22:44.316 [Auto-Update] INFO  PluginRegistryImpl            Checking https://gitlab.ifi.uzh.ch/DDIS-Public/chimp-protege-plugin/-/raw/master/update.properties
+2026-11-09 14:22:44.640 [Auto-Update] INFO  PluginRegistryImpl            Checking https://raw.githubusercontent.com/comodide/CoModIDE/master/update.properties
+2026-11-09 14:22:44.819 [Auto-Update] INFO  PluginRegistryImpl            Checking https://raw.githubusercontent.com/co-ode-owl-plugins/change-tracker/master/update-info/protege-5/update.properties
+2026-11-09 14:22:44.987 [Auto-Update] INFO  PluginRegistryImpl            Checking https://raw.githubusercontent.com/protegeproject/csv-export-plugin/master/src/main/resources/update.properties
+2026-11-09 14:22:45.169 [Auto-Update] INFO  PluginRegistryImpl            Checking https://raw.githubusercontent.com/protegeproject/dlquery/master/update-info/protege-5/update.properties
+2026-11-09 14:22:45.448 [Auto-Update] INFO  PluginRegistryImpl            Checking https://raw.githubusercontent.com/protegeproject/autoupdate/master/elk/0.4.3/update.properties
+2026-11-09 14:22:45.710 [Auto-Update] INFO  PluginRegistryImpl            Checking https://raw.githubusercontent.com/protegeproject/existentialquery/master/update-info/protege-5/update.properties
+2026-11-09 14:22:45.908 [Auto-Update] INFO  PluginRegistryImpl            Checking https://bitbucket.org/dtsarkov/factplusplus/downloads/config.autoupdate.Protege-5.0.txt
+2026-11-09 14:22:46.869 [Auto-Update] INFO  PluginRegistryImpl            Checking https://raw.githubusercontent.com/julianmendez/jcel/master/update-info/protege-5/update.properties
+2026-11-09 14:22:47.172 [Auto-Update] INFO  PluginRegistryImpl            Checking https://raw.githubusercontent.com/KITE-Cloud/AOWLN/master/update.properties
+2026-11-09 14:22:47.552 [Auto-Update] INFO  PluginRegistryImpl            Checking http://www.obdasystems.com/sites/default/files/download/plug-in/update.properties
+2026-11-09 14:22:47.742 [Auto-Update] INFO  PluginRegistryImpl                The plugin update document at http://www.obdasystems.com/sites/default/files/download/plug-in/update.properties is not valid.  Reason: No plugin Id given.
+2026-11-09 14:22:47.742 [Auto-Update] INFO  PluginRegistryImpl                Processing http://www.obdasystems.com/sites/default/files/download/plug-in/update.properties as a plugin registry
+2026-11-09 14:22:47.805 [Auto-Update] INFO  PluginRegistryImpl            Checking https://raw.githubusercontent.com/co-ode-owl-plugins/matrix/master/etc/update.matrix.properties
+2026-11-09 14:22:47.978 [Auto-Update] INFO  PluginRegistryImpl            Checking https://raw.githubusercontent.com/protegeproject/ontograf/master/update-info/protege-5/update.properties
+2026-11-09 14:22:48.345 [Auto-Update] INFO  PluginRegistryImpl            Checking http://isbi.aau.at/ontodebug/update.properties
+2026-11-09 14:22:48.690 [Auto-Update] INFO  PluginRegistryImpl            Checking https://kbss.felk.cvut.cz/tools/owlhierarchy/update.properties
+2026-11-09 14:22:49.072 [Auto-Update] INFO  PluginRegistryImpl            Checking https://raw.githubusercontent.com/ontop/ontop/master/protege/plugin/update.properties
+2026-11-09 14:22:49.264 [Auto-Update] INFO  PluginRegistryImpl            Checking https://raw.githubusercontent.com/protegeproject/rdf-library/master/update-info/protege-5/update.properties
+2026-11-09 14:22:49.543 [Auto-Update] INFO  PluginRegistryImpl            Checking https://raw.githubusercontent.com/protegeproject/owl-diff/master/update-info/protege-5/update.properties
+2026-11-09 14:22:49.733 [Auto-Update] INFO  PluginRegistryImpl            Checking https://raw.githubusercontent.com/co-ode-owl-plugins/owldoc/master/update-info/protege-5/update.properties
+2026-11-09 14:22:49.938 [Auto-Update] INFO  PluginRegistryImpl            Checking https://raw.githubusercontent.com/protegeproject/owlviz/master/update-info/protege-5/update.properties
+2026-11-09 14:22:50.112 [Auto-Update] INFO  PluginRegistryImpl            Checking https://raw.githubusercontent.com/Complexible/pellet/master/protege/plugin/plugins.repository
+2026-11-09 14:22:50.112 [Auto-Update] INFO  PluginRegistryImpl                Processing https://raw.githubusercontent.com/Complexible/pellet/master/protege/plugin/plugins.repository as a plugin registry
+2026-11-09 14:22:50.355 [Auto-Update] INFO  PluginRegistryImpl                    Checking https://raw.githubusercontent.com/Complexible/pellet/master/protege/plugin/update.properties
+2026-11-09 14:22:50.577 [Auto-Update] INFO  PluginRegistryImpl            Checking https://raw.githubusercontent.com/protegeproject/autoupdate/master/snap-sparql-query/update-info/protege-5/update.properties
+2026-11-09 14:22:50.799 [Auto-Update] INFO  PluginRegistryImpl            Checking https://raw.githubusercontent.com/KITE-Cloud/SRE/master/update.properties
+2026-11-09 14:22:51.101 [Auto-Update] INFO  PluginRegistryImpl            Checking https://raw.githubusercontent.com/protegeproject/sparql-query-plugin/master/update-info/protege-5/update.properties
+2026-11-09 14:22:51.289 [Auto-Update] INFO  PluginRegistryImpl            Checking https://raw.githubusercontent.com/protegeproject/swrltab-plugin/master/update-info/protege-5/update.properties
+2026-11-09 14:22:51.560 [Auto-Update] INFO  PluginRegistryImpl            Checking https://raw.githubusercontent.com/md-k-sarker/OWLAx/master/update.properties
+2026-11-09 14:22:51.734 [Auto-Update] INFO  PluginRegistryImpl            Checking https://raw.githubusercontent.com/md-k-sarker/ROWL/master/update.properties
+2026-11-09 14:22:51.929 [Auto-Update] INFO  PluginRegistryImpl            Checking https://raw.githubusercontent.com/owlcollab/protege-obo-plugin/master/update.properties
+2026-11-09 14:22:52.097 [Auto-Update] INFO  PluginRegistryImpl            Checking https://raw.githubusercontent.com/geneontology/protege-taxon-constraints/master/update.properties
+2026-11-09 14:22:52.275 [Auto-Update] INFO  PluginRegistryImpl            Checking https://raw.githubusercontent.com/onor13/odase.protege.plugins.repository/master/odase.plugins.repository
+2026-11-09 14:22:52.275 [Auto-Update] INFO  PluginRegistryImpl                Processing https://raw.githubusercontent.com/onor13/odase.protege.plugins.repository/master/odase.plugins.repository as a plugin registry
+2026-11-09 14:22:52.482 [Auto-Update] INFO  PluginRegistryImpl                    Checking https://raw.githubusercontent.com/onor13/odase.protege.plugin.propertiesInDomainClass/master/update.properties
+2026-11-09 14:22:52.659 [Auto-Update] INFO  PluginRegistryImpl                    Checking https://raw.githubusercontent.com/onor13/odase.protege.plugin.individualPropertiesContextualAssertions/master/update.properties
+2026-11-09 14:22:52.846 [Auto-Update] INFO  PluginRegistryImpl            Checking https://raw.githubusercontent.com/NJITSABOC/oaf-protege/OAFSummarizationPlugin/update-info/protege-5/update.properties
+2026-11-09 14:22:53.021 [Auto-Update] INFO  PluginRegistryImpl            Checking https://raw.githubusercontent.com/fekaputra/shacl-plugin/master/update-info/protege-5/update.properties
+2026-11-09 14:22:53.197 [Auto-Update] INFO  PluginRegistryImpl    
+2026-11-09 14:23:16.677 [Classification Thread] INFO  OWLReasonerManager    ------------------------------- Running Reasoner -------------------------------
+2026-11-09 14:23:16.718 [Classification Thread] INFO  OWLReasonerManager    Pre-computing inferences:
+2026-11-09 14:23:16.718 [Classification Thread] INFO  OWLReasonerManager        - class hierarchy
+2026-11-09 14:23:16.718 [Classification Thread] INFO  OWLReasonerManager        - object property hierarchy
+2026-11-09 14:23:16.718 [Classification Thread] INFO  OWLReasonerManager        - data property hierarchy
+2026-11-09 14:23:16.718 [Classification Thread] INFO  OWLReasonerManager        - class assertions
+2026-11-09 14:23:16.718 [Classification Thread] INFO  OWLReasonerManager        - object property assertions
+2026-11-09 14:23:16.718 [Classification Thread] INFO  OWLReasonerManager        - same individuals
+2026-11-09 14:23:16.718 [Classification Thread] INFO  OWLReasonerManager    Ontologies processed in 53 ms by HermiT
+2026-11-09 14:23:16.718 [Classification Thread] INFO  OWLReasonerManager    
+2026-11-09 14:30:08.713 [Classification Thread] INFO  OWLReasonerManager    ------------------------------- Running Reasoner -------------------------------
+2026-11-09 14:30:08.719 [Classification Thread] INFO  OWLReasonerManager    Pre-computing inferences:
+2026-11-09 14:30:08.719 [Classification Thread] INFO  OWLReasonerManager        - class hierarchy
+2026-11-09 14:30:08.719 [Classification Thread] INFO  OWLReasonerManager        - object property hierarchy
+2026-11-09 14:30:08.719 [Classification Thread] INFO  OWLReasonerManager        - data property hierarchy
+2026-11-09 14:30:08.719 [Classification Thread] INFO  OWLReasonerManager        - class assertions
+2026-11-09 14:30:08.719 [Classification Thread] INFO  OWLReasonerManager        - object property assertions
+2026-11-09 14:30:08.719 [Classification Thread] INFO  OWLReasonerManager        - same individuals
+2026-11-09 14:30:08.722 [Classification Thread] INFO  OWLReasonerManager    Ontologies processed in 6 ms by HermiT
+2026-11-09 14:30:08.723 [Classification Thread] INFO  OWLReasonerManager    
+2026-11-09 14:31:32.783 [AWT-EventQueue-0] INFO  OWLEditorKit    ---------------------------- Disposing of Workspace ----------------------------
+2026-11-09 14:31:32.894 [AWT-EventQueue-0] INFO  TabbedWorkspace    Saved tab state for 'Active ontology' tab
+2026-11-09 14:31:32.897 [AWT-EventQueue-0] INFO  TabbedWorkspace    Saved tab state for 'Individuals by class' tab
+2026-11-09 14:31:32.900 [AWT-EventQueue-0] INFO  TabbedWorkspace    Saved tab state for 'Entities' tab
+2026-11-09 14:31:32.903 [AWT-EventQueue-0] INFO  TabbedWorkspace    Saved tab state for 'SPARQL Query' tab
+2026-11-09 14:31:32.905 [AWT-EventQueue-0] INFO  TabbedWorkspace    Saved tab state for 'DL Query' tab
+2026-11-09 14:31:32.906 [AWT-EventQueue-0] INFO  TabbedWorkspace    Saved workspace
+2026-11-09 14:31:32.911 [AWT-EventQueue-0] INFO  TabbedWorkspace    Disposed of 'Active ontology' tab
+2026-11-09 14:31:32.916 [AWT-EventQueue-0] INFO  TabbedWorkspace    Disposed of 'Individuals by class' tab
+2026-11-09 14:31:32.919 [AWT-EventQueue-0] INFO  TabbedWorkspace    Disposed of 'Entities' tab
+2026-11-09 14:31:32.922 [AWT-EventQueue-0] INFO  TabbedWorkspace    Disposed of 'SPARQL Query' tab
+2026-11-09 14:31:32.931 [AWT-EventQueue-0] INFO  TabbedWorkspace    Disposed of 'DL Query' tab
+2026-11-09 14:31:32.933 [AWT-EventQueue-0] INFO  TabbedWorkspace    Disposed of workspace
+2026-11-09 14:31:32.946 [AWT-EventQueue-0] INFO  OWLEditorKit    
+2026-11-09 14:31:33.113 [Close OSGi Session] INFO  Launcher    ----------------------- Shutting down Protege -----------------------
+2026-11-09 14:31:33.113 [Close OSGi Session] INFO  Launcher    Cleaning up temporary directories

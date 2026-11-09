@@ -1,0 +1,74 @@
+
+# CQ1: Ποια πολιτιστικά αγαθά παρακολουθούνται και με ποιο Ψηφιακό Δίδυμο συνδέονται;
+
+PREFIX rhdto: <http://vast-lab.org/rhdto/>
+SELECT ?asset ?dt WHERE {
+  ?asset a rhdto:HC3_Tangible_Entity ;
+         rhdto:HP1_has_digital_twin ?dt .
+} ORDER BY ?asset
+
+# CQ2. Ποιο Risk State και ποιο επίπεδο κινδύνου έχει αποδοθεί σε κάθε αγαθό;
+
+
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX hr: <http://www.semanticweb.org/egrigori/ontologies/2026/8/untitled-ontology-8/>
+SELECT ?asset ?riskState ?level WHERE {
+  ?ra a hr:RiskAssessment ;
+      crm:P140_assigned_attribute_to ?asset ;
+      crm:P141_assigned ?riskState .
+  ?riskState a hr:RiskState ;
+             crm:P2_has_type ?level .
+} ORDER BY ?asset
+
+# CQ3. Ποια σενάρια κινδύνου (Hazard Scenario) και ποιου τύπου αφορούν κάθε αγαθό;
+
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX hr: <http://www.semanticweb.org/egrigori/ontologies/2026/8/untitled-ontology-8/>
+SELECT ?asset ?scenario ?type WHERE {
+  ?scenario a hr:HazardScenario ;
+            crm:P129_is_about ?asset ;
+            crm:P2_has_type ?type .
+} ORDER BY ?asset
+
+# CQ4. Για κάθε Risk State, ποια ομάδα αναλαμβάνει τη διαχείριση και ποια ενέργεια (τύπος) εκτελείται;
+
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX hr: <http://www.semanticweb.org/egrigori/ontologies/2026/8/untitled-ontology-8/>
+SELECT ?riskState ?group ?action ?atype WHERE {
+  ?ra a hr:RiskAssessment ;
+      crm:P141_assigned ?riskState ;
+      crm:P134i_was_continued_by ?al .
+  ?al a hr:AlertingActivity ;
+      crm:P134i_was_continued_by ?rma .
+  ?rma a hr:RiskManagementActivity ;
+       crm:P14_carried_out_by ?group ;
+       crm:P9_consists_of ?action .
+  ?action a hr:ManagementAction ;
+          crm:P2_has_type ?atype .
+  ?riskState a hr:RiskState .
+} ORDER BY ?riskState
+
+#CQ5. Για τους ανθρωπογενείς κινδύνους, ποιος δράστης εμπλέκεται και ποια κατάσταση βλάβης προκύπτει;
+
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX hr: <http://www.semanticweb.org/egrigori/ontologies/2026/8/untitled-ontology-8/>
+SELECT ?activity ?actor ?damage WHERE {
+  ?activity a hr:AnthropogenicHazardActivity ;
+            crm:P14_carried_out_by ?actor ;
+            crm:P15i_influenced ?ca .
+  ?ca a crm:E14_Condition_Assessment ;
+      crm:P35_has_identified ?damage .
+} ORDER BY ?activity
+
+#CQ6. Ποια είναι η προέλευση (provenance) ενός Risk State: αποτίμηση, προηγούμενη αξιολόγηση και παράμετροι;
+
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX hr: <http://www.semanticweb.org/egrigori/ontologies/2026/8/untitled-ontology-8/>
+SELECT ?riskState ?assessment ?evaluation ?params WHERE {
+  ?assessment a hr:RiskAssessment ;
+              crm:P141_assigned ?riskState ;
+              crm:P15_was_influenced_by ?evaluation .
+  ?evaluation a hr:RiskEvaluation ;
+              crm:P16_used_specific_object ?params .
+  ?riskState a hr:RiskState .
+} ORDER BY ?riskState
