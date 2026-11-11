@@ -1,0 +1,286 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Διαδραστικό Εννοιολογικό Μοντέλο  </title>
+<style>
+  :root{
+    --ink:#1e2a38; --parch:#f6f3ec; --accent:#b5541e; --muted:#6e6450; --line:#d7d0c2;
+    --crm:#dae8fc; --crmS:#3c66b5; --crmdig:#d5e8d4; --crmdigS:#2e8b57;
+    --rhdto:#e1d5e7; --rhdtoS:#8a5fa6; --prop:#fff2cc; --propS:#c79a2e;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif;background:var(--parch);color:var(--ink);overflow:hidden}
+  #bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 16px;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 1px 6px rgba(0,0,0,.05);position:relative;z-index:5}
+  #bar h1{font-size:16px;margin:0 14px 0 0;font-weight:700;letter-spacing:.2px}
+  .btn{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:9px;padding:8px 12px;font-size:14px;font-weight:600;cursor:pointer}
+  .btn:hover{background:#f3efe6}
+  .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .btn.primary:hover{background:#9f4918}
+  #step{font-size:13px;color:var(--muted);min-width:92px;text-align:center;font-weight:600}
+  .legend{display:flex;gap:12px;align-items:center;margin-left:auto;flex-wrap:wrap}
+  .lg{display:flex;gap:6px;align-items:center;font-size:12.5px;color:#4a5568}
+  .sw{width:20px;height:13px;border-radius:3px;border:1px solid rgba(0,0,0,.18)}
+  #stage{position:absolute;inset:64px 0 0 0;overflow:hidden;cursor:grab;background:radial-gradient(1200px 700px at 60% 35%,#fbf9f3,#efe9dc)}
+  #stage.drag{cursor:grabbing}
+  svg{width:100%;height:100%;display:block;touch-action:none}
+  .sec rect{fill:#ffffff;opacity:.55;stroke:#e4ddcc}
+  .sec text{fill:#9a8f76;font-weight:700;letter-spacing:1px;font-size:20px}
+  .sub rect{fill:#efe9dc;stroke:#e0d8c6}
+  .sub text{fill:#7a6f58;font-weight:700;font-size:16px;letter-spacing:.5px}
+  .edge path{fill:none;stroke:#b9ad95;stroke-width:2}
+  .edge.sub path{stroke-dasharray:6 6;stroke:#c7bca4}
+  .edge .elab{fill:#6e6450;font-size:13px}
+  .edge .elab-bg{fill:#f6f3ec;opacity:.9}
+  .node rect{stroke-width:2;rx:10}
+  .node text{font-size:15px;fill:#1e2a38;font-weight:600}
+  .node .tag{font-size:11.5px;font-weight:700;letter-spacing:.3px}
+  .node{cursor:pointer}
+  .std-crm rect{fill:var(--crm);stroke:var(--crmS)} .std-crm .tag{fill:var(--crmS)}
+  .std-crmdig rect{fill:var(--crmdig);stroke:var(--crmdigS)} .std-crmdig .tag{fill:var(--crmdigS)}
+  .std-rhdto rect{fill:var(--rhdto);stroke:var(--rhdtoS)} .std-rhdto .tag{fill:var(--rhdtoS)}
+  .std-proposed rect{fill:var(--prop);stroke:var(--propS)} .std-proposed .tag{fill:#b07d12}
+  /* states */
+  svg.focusing .node:not(.hl){opacity:.16}
+  svg.focusing .edge:not(.hl){opacity:.05}
+  svg.focusing .sec,svg.focusing .sub{opacity:.5}
+  .node.hl rect{stroke-width:5;filter:drop-shadow(0 6px 14px rgba(0,0,0,.22))}
+  .node.hl text{font-weight:800}
+  .node.near rect{stroke-width:3.5}
+  .edge.hl path{stroke:var(--accent);stroke-width:4;stroke-dasharray:none}
+  .edge.hl .elab{fill:var(--accent);font-weight:800;font-size:15px}
+  .edge.hl .elab-bg{fill:#fff;opacity:1}
+  #cap{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);max-width:min(720px,92vw);background:#fff;border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.16);padding:16px 20px;display:none;z-index:6}
+  #cap.on{display:block}
+  #cap b{color:var(--accent)}
+  #cap .t{font-size:19px;font-weight:800;margin-bottom:4px}
+  #cap .d{font-size:15px;color:#4a5568;line-height:1.45}
+  #zoom{position:absolute;right:16px;bottom:16px;display:flex;flex-direction:column;gap:6px;z-index:6}
+  #zoom .btn{width:42px;height:42px;font-size:20px;padding:0;border-radius:11px;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+  #hint{position:absolute;left:16px;bottom:16px;font-size:12.5px;color:#8a7f66;z-index:6;background:rgba(255,255,255,.7);padding:6px 10px;border-radius:8px}
+</style>
+</head>
+<body>
+<div id="bar">
+  <h1>Διαδραστικό Εννοιολογικό Μοντέλο</h1>
+  <button class="btn" id="prev">◀ Προηγούμενο</button>
+  <button class="btn primary" id="next">Εκκίνηση ▶</button>
+  <span id="step"></span>
+  <button class="btn" id="reset">Επαναφορά</button>
+  <div class="legend">
+    <span class="lg"><span class="sw" style="background:var(--crm);border-color:var(--crmS)"></span>CIDOC CRM</span>
+    <span class="lg"><span class="sw" style="background:var(--crmdig);border-color:var(--crmdigS)"></span>CRMdig</span>
+    <span class="lg"><span class="sw" style="background:var(--rhdto);border-color:var(--rhdtoS)"></span>RHDTO</span>
+    <span class="lg"><span class="sw" style="background:var(--prop);border-color:var(--propS)"></span>Προτεινόμενη κλάση</span>
+  </div>
+</div>
+<div id="stage">
+  <svg id="svg" xmlns="http://www.w3.org/2000/svg"></svg>
+  <div id="cap"><div class="t"></div><div class="d"></div></div>
+  <div id="zoom">
+    <button class="btn" id="zin">+</button>
+    <button class="btn" id="zout">−</button>
+    <button class="btn" id="zfit" title="Προσαρμογή" style="font-size:13px">⤢</button>
+  </div>
+ 
+</div>
+<script>
+const DATA = {"nodes": [{"id": "d9", "label": "D9 Data Object", "x": 195.0, "y": 140.0, "w": 250.0, "h": 85.0, "std": "crmdig"}, {"id": "incoming", "label": "Incoming Monitoring Data", "x": 60.0, "y": 370.0, "w": 250.0, "h": 85.0, "std": "proposed"}, {"id": "processing", "label": "Data Processing", "x": 330.0, "y": 560.0, "w": 250.0, "h": 85.0, "std": "proposed"}, {"id": "processed", "label": "Processed Indicator Data", "x": 330.0, "y": 370.0, "w": 250.0, "h": 85.0, "std": "proposed"}, {"id": "risk_eval", "label": "Risk Evaluation", "x": 690.0, "y": 100.0, "w": 250.0, "h": 85.0, "std": "proposed"}, {"id": "params", "label": "HC23 Parameter Set", "x": 860.0, "y": 332.5, "w": 250.0, "h": 85.0, "std": "rhdto"}, {"id": "risk_assess", "label": "Risk Assessment", "x": 1200.0, "y": 120.0, "w": 250.0, "h": 85.0, "std": "proposed"}, {"id": "risk_state", "label": "Risk State", "x": 1060.0, "y": 640.0, "w": 250.0, "h": 85.0, "std": "proposed"}, {"id": "risk_dims", "label": "E54 Dimension", "x": 860.0, "y": 455.0, "w": 250.0, "h": 85.0, "std": "crm"}, {"id": "activation", "label": "HC14 Activation Event", "x": 2210.0, "y": 120.0, "w": 250.0, "h": 85.0, "std": "rhdto"}, {"id": "actuator", "label": "HC11 Actuator", "x": 2210.0, "y": 420.0, "w": 250.0, "h": 85.0, "std": "rhdto"}, {"id": "group", "label": "E74 Group", "x": 1920.0, "y": 300.0, "w": 250.0, "h": 85.0, "std": "crm"}, {"id": "risk_mgmt", "label": "Risk Management Activity", "x": 1560.0, "y": 640.0, "w": 250.0, "h": 85.0, "std": "proposed"}, {"id": "hc3", "label": "HC3 Tangible Entity", "x": 2590.0, "y": 110.0, "w": 250.0, "h": 85.0, "std": "rhdto"}, {"id": "hc2", "label": "HC2 Heritage Digital Twin", "x": 3060.0, "y": 110.0, "w": 250.0, "h": 85.0, "std": "rhdto"}, {"id": "dt_update", "label": "Digital Twin Update Operation", "x": 2590.0, "y": 400.0, "w": 250.0, "h": 85.0, "std": "proposed"}, {"id": "update_data", "label": "Risk / Condition Update Data", "x": 3100.0, "y": 400.0, "w": 250.0, "h": 85.0, "std": "proposed"}, {"id": "scenario", "label": "E89 Propositional Object", "x": 170.0, "y": 1218.0, "w": 250.0, "h": 85.0, "std": "crm"}, {"id": "haz_event", "label": "Hazard Event", "x": 550.0, "y": 1218.0, "w": 250.0, "h": 85.0, "std": "proposed"}, {"id": "int_assign", "label": "Hazard Intensity Assignment", "x": 900.0, "y": 1640.0, "w": 250.0, "h": 85.0, "std": "proposed"}, {"id": "anth_act", "label": "Anthropogenic Hazard Activity", "x": 1140.0, "y": 1178.0, "w": 250.0, "h": 85.0, "std": "proposed"}, {"id": "actor", "label": "E39 Actor", "x": 1260.0, "y": 1496.5, "w": 250.0, "h": 85.0, "std": "crm"}, {"id": "mod", "label": "E11 Modification", "x": 1640.0, "y": 1503.5, "w": 250.0, "h": 85.0, "std": "crm"}, {"id": "cond_assess", "label": "E14 Condition Assessment", "x": 2160.0, "y": 1570.0, "w": 250.0, "h": 85.0, "std": "crm"}, {"id": "damage_state", "label": "Damage State", "x": 2910.0, "y": 1460.0, "w": 250.0, "h": 85.0, "std": "proposed"}, {"id": "time", "label": "E52 Time-Span", "x": 460.0, "y": 1550.0, "w": 250.0, "h": 85.0, "std": "crm"}, {"id": "risk_type", "label": "E55 Type", "x": 1920.0, "y": 417.5, "w": 250.0, "h": 85.0, "std": "crm"}, {"id": "m_action", "label": "Management Action Decision / Mitigation / Inspection · ⊑ E7", "x": 2210.0, "y": 615.0, "w": 250.0, "h": 85.0, "std": "proposed"}, {"id": "alert", "label": "Alerting Activity", "x": 1650.0, "y": 120.0, "w": 250.0, "h": 85.0, "std": "proposed"}, {"id": "service", "label": "HC21 Digital Service", "x": 2870.0, "y": 690.0, "w": 250.0, "h": 85.0, "std": "rhdto"}, {"id": "91sEvv9IY6gedWecwaQN-1", "label": "E3 Condition State", "x": 1180.0, "y": 830.0, "w": 250.0, "h": 85.0, "std": "crm"}, {"id": "91sEvv9IY6gedWecwaQN-3", "label": "E7 Activity", "x": 1420.0, "y": 332.5, "w": 250.0, "h": 85.0, "std": "crm"}, {"id": "Ta_ggIIjZ1g6eXOh8imd-7", "label": "HC22 Digital Operation", "x": 3100.0, "y": 560.0, "w": 250.0, "h": 85.0, "std": "rhdto"}, {"id": "Ta_ggIIjZ1g6eXOh8imd-9", "label": "E5 Event", "x": 445.0, "y": 1070.0, "w": 250.0, "h": 85.0, "std": "crm"}, {"id": "Ta_ggIIjZ1g6eXOh8imd-16", "label": "E13 Attribute Assignment", "x": 1310.0, "y": 1635.0, "w": 250.0, "h": 85.0, "std": "crm"}, {"id": "Ta_ggIIjZ1g6eXOh8imd-24", "label": "Hazard Scenario", "x": 170.0, "y": 1370.0, "w": 250.0, "h": 85.0, "std": "proposed"}], "edges": [{"s": "incoming", "t": "risk_dims", "label": "L61 contains value set of"}, {"s": "risk_eval", "t": "params", "label": "P16 used specific object"}, {"s": "risk_assess", "t": "risk_eval", "label": "P15 was influenced by"}, {"s": "risk_assess", "t": "risk_state", "label": "P141 assigned"}, {"s": "risk_assess", "t": "risk_dims", "label": "P141 assigned"}, {"s": "risk_state", "t": "risk_type", "label": "P2 has type"}, {"s": "alert", "t": "activation", "label": "P9 consists of"}, {"s": "activation", "t": "actuator", "label": "HP15 activated"}, {"s": "activation", "t": "group", "label": "HP16 alerted"}, {"s": "risk_mgmt", "t": "group", "label": "P14 carried out by"}, {"s": "risk_mgmt", "t": "m_action", "label": "P9 consists of"}, {"s": "m_action", "t": "risk_type", "label": "P2 has type"}, {"s": "hc2", "t": "hc3", "label": "HP1i is digital twin of"}, {"s": "risk_assess", "t": "hc3", "label": "P140 assigned attribute to"}, {"s": "risk_eval", "t": "hc3", "label": "HP27 concerns heritage entity"}, {"s": "m_action", "t": "hc2", "label": "P16 used specific object"}, {"s": "dt_update", "t": "hc3", "label": "HP27 concerns heritage entity"}, {"s": "hc2", "t": "update_data", "label": "P148 has component"}, {"s": "dt_update", "t": "service", "label": "HP28 implemented using"}, {"s": "Ta_ggIIjZ1g6eXOh8imd-24", "t": "risk_type", "label": "P2 has type"}, {"s": "haz_event", "t": "time", "label": "P4 has time-span"}, {"s": "int_assign", "t": "haz_event", "label": "P140 assigned attribute to"}, {"s": "int_assign", "t": "risk_dims", "label": "P141 assigned (hazard intensity)"}, {"s": "anth_act", "t": "actor", "label": "P14 carried out by"}, {"s": "anth_act", "t": "mod", "label": "P9 consists of"}, {"s": "mod", "t": "hc3", "label": "P31 has modified"}, {"s": "haz_event", "t": "cond_assess", "label": "P15i influenced"}, {"s": "anth_act", "t": "cond_assess", "label": "P15i influenced"}, {"s": "cond_assess", "t": "hc3", "label": "P34 concerned"}, {"s": "cond_assess", "t": "damage_state", "label": "P35 has identified"}, {"s": "damage_state", "t": "risk_type", "label": "P2 has type"}, {"s": "risk_mgmt", "t": "damage_state", "label": "P15 was influenced by"}, {"s": "incoming", "t": "d9", "label": ""}, {"s": "processed", "t": "d9", "label": ""}, {"s": "processing", "t": "incoming", "label": "L10 had input"}, {"s": "processing", "t": "processed", "label": "L11 had output"}, {"s": "processing", "t": "risk_eval", "label": "P134i was continued by"}, {"s": "risk_eval", "t": "d9", "label": "L10 had input"}, {"s": "risk_mgmt", "t": "m_action", "label": "P134i was continued by"}, {"s": "alert", "t": "risk_mgmt", "label": "P134i was continued by"}, {"s": "Ta_ggIIjZ1g6eXOh8imd-24", "t": "hc3", "label": ""}, {"s": "m_action", "t": "dt_update", "label": "P134i was continued by"}, {"s": "dt_update", "t": "update_data", "label": "L11 had output"}, {"s": "risk_assess", "t": "alert", "label": "P134i was continued by"}, {"s": "risk_state", "t": "91sEvv9IY6gedWecwaQN-1", "label": ""}, {"s": "risk_mgmt", "t": "91sEvv9IY6gedWecwaQN-3", "label": ""}, {"s": "alert", "t": "91sEvv9IY6gedWecwaQN-3", "label": ""}, {"s": "anth_act", "t": "91sEvv9IY6gedWecwaQN-3", "label": ""}, {"s": "m_action", "t": "91sEvv9IY6gedWecwaQN-3", "label": ""}, {"s": "damage_state", "t": "91sEvv9IY6gedWecwaQN-1", "label": ""}, {"s": "dt_update", "t": "Ta_ggIIjZ1g6eXOh8imd-7", "label": ""}, {"s": "haz_event", "t": "Ta_ggIIjZ1g6eXOh8imd-9", "label": ""}, {"s": "processing", "t": "Ta_ggIIjZ1g6eXOh8imd-7", "label": ""}, {"s": "risk_eval", "t": "Ta_ggIIjZ1g6eXOh8imd-7", "label": ""}, {"s": "update_data", "t": "d9", "label": ""}, {"s": "risk_assess", "t": "Ta_ggIIjZ1g6eXOh8imd-16", "label": ""}, {"s": "int_assign", "t": "Ta_ggIIjZ1g6eXOh8imd-16", "label": ""}, {"s": "risk_mgmt", "t": "risk_state", "label": "P15 was influenced by"}, {"s": "processing", "t": "service", "label": "HP28 implemented using"}, {"s": "Ta_ggIIjZ1g6eXOh8imd-24", "t": "scenario", "label": ""}, {"s": "risk_eval", "t": "service", "label": "HP28 implemented using"}], "sections": [{"label": "1 · MONITORING & PROCESSING", "x": 40.0, "y": 30.0, "w": 610.0, "h": 860.0}, {"label": "2 · RISK EVALUATION & ASSESSMENT", "x": 660.0, "y": 30.0, "w": 850.0, "h": 860.0}, {"label": "3 · ALERTING & RESPONSE", "x": 1530.0, "y": 30.0, "w": 940.0, "h": 860.0}, {"label": "4 · DIGITAL TWIN INTEGRATION", "x": 2490.0, "y": 30.0, "w": 880.0, "h": 860.0}, {"label": "5 · HAZARD OCCURRENCE & DAMAGE ASSESSMENT", "x": 40.0, "y": 967.0, "w": 3310.0, "h": 873.0}], "subheaders": [{"label": "NATURAL HAZARD", "x": 550.0, "y": 967.0, "w": 650.0, "h": 52.0}, {"label": "ANTHROPOGENIC HAZARD", "x": 1235.0, "y": 967.0, "w": 790.0, "h": 52.0}, {"label": "CONDITION / DAMAGE ASSESSMENT", "x": 2040.0, "y": 967.0, "w": 1160.0, "h": 52.0}]};
+const SVG="http://www.w3.org/2000/svg";
+const svg=document.getElementById('svg'), stage=document.getElementById('stage');
+const byId={}; DATA.nodes.forEach(n=>byId[n.id]=n);
+const findByLabel=(s)=>DATA.nodes.find(n=>n.label.toLowerCase().includes(s.toLowerCase()));
+
+const PROP_GLOSS={
+ "P140":"«αποδίδει ιδιότητα σε» — σε ποιο αγαθό αφορά η απόδοση",
+ "P141":"«αποδίδει» — ποια τιμή/κατάσταση αποδίδεται",
+ "P15":"«επηρεάστηκε από» — τι τροφοδότησε την απόφαση",
+ "P15i":"«επηρέασε» (αντίστροφο του P15)",
+ "P16":"«χρησιμοποίησε συγκεκριμένο αντικείμενο» (π.χ. παραμέτρους)",
+ "P2":"«έχει τύπο» — κατηγοριοποίηση (π.χ. επίπεδο κινδύνου)",
+ "P9":"«αποτελείται από» — υποδραστηριότητα ή ενέργεια",
+ "P14":"«εκτελέστηκε από» — ο δρων / η ομάδα",
+ "P134i":"«συνεχίστηκε από» — χρονική αλληλουχία βημάτων",
+ "P31":"«τροποποίησε» — η ενέργεια άλλαξε το αγαθό",
+ "P35":"«αναγνώρισε» — η αξιολόγηση εντόπισε τη βλάβη",
+ "P34":"«αφορούσε» — ποιο αγαθό αξιολογήθηκε",
+ "P4":"«έχει χρονική διάρκεια»",
+ "P148":"«έχει συστατικό»",
+ "HP1":"«έχει ψηφιακό δίδυμο»",
+ "HP1i":"«είναι ψηφιακό δίδυμο του»",
+ "HP15":"«ενεργοποίησε» — έθεσε σε λειτουργία τον μηχανισμό",
+ "HP16":"«ειδοποίησε» — ενημέρωσε την ομάδα",
+ "HP27":"«αφορά το πολιτιστικό αγαθό»",
+ "HP28":"«υλοποιείται μέσω»",
+ "L10":"«είχε ως είσοδο» (CRMdig) — η διεργασία πήρε αυτά τα δεδομένα",
+ "L11":"«είχε ως έξοδο» (CRMdig) — η διεργασία παρήγαγε αυτά τα δεδομένα",
+ "L61":"«περιέχει σύνολο τιμών»",
+};
+function titleFor(e){ if(!e.label) return "υποκλάση (isA / subclass of)"; const code=e.label.split(" ")[0]; const g=PROP_GLOSS[code]; return e.label+(g?" — "+g:""); }
+
+// incidence
+const inc={}; DATA.nodes.forEach(n=>inc[n.id]=[]);
+DATA.edges.forEach((e,i)=>{e._i=i; if(inc[e.s])inc[e.s].push(e); if(inc[e.t])inc[e.t].push(e);});
+
+// --- geometry: viewBox from bounds ---
+let minx=1e9,miny=1e9,maxx=-1e9,maxy=-1e9;
+DATA.sections.concat(DATA.nodes).forEach(o=>{minx=Math.min(minx,o.x);miny=Math.min(miny,o.y);maxx=Math.max(maxx,o.x+o.w);maxy=Math.max(maxy,o.y+o.h);});
+const PAD=80; const VB={x:minx-PAD,y:miny-PAD,w:(maxx-minx)+2*PAD,h:(maxy-miny)+2*PAD};
+svg.setAttribute('viewBox',`0 0 ${VB.w} ${VB.h}`);
+const vp=document.createElementNS(SVG,'g'); svg.appendChild(vp);
+// shift so content starts at 0
+const OX=-(minx-PAD), OY=-(miny-PAD);
+
+function el(tag,attrs,parent){const e=document.createElementNS(SVG,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e;}
+function cx(n){return n.x+OX+n.w/2;} function cy(n){return n.y+OY+n.h/2;}
+// line from node a to node b, clipped to rectangles
+function clip(n, tx,ty){
+  const x=n.x+OX, y=n.y+OY, w=n.w,h=n.h, cX=x+w/2, cY=y+h/2;
+  const dx=tx-cX, dy=ty-cY; if(dx===0&&dy===0)return[cX,cY];
+  const sx=dx!==0? (w/2)/Math.abs(dx):1e9, sy=dy!==0?(h/2)/Math.abs(dy):1e9;
+  const s=Math.min(sx,sy); return [cX+dx*s, cY+dy*s];
+}
+function wrap(label,max){
+  const words=label.split(' '); const lines=[]; let cur='';
+  for(const w of words){ if((cur+' '+w).trim().length>max){ if(cur)lines.push(cur); cur=w;} else cur=(cur+' '+w).trim(); }
+  if(cur)lines.push(cur); return lines.slice(0,3);
+}
+// split "Code Rest" -> tag + name  (e.g. "E13 Attribute Assignment", "HC22 Digital Operation")
+function splitTag(label){
+  const m=label.match(/^((?:HC|HP|E|P|D|L|S|O)\d+\w*)\s+(.*)$/);
+  if(m)return[m[1],m[2]]; return[null,label];
+}
+
+// defs: arrow markers
+const defs=el('defs',{},vp);
+defs.innerHTML=`<marker id="arr" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b9ad95"/></marker>
+<marker id="arrhl" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b5541e"/></marker>
+<marker id="arrsub" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c7bca4"/></marker>`;
+
+// sections
+const gSec=el('g',{},vp);
+DATA.sections.forEach(s=>{
+  const g=el('g',{class:'sec'},gSec);
+  el('rect',{x:s.x+OX,y:s.y+OY,width:s.w,height:s.h,rx:18},g);
+  if(s.label){const t=el('text',{x:s.x+OX+22,y:s.y+OY+34},g); t.textContent=s.label;}
+});
+DATA.subheaders.forEach(s=>{
+  const g=el('g',{class:'sub'},gSec);
+  el('rect',{x:s.x+OX,y:s.y+OY,width:s.w,height:s.h,rx:8},g);
+  const t=el('text',{x:s.x+OX+14,y:s.y+OY+s.h/2+5},g); t.textContent=s.label;
+});
+// edges
+const gEdge=el('g',{},vp); const edgeEls=[];
+DATA.edges.forEach((e,i)=>{
+  const a=byId[e.s], b=byId[e.t]; if(!a||!b)return;
+  const isSub=!e.label;
+  const g=el('g',{class:'edge'+(isSub?' sub':''),'data-i':i},gEdge);
+  {const _ti=el('title',{},g);_ti.textContent=titleFor(e);}
+  const [ax,ay]=clip(a, cx(b),cy(b)); const [bx,by]=clip(b, cx(a),cy(a));
+  const p=el('path',{d:`M${ax},${ay} L${bx},${by}`,'marker-end':isSub?'url(#arrsub)':'url(#arr)'},g);
+  if(e.label){
+    const mx=(ax+bx)/2, my=(ay+by)/2;
+    const bg=el('rect',{class:'elab-bg',x:mx-e.label.length*3.6-4,y:my-11,width:e.label.length*7.2+8,height:20,rx:5},g);
+    const t=el('text',{class:'elab',x:mx,y:my+4,'text-anchor':'middle'},g); t.textContent=e.label;
+  }
+  g._e=e; edgeEls.push(g);
+});
+// nodes
+const gNode=el('g',{},vp); const nodeEls={};
+DATA.nodes.forEach(n=>{
+  const g=el('g',{class:'node std-'+n.std,'data-id':n.id},gNode);
+  el('rect',{x:n.x+OX,y:n.y+OY,width:n.w,height:n.h,rx:10},g);
+  const [tag,name]=splitTag(n.label);
+  const lines=wrap(name,22);
+  const total=(tag?1:0)+lines.length;
+  let yy=n.y+OY+n.h/2 - (total-1)*10 + 4;
+  if(tag){const t=el('text',{class:'tag',x:cx(n),y:yy,'text-anchor':'middle'},g);t.textContent=tag;yy+=20;}
+  lines.forEach(ln=>{const t=el('text',{x:cx(n),y:yy,'text-anchor':'middle'},g);t.textContent=ln;yy+=19;});
+  g.addEventListener('click',(ev)=>{ev.stopPropagation(); focus(n.id,true);});
+  nodeEls[n.id]=g;
+});
+
+// --- focus / highlight ---
+function clearHL(){
+  svg.classList.remove('focusing');
+  Object.values(nodeEls).forEach(g=>g.classList.remove('hl','near'));
+  edgeEls.forEach(g=>g.classList.remove('hl'));
+}
+function focus(id, center){
+  clearHL(); svg.classList.add('focusing');
+  nodeEls[id].classList.add('hl');
+  inc[id].forEach(e=>{ edgeEls[e._i].classList.add('hl'); const other=e.s===id?e.t:e.s; if(nodeEls[other])nodeEls[other].classList.add('near'); });
+  if(center) centerOn(byId[id]);
+}
+stage.addEventListener('click',()=>{clearHL(); cap.classList.remove('on'); tourIdx=-1; updStep();});
+
+// --- pan / zoom ---
+let T={x:0,y:0,k:1};
+function apply(){vp.setAttribute('transform',`translate(${T.x},${T.y}) scale(${T.k})`);}
+function svgSize(){return {w:stage.clientWidth,h:stage.clientHeight};}
+function fit(){
+  const s=svgSize(); const sc=Math.min(s.w/VB.w,s.h/VB.h)*0.98;
+  T.k=sc; T.x=(s.w-VB.w*sc)/2; T.y=(s.h-VB.h*sc)/2; apply();
+}
+function centerOn(n){
+  const s=svgSize(); const k=Math.min(1.15, Math.max(0.5, s.h/ (n.h*6)));
+  T.k=k; T.x=s.w/2 - (cx(n))*k; T.y=s.h*0.46 - (cy(n))*k; apply();
+}
+// svg uses viewBox; but we also scale via transform in user units. Convert: our transform is in viewBox units? 
+// Simpler: svg has viewBox 0..VB; set width/height = client. transform translate/scale in viewBox coords mapped by viewBox. We'll instead map client->viewBox.
+function applyVB(){ // recompute viewBox to emulate pan/zoom
+  const s=svgSize(); const vw=s.w/T.k, vh=s.h/T.k;
+  svg.setAttribute('viewBox',`${-T.x/T.k} ${-T.y/T.k} ${vw} ${vh}`);
+}
+// override apply to use viewBox approach for crisp scaling
+apply=function(){applyVB();};
+vp.removeAttribute('transform');
+
+let drag=null;
+stage.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,tx:T.x,ty:T.y};stage.classList.add('drag');stage.setPointerCapture(e.pointerId);});
+stage.addEventListener('pointermove',e=>{if(!drag)return;T.x=drag.tx+(e.clientX-drag.x);T.y=drag.ty+(e.clientY-drag.y);apply();});
+stage.addEventListener('pointerup',e=>{drag=null;stage.classList.remove('drag');});
+stage.addEventListener('wheel',e=>{e.preventDefault();const f=e.deltaY<0?1.12:1/1.12;const s=svgSize();const mx=e.clientX-stage.getBoundingClientRect().left,my=e.clientY-stage.getBoundingClientRect().top;
+  const bx=(mx-T.x)/T.k,by=(my-T.y)/T.k; T.k=Math.max(0.2,Math.min(3,T.k*f)); T.x=mx-bx*T.k; T.y=my-by*T.k; apply();},{passive:false});
+document.getElementById('zin').onclick=()=>{T.k=Math.min(3,T.k*1.2);apply();};
+document.getElementById('zout').onclick=()=>{T.k=Math.max(0.2,T.k/1.2);apply();};
+document.getElementById('zfit').onclick=()=>{clearHL();cap.classList.remove('on');tourIdx=-1;updStep();fit();};
+
+// --- guided tour ---
+const TOUR=[
+ ["HC3 Tangible","Το μνημείο","Το φυσικό αγαθό που προστατεύουμε — <b>HC3 Tangible Entity</b> (≡ E22). Όλα καταλήγουν εδώ: η αξιολόγηση το αφορά (<b>P140</b> «αποδίδει ιδιότητα σε») και η ενέργεια το αλλάζει (<b>P31</b> «τροποποίησε»)."],
+ ["HC2 Heritage","Το Ψηφιακό Δίδυμο","<b>HC2 Heritage Digital Twin</b>: η ζωντανή ψηφιακή αναπαράσταση του μνημείου. Συνδέεται με το αγαθό μέσω <b>HP1</b> («έχει ψηφιακό δίδυμο»)."],
+ ["Incoming Monitoring","Εισερχόμενα δεδομένα","<b>Incoming Monitoring Data</b> — υποκλάση του D9 Data Object (CRMdig). Είναι η είσοδος της επεξεργασίας: <b>L10 had input</b> = «η διεργασία πήρε ως είσοδο αυτά τα δεδομένα»."],
+ ["Data Processing","Επεξεργασία","<b>Data Processing</b> (HC22, ψηφιακή λειτουργία): επεξεργάζεται τα ακατέργαστα δεδομένα. Με <b>L11 had output</b> («είχε ως έξοδο») παράγει τους επεξεργασμένους δείκτες."],
+ ["Risk Evaluation","Αξιολόγηση κινδύνου","<b>Risk Evaluation</b> (HC22): υπολογίζει τον κίνδυνο. Με <b>P16 used specific object</b> («χρησιμοποίησε συγκεκριμένο αντικείμενο») αξιοποιεί τις παραμέτρους (HC23) και τις διαστάσεις (E54)."],
+ ["Risk Assessment","Σημασιολογική απόδοση","<b>Risk Assessment</b> (E13, «πράξη απόδοσης»): δίνει νόημα στα δεδομένα. <b>P140</b> = σε ποιο αγαθό αφορά· <b>P141</b> («αποδίδει») = ποια κατάσταση κινδύνου· <b>P15</b> («επηρεάστηκε από») = η αξιολόγηση που την τροφοδότησε."],
+ ["Risk State","Κατάσταση κινδύνου","<b>Risk State</b> (E3, «κατάσταση σε μια περίοδο»). Το επίπεδο κινδύνου δηλώνεται με <b>P2 has type</b> («έχει τύπο»), π.χ. ΥΨΗΛΗ ή ΚΡΙΣΙΜΗ."],
+ ["Alerting Activity","Ειδοποίηση","<b>Alerting Activity</b> (E7, δραστηριότητα). <b>P9 consists of</b> («αποτελείται από») τη συνδέει με το Συμβάν Ενεργοποίησης, και <b>P134i</b> («συνεχίστηκε από») δίνει τη χρονική σειρά των βημάτων."],
+ ["HC14 Activation","Συμβάν ενεργοποίησης","<b>HC14 Activation Event</b>: ενεργοποιεί τους μηχανισμούς. <b>HP15</b> («ενεργοποίησε») θέτει σε λειτουργία τον Actuator (HC11)· <b>HP16</b> («ειδοποίησε») ενημερώνει την ομάδα (E74)."],
+ ["Risk Management Activity","Διαχείριση κινδύνου","<b>Risk Management Activity</b> (E7). <b>P14 carried out by</b> («εκτελέστηκε από») την αρμόδια ομάδα· <b>P9</b> («αποτελείται από») τη συγκεκριμένη ενέργεια· <b>P15</b> («επηρεάστηκε από») την κατάσταση βλάβης."],
+ ["Management Action","Διαχειριστική ενέργεια","<b>Management Action</b>: η απόφαση / μετριασμός / επιθεώρηση. Ο τύπος της δηλώνεται με <b>P2 has type</b>· με <b>P16</b> («χρησιμοποίησε συγκεκριμένο αντικείμενο») αφορά το ίδιο το δίδυμο."],
+ ["Digital Twin Update","Ενημέρωση διδύμου","<b>Digital Twin Update Operation</b> (HC22): ενημερώνει το δίδυμο. <b>HP27</b> («αφορά το αγαθό») και <b>HP28</b> («υλοποιείται μέσω» υπηρεσίας)· παράγει νέα δεδομένα κατάστασης (D9)."],
+ ["Hazard Scenario","Σενάριο κινδύνου","<b>Hazard Scenario</b> (E89, «προτασιακό αντικείμενο»): περιγράφει έναν πιθανό κίνδυνο. Παίρνει τύπο με <b>P2 has type</b> και αφορά το συγκεκριμένο αγαθό."],
+ ["Anthropogenic Hazard","Ανθρωπογενής δράση","<b>Anthropogenic Hazard Activity</b> (E7). <b>P14</b> («εκτελέστηκε από») τον δράστη (E39)· <b>P9</b> μια τροποποίηση (E11) που με <b>P31</b> («τροποποίησε») επεμβαίνει στο αγαθό· <b>P15i</b> («επηρέασε») την αξιολόγηση."],
+ ["E14 Condition","Αξιολόγηση κατάστασης","<b>E14 Condition Assessment</b>: διαπιστώνει τη βλάβη. <b>P34 concerned</b> («αφορούσε») το αγαθό και <b>P35 has identified</b> («αναγνώρισε») την κατάσταση βλάβης."],
+ ["Damage State","Κατάσταση βλάβης","<b>Damage State</b> (E3): η πραγματική φθορά που έχει ήδη συμβεί — διαφορετική από τον «κίνδυνο», που είναι πρόβλεψη. Ο τύπος της δηλώνεται με <b>P2 has type</b>."],
+];
+let tourIdx=-1; const cap=document.getElementById('cap');
+function updStep(){document.getElementById('step').textContent = tourIdx>=0? `Βήμα ${tourIdx+1} / ${TOUR.length}`:'';
+  document.getElementById('next').textContent = tourIdx<0?'Εκκίνηση ▶':(tourIdx>=TOUR.length-1?'Τέλος ✓':'Επόμενο ▶');}
+function showStep(){
+  const [lab,title,desc]=TOUR[tourIdx]; const n=findByLabel(lab); if(!n)return;
+  focus(n.id,true); cap.classList.add('on'); cap.querySelector('.t').textContent=title; cap.querySelector('.d').innerHTML=desc; updStep();
+}
+document.getElementById('next').onclick=()=>{ if(tourIdx<TOUR.length-1){tourIdx++;showStep();} };
+document.getElementById('prev').onclick=()=>{ if(tourIdx>0){tourIdx--;showStep();} };
+document.getElementById('reset').onclick=()=>{clearHL();cap.classList.remove('on');tourIdx=-1;updStep();fit();};
+window.addEventListener('keydown',e=>{if(e.key==='ArrowRight')document.getElementById('next').click();if(e.key==='ArrowLeft')document.getElementById('prev').click();if(e.key==='Escape')document.getElementById('reset').click();});
+addEventListener('resize',apply);
+fit(); updStep();
+</script>
+</body>
+</html>
+</body></html>
